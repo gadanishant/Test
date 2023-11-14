@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Person Details API
+  description: REST API to retrive details of a person
+  version: 1.0.0
+paths:
+  /getPersonDetails:
+    post:
+      summary: Get Person Details
+      description: Retrieve details of a person.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the person.
+                  example: John Doe
+                  minLength: 1
+                  maxLength: 255
+                age:
+                  type: integer
+                  description: The age of the person.
+                  example: 30
+                  minimum: 1
+                  maximum: 150
+                country:
+                  type: string
+                  description: The country of the person.
+                  example: USA
+                  minLength: 1
+                  maxLength: 255
+                mobile:
+                  type: string
+                  description: The mobile number of the person.
+                  example: "+123456789"
+                  # pattern: "^\+[0-9]+$"
+                  minLength: 1
+                  maxLength: 20
+                email:
+                  type: string
+                  description: The email address of the person.
+                  example: john@example.com
+                  format: email
+                profession:
+                  type: string
+                  description: The profession of the person.
+                  example: Software Developer
+                  minLength: 1
+                  maxLength: 255
+                description:
+                  type: string
+                  description: A description of the person (optional).
+                  example: A passionate developer.
+                  minLength: 0
+                  maxLength: 1000
+                foodPreferences:
+                  type: array
+                  items:
+                    type: string
+                    description: Food preferences of the person.
+                    example: Italian
+                  minItems: 0
+                  maxItems: 10
+                petPreferences:
+                  type: array
+                  items:
+                    type: string
+                    description: Pet preferences of the person.
+                    example: Dogs
+                  minItems: 0
+                  maxItems: 10
+              required:
+                - name
+                - age
+                - country
+                - mobile
+                - email
+                - profession
+                - foodPreferences
+                - petPreferences
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                name: John Doe
+                age: 30
+                country: USA
+                mobile: "+123456789"
+                email: john@example.com
+                profession: Software Developer
+                description: A passionate developer.
+                foodPreferences:
+                  - Vegetarian
+                petPreferences:
+                  - Dogs
+        '400':
+          description: Bad Request
