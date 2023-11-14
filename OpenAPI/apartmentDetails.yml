@@ -1,0 +1,56 @@
+openapi: "3.0.0"
+
+info:
+  title: Apartment Search API
+  version: "1.0.0"
+
+paths:
+  /get_apartments:
+    get:
+      summary: Get available apartments based on parameters
+      parameters:
+        - name: rooms
+          in: query
+          description: Number of rooms (1, 2, 3, 4)
+          required: true
+          schema:
+            type: integer
+        - name: bath
+          in: query
+          description: Number of bathrooms (1, 1.5, 2, 2.5, 3)
+          required: true
+          schema:
+            type: number
+        - name: balcony
+          in: query
+          description: Balcony availability (yes, no)
+          required: true
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Type of apartment (optional, default is any)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                - id: 1
+                  rooms: 1
+                  bath: 1
+                  balcony: true
+                  type: apartment
+                - id: 4
+                  rooms: 1
+                  bath: 1.5
+                  balcony: false
+                  type: studio
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                error: Invalid parameters
