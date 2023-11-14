@@ -1,0 +1,145 @@
+openapi: 3.0.3
+info:
+  title: Property Listings API
+  description: REST API to manage property listings
+  version: v1.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /properties:
+    get:
+      operationId: get-all-properties
+      description: Retrieve all property listings
+      parameters:
+        - name: location
+          in: query
+          required: false
+          description: Filter properties by location
+          schema:
+            type: string
+        - name: priceRange
+          in: query
+          required: false
+          description: Filter properties by price range
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of property listings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyListingArray'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /properties/{propertyId}:
+    get:
+      operationId: get-property-by-id
+      description: Retrieve details of a specific property
+      parameters:
+        - name: propertyId
+          in: path
+          required: true
+          description: Unique ID of the property
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of property details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyListing'
+        '401':
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Property not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    PropertyListingArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/PropertyListing'
+
+    PropertyListing:
+      type: object
+      properties:
+        id:
+          type: string
+          example: p1234
+        title:
+          type: string
+          example: "Luxury Apartment in Downtown"
+        description:
+          type: string
+          example: "Fully furnished 3 BHK apartment with a great view of the city."
+        address:
+          type: string
+          example: "123 Main St, CityName, StateName"
+        neighborhood:
+          type: string
+          example: "Historic Downtown"
+        zip_code:
+          type: string
+          example: "02115"
+        owner:
+          type: string
+          example: "John Doe"
+        year_built:
+          type: integer
+          example: 1990
+        year_remodeled:
+          type: integer
+          example: 2010
+        latitude:
+          type: number
+          format: double
+          example: 40.7128
+        longitude:
+          type: number
+          format: double
+          example: -74.0060
+        images:
+          type: array
+          items:
+            type: string
+          example:
+            - "http://example.com/images/image1.jpg"
+            - "http://example.com/images/image2.jpg"
+      required: 
+        - id
+        - title
+        - address
+        - neighborhood
+        - zip_code
+        - owner
+        - year_built
+        - latitude
+        - longitude
+    
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: unauth
+        message:
+          type: string
+          description: Error message
+          example: "User is not authorized"
+
