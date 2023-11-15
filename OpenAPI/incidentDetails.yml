@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  title: Incident Details API
+  description: REST API to retrive details of already happened incidents
+  version: 1.0.0
+paths:
+  /getPersonDetails:
+    post:
+      summary: Get Incident Details
+      description: Retrieve details of an incident.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The title of the incident.
+                  example: Theft
+                  minLength: 1
+                  maxLength: 255
+                zipcode:
+                  type: string
+                  description: The zipcode where incident happened.
+                  example: 02130
+                  minimum: 02108
+                  maximum: 02467
+                reporter:
+                  type: string
+                  description: The name of the reporter.
+                  example: John
+                  minLength: 1
+                  maxLength: 255
+                mobile:
+                  type: string
+                  description: The mobile number of the person.
+                  example: "+123456789"
+                  # pattern: "^\+[0-9]+$"
+                  minLength: 1
+                  maxLength: 20
+                email:
+                  type: string
+                  description: The email address of the person.
+                  example: john@example.com
+                  format: email
+
+                date:
+                  type: string
+                  description: The date when incident occurred.
+                  example: 11/14/2023
+                  format: DD/MM/YYYY
+
+
+                time:
+                  type: string
+                  description: The time when incident occurred.
+                  example: HH:MM:SS
+
+                description:
+                  type: string
+                  description: The description of the incident that occurred
+                  example: "A reported theft occurred at a residence on Beacon Street in the Back Bay neighborhood of Boston. The homeowner returned home to discover that valuable electronics, including a laptop and a tablet, as well as some jewelry, were missing. The incident is believed to have occurred between 14:00 and 20:30. Local law enforcement has been contacted, and an investigation is underway. The homeowner is providing a list of stolen items and any potential leads to aid in the investigation."
+
+
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                title: John Doe
+                zipcode: 02130
+                reporter: USA
+                mobile: "+123456789"
+                email: john@example.com
+                date: 11/14/2023
+                time: "22:10:10"
+                description: "A reported theft occurred at a residence on Beacon Street in the Back Bay neighborhood of Boston. The homeowner returned home to discover that valuable electronics, including a laptop and a tablet, as well as some jewelry, were missing. The incident is believed to have occurred between 14:00 and 20:30. Local law enforcement has been contacted, and an investigation is underway. The homeowner is providing a list of stolen items and any potential leads to aid in the investigation."
+
+        '400':
+          description: Bad Request
