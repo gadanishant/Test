@@ -21,6 +21,21 @@ paths:
                   example: Theft
                   minLength: 1
                   maxLength: 255
+
+                address:
+                  type: string
+                  description: The address of the place where incident happened.
+                  example: 77 N Washington Street
+                  minLength: 1
+                  maxLength: 255
+
+                neighbourhood:
+                  type: string
+                  description: The neighbourhood of the place where incident happened.
+                  example: Jamaica Plain
+                  minLength: 1
+                  maxLength: 255
+
                 zipcode:
                   type: string
                   description: The zipcode where incident happened.
@@ -63,7 +78,17 @@ paths:
                   description: The description of the incident that occurred
                   example: "A reported theft occurred at a residence on Beacon Street in the Back Bay neighborhood of Boston. The homeowner returned home to discover that valuable electronics, including a laptop and a tablet, as well as some jewelry, were missing. The incident is believed to have occurred between 14:00 and 20:30. Local law enforcement has been contacted, and an investigation is underway. The homeowner is providing a list of stolen items and any potential leads to aid in the investigation."
 
-
+              required:
+                - title
+                - neighbourhood
+                - zipcode
+                - reporter
+                - mobile
+                - email
+                - date
+                - time
+                - description
+                
       responses:
         '200':
           description: Successful response
