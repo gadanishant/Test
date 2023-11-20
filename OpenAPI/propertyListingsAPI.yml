@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://localhost:8080
 paths:
-  /properties:
+  /getPropertyDetails:
     get:
       operationId: get-all-properties
       description: Retrieve all property listings
