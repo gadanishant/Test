@@ -15,6 +15,10 @@ paths:
             schema:
               type: object
               properties:
+                id:
+                  type: Number
+                  example: 100
+
                 title:
                   type: string
                   description: The title of the incident.
@@ -79,6 +83,7 @@ paths:
                   example: "A reported theft occurred at a residence on Beacon Street in the Back Bay neighborhood of Boston. The homeowner returned home to discover that valuable electronics, including a laptop and a tablet, as well as some jewelry, were missing. The incident is believed to have occurred between 14:00 and 20:30. Local law enforcement has been contacted, and an investigation is underway. The homeowner is providing a list of stolen items and any potential leads to aid in the investigation."
 
               required:
+                - id
                 - title
                 - neighbourhood
                 - zipcode
@@ -95,6 +100,7 @@ paths:
           content:
             application/json:
               example:
+                id: 100
                 title: John Doe
                 zipcode: 02130
                 reporter: USA
