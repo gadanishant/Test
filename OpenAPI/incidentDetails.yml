@@ -101,9 +101,10 @@ paths:
             application/json:
               example:
                 id: 100
-                title: John Doe
+                title: Theft
+                neighbourhood: "Back Bay"
                 zipcode: 02130
-                reporter: USA
+                reporter: "John Doe"
                 mobile: "+123456789"
                 email: john@example.com
                 date: 11/14/2023
