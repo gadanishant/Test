@@ -5,8 +5,8 @@ export const search = async (params = {}) => {
     return person;
 }
 
-export const save = async (newProperty) => {
-    const person = new PersonModel(newProperty);
+export const save = async (newPerson) => {
+    const person = new PersonModel(newPerson);
     return await person.save();
 }
 
@@ -15,8 +15,8 @@ export const find = async (id) => {
     return person;
 }
 
-export const update = async (id, newProperty) => {
-    const person = await PersonModel.findByIdAndUpdate(id, newProperty, { new: true }).exec();
+export const update = async (id, newPerson) => {
+    const person = await PersonModel.findByIdAndUpdate(id, newPerson, { new: true }).exec();
     return person;
 }
 
