@@ -8,7 +8,7 @@ const PersonSchema = new Schema({
         required: true
     },
     age: {
-        type: String,
+        type: Number,
         required: true
     },
     country: {
@@ -20,7 +20,7 @@ const PersonSchema = new Schema({
         required: true
     },
     image: {
-        type: String,
+        type: Buffer,
         required: true
     },
     email: {
@@ -33,14 +33,15 @@ const PersonSchema = new Schema({
     },
     description: {
         type: String,
-        required: true
+        required: false
     },
     food_preferences: {
-        type: Number,
+        type: [String],
         required: true
     },
     pet_preferences: {
-        type: Number
+        type: [String],
+        required: false
     },
 },
 {
