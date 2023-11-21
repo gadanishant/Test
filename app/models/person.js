@@ -49,4 +49,4 @@ const PersonSchema = new Schema({
 
 const PersonModel = mongoose.model("Person", PersonSchema);
 
-export default PropertyModel;
+export default PersonModel;
