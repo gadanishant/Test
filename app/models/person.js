@@ -21,7 +21,7 @@ const PersonSchema = new Schema({
     },
     image: {
         type: Buffer,
-        required: true
+        required: false
     },
     email: {
         type: String,
