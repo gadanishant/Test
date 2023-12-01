@@ -13,7 +13,7 @@ const initialize = (app) => {
     registerRouter(app);
     
     // MongoDB
-    mongoose.connect('');
+    mongoose.connect('mongodb+srv://wilson:123qweasdzxc@zhe-test.vxpolmd.mongodb.net/?retryWrites=true&w=majority');
 };
 
 export default initialize;
