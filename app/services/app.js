@@ -15,6 +15,11 @@ const initialize = (app) => {
     // Initialize routes
     registerRouter(app);
     
+<<<<<<< HEAD
+=======
+    // MongoDB
+    mongoose.connect('mongodb+srv://wilson:123qweasdzxc@zhe-test.vxpolmd.mongodb.net/?retryWrites=true&w=majority');
+>>>>>>> 49bf10dbcedc3ff3cb4778f8b2a436f8f849a0f0
 };
 
 export default initialize;
