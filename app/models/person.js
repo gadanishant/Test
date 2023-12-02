@@ -42,10 +42,6 @@ const PersonSchema = new Schema({
     pet_preferences: {
         type: [String],
         required: false
-    },
-    liked_by: {
-        type: [String],
-        default: []
     }
 },
 {
