@@ -28,3 +28,6 @@ npm start
 
 Architecture and Roadmap
 -------------------------
+
+![6150Final](https://github.com/info-6150-fall-2023/final-project-incident-map/assets/145169519/a16d2ef8-25a8-437c-8d52-e53587ddbf14)
+
