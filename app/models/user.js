@@ -56,7 +56,7 @@ const UserSchema = new Schema({
         type: String,
         enum: ["Dogs", "Cats"],
         required: false
-    }
+    },
 },
 {
     versionKey: false
