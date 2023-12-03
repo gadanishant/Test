@@ -2,52 +2,55 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const PersonSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    age: {
+const IncidentSchema = new Schema({
+    id: {
         type: Number,
         required: true
     },
-    country: {
+    title: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+    },
+    neighbourhood: {
+        type: String,
+        required: true
+    },
+    zipcode: {
+        type: Number,
+        required: true
+    },
+    reporter: {
         type: String,
         required: true
     },
     mobile: {
-        type: String,
+        type: Number,
         required: true
-    },
-    image: {
-        type: Buffer,
-        required: false
     },
     email: {
         type: String,
         required: true
     },
-    profession: {
+    date: {
+        type: String,
+        required: true
+    },
+    time: {
         type: String,
         required: true
     },
     description: {
         type: String,
-        required: false
-    },
-    food_preferences: {
-        type: [String],
         required: true
-    },
-    pet_preferences: {
-        type: [String],
-        required: false
     }
 },
 {
     versionKey: false
 });
 
-const PersonModel = mongoose.model("Person", PersonSchema);
+const IncidentModel = mongoose.model("Incident", IncidentSchema);
 
-export default PersonModel;
+export default IncidentModel;
