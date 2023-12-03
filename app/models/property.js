@@ -46,6 +46,10 @@ const PropertySchema = new Schema({
         type: Number,
         required: true
     },
+    liked_by: {
+        type: [String],
+        default: []
+    },
     images: [{
         type: String,
     }]

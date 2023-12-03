@@ -42,7 +42,7 @@ const PersonSchema = new Schema({
     pet_preferences: {
         type: [String],
         required: false
-    },
+    }
 },
 {
     versionKey: false

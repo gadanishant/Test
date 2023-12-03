@@ -3,13 +3,22 @@ import * as propertyController from '../controllers/property-controller.js';
 
 const router = express.Router();
 
-router.route("/")
-    .get(propertyController.find)
+router.route("/createNewProperty")
     .post(propertyController.post);
 
-router.route("/:id")
+router.route("/getAllproperty")
+    .get(propertyController.find);
+
+router.route("/propertyDetails/:id")
     .get(propertyController.get)
-    .put(propertyController.put)
+
+router.route("/updateProperty/:id")
+    .put(propertyController.put);
+
+router.route("/deleteProperty/:id")
     .delete(propertyController.remove);
+
+router.route("/getLikedUsers/:id")
+    .get(propertyController.getLikedUsers);
 
 export default router;
