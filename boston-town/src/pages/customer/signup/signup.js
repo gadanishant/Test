@@ -107,7 +107,7 @@ const Signup = () => {
                 </MyFormItem>
 
                 
-                <><Form.Item
+                <Form.Item
                         name="select"
                         label="Select"
                         hasFeedback
@@ -130,9 +130,10 @@ const Signup = () => {
                                 <Option value="cat">Cat</Option>
                                 <Option value="none">None</Option>
                             </Select>
-                        </Form.Item><Button type="primary" htmlType="submit">
+                        </Form.Item>
+                        <Button type="primary" htmlType="submit">
                             Submit
-                        </Button></>
+                        </Button>
             </Form>
   );
 }
