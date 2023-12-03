@@ -29,5 +29,4 @@ npm start
 Architecture and Roadmap
 -------------------------
 
-![6150Final](https://github.com/info-6150-fall-2023/final-project-incident-map/assets/145169519/a16d2ef8-25a8-437c-8d52-e53587ddbf14)
-
+![INFO6150 drawio](https://github.com/info-6150-fall-2023/final-project-incident-map/assets/145169519/89b3109b-af9d-4f76-9644-93846e4e51fe)
