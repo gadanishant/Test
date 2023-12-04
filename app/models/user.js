@@ -2,8 +2,20 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const PersonSchema = new Schema({
-    name: {
+const UserSchema = new Schema({
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    password: {
         type: String,
         required: true
     },
@@ -36,18 +48,20 @@ const PersonSchema = new Schema({
         required: false
     },
     food_preferences: {
-        type: [String],
+        type: String,
+        enum: ["vegetarian", "non-vegetarian"],
         required: true
     },
     pet_preferences: {
-        type: [String],
+        type: String,
+        enum: ["Dogs", "Cats"],
         required: false
-    }
+    },
 },
 {
     versionKey: false
 });
 
-const PersonModel = mongoose.model("Person", PersonSchema);
+const UserModel = mongoose.model("User", UserSchema);
 
-export default PersonModel;
+export default UserModel;

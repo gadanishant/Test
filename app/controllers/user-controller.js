@@ -1,11 +1,11 @@
-import * as incidentService from "../services/incident-service.js";
+import* as userService from "../services/user-service.js";
 import { setResponse, setErrorResponse } from "./response-handler.js";
 
 export const find = async (req, res) => {
     try {
         const params = {...req.query};
-        const incidents = await incidentService.search(params);
-        setResponse(apartments, res);        
+        const users = await userService.search(params);
+        setResponse(users, res);        
     } catch (error) {
         setErrorResponse(error, res);
     }
@@ -13,9 +13,9 @@ export const find = async (req, res) => {
 
 export const post = async (req, res) => {
     try {
-        const newIncident = {...req.body};
-        const incident = await incidentService.save(newIncident);
-        setResponse(incident, res);
+        const newUser = {...req.body};
+        const user = await userService.save(newUser);
+        setResponse(user, res);
     } catch (error) {
         setErrorResponse(error, res);
     }
@@ -24,8 +24,8 @@ export const post = async (req, res) => {
 export const get = async (req, res) => {
     try {
         const id = req.params.id;
-        const incident = await incidentService.find(id);
-        setResponse(incident, res);
+        const user = await userService.find(id);
+        setResponse(user, res);
     } catch (err) {
         setErrorResponse(err, res);
     }
@@ -35,8 +35,8 @@ export const put = async (req, res) => {
     try {
         const id = req.params.id;
         const updatedData = {...req.body};
-        const incident = await incidentService.update(id, updatedData);
-        setResponse(incident, res);
+        const user = await userService.update(id, updatedData);
+        setResponse(user, res);
     } catch (err) {
         setErrorResponse(err, res);
     }
@@ -45,8 +45,8 @@ export const put = async (req, res) => {
 export const remove = async (req, res) => {
     try {
         const id = req.params.id;
-        const incident = await incidentService.remove(id);
-        setResponse(incident, res);
+        const user = await userService.remove(id);
+        setResponse(user, res);
     } catch (err) {
         setErrorResponse(err, res);
     }

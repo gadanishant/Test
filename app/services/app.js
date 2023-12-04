@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express from 'express';
-import registerRouter from '../routes/incident-index.js';
-import models from '../models/index.js';
+import registerRouter from '../routes/index.js';
+// import models from '../models/index.js';
 import mongoose from 'mongoose';
 
 const initialize = (app) => {
@@ -13,7 +13,7 @@ const initialize = (app) => {
     registerRouter(app);
     
     // MongoDB
-    mongoose.connect('mongodb+srv://wilson:123qweasdzxc@zhe-test.vxpolmd.mongodb.net/?retryWrites=true&w=majority');
+    mongoose.connect('mongodb+srv://nishant:nishant@zhe-test.vxpolmd.mongodb.net/?retryWrites=true&w=majority');
 };
 
 export default initialize;
