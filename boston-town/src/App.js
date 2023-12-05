@@ -1,10 +1,8 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Footer from './components/footer/footer';
 import Navbar from './components/navbar/navbar';
 import Login from './pages/customer/login/login';
 import Signup from './pages/customer/signup/signup';
-import Footer from './components/footer/footer';
-import About from './pages/aboutUs';
-
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 function App() {
 	return (
@@ -16,8 +14,8 @@ function App() {
 					<Routes>
 						<Route path="/signup" element={<Signup />} />
 						<Route path="/login" element={<Login />} />
-						
 					</Routes>
+					<Footer />
 				</div>
 			</Router>
 		</div>
