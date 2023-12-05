@@ -7,6 +7,11 @@ router.route("/")
     .get(userController.find)
     .post(userController.post);
 
+router.route("/:username")
+    .get(userController.authenticateUser)
+    .put(userController.put)
+    .delete(userController.remove);
+
 router.route("/:id")
     .get(userController.get)
     .put(userController.put)

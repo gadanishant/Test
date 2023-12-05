@@ -22,11 +22,27 @@ export const post = async (req, res) => {
 }
 
 export const get = async (req, res) => {
+    console.log("get");
     try {
         const id = req.params.id;
         const user = await userService.find(id);
         setResponse(user, res);
     } catch (err) {
+        console.log("get: catch block");
+        setErrorResponse(err, res);
+    }
+}
+
+export const authenticateUser = async (req, res) => {
+    console.log("authenticateUser");
+    try {
+        const username = req.params.username;
+        console.log("authenticateUser: username => ", username)
+        const user = await userService.find(username);
+        console.log("authenticateUser: user => ", user)
+        // setResponse(user, res);
+    } catch (err) {
+        console.log("authenticateUser: catch block");
         setErrorResponse(err, res);
     }
 }
