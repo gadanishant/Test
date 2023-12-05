@@ -7,4 +7,8 @@ export default (app) => {
     app.use('/getPersonDetails', personRouter);
     app.use('/createNewPost', postRouter);
     app.use('/getAllPosts', postRouter);
+<<<<<<< Updated upstream
+=======
+    app.use('/authenticateUser', userRouter);
+>>>>>>> Stashed changes
 };

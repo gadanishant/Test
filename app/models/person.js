@@ -48,6 +48,14 @@ const PersonSchema = new Schema({
     versionKey: false
 });
 
+<<<<<<< Updated upstream:app/models/person.js
 const PersonModel = mongoose.model("Person", PersonSchema);
+=======
+UserSchema.statics.findByUsername = function(username) {
+    return this.findOne({ username: username }).exec();
+};
+
+const UserModel = mongoose.model("User", UserSchema);
+>>>>>>> Stashed changes:app/models/user.js
 
 export default PersonModel;
