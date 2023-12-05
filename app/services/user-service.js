@@ -15,6 +15,11 @@ export const find = async (id) => {
     return user;
 }
 
+export const findUserByUsername = async (param) => {
+    const user = await UserModel.findOne({ username: param }).exec();
+    return user;
+}
+
 export const update = async (id, newUser) => {
     const user = await UserModel.findByIdAndUpdate(id, newUser, { new: true }).exec();
     return user;

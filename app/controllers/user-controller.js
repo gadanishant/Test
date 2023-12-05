@@ -1,11 +1,11 @@
-import* as userService from "../services/user-service.js";
+import * as userService from "../services/user-service.js";
 import { setResponse, setErrorResponse } from "./response-handler.js";
 
 export const find = async (req, res) => {
     try {
-        const params = {...req.query};
+        const params = { ...req.query };
         const users = await userService.search(params);
-        setResponse(users, res);        
+        setResponse(users, res);
     } catch (error) {
         setErrorResponse(error, res);
     }
@@ -13,7 +13,7 @@ export const find = async (req, res) => {
 
 export const post = async (req, res) => {
     try {
-        const newUser = {...req.body};
+        const newUser = { ...req.body };
         const user = await userService.save(newUser);
         setResponse(user, res);
     } catch (error) {
@@ -34,14 +34,23 @@ export const get = async (req, res) => {
 }
 
 export const authenticateUser = async (req, res) => {
-    console.log("authenticateUser");
+    const requestUsername = req.body.username
+    const requestPassword = req.body.password
+
     try {
-        const username = req.params.username;
-        console.log("authenticateUser: username => ", username)
-        const user = await userService.find(username);
-        console.log("authenticateUser: user => ", user)
-        // setResponse(user, res);
+        const user = await userService.findUserByUsername(requestUsername);
+        if (user.username === requestUsername && user.password === requestPassword) {
+            setResponse(user, res);
+            console.log("Authentication Successful!");
+        } else {
+            console.log("Authentication Failed!");
+            res.status(401).json({
+                code: "AuthenticationError",
+                message: "Username or Password entered is incorrect"
+            });
+        }
     } catch (err) {
+        console.log("Authentication Failed!");
         console.log("authenticateUser: catch block");
         setErrorResponse(err, res);
     }
@@ -50,7 +59,7 @@ export const authenticateUser = async (req, res) => {
 export const put = async (req, res) => {
     try {
         const id = req.params.id;
-        const updatedData = {...req.body};
+        const updatedData = { ...req.body };
         const user = await userService.update(id, updatedData);
         setResponse(user, res);
     } catch (err) {

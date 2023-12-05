@@ -1,6 +1,7 @@
 import propertyRouter from './property-route.js';
 import userRouter from './user-route.js';
 import postRouter from './post-route.js'
+import authenticationRouter from './authenticate-route.js'
 
 export default (app) => {
     app.use('/property', propertyRouter);
@@ -8,5 +9,5 @@ export default (app) => {
     app.use('/getUserDetails', userRouter);
     app.use('/createNewPost', postRouter);
     app.use('/getAllPosts', postRouter);
-    app.use('/authenticateUser/username', userRouter);
+    app.use('/authenticateUser', authenticationRouter);
 };
