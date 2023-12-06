@@ -1,10 +1,11 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
+import myImage from '../../../src/assets/images/Boston_Town_Footer_Image.png';
 
 const Footer = () => {
     return (
         <>
-            <Button variant="contained">Footer</Button>
+        <img src = {myImage}></img>
         </>
     );
 }
