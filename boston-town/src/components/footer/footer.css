@@ -1,0 +1,10 @@
+/* Add additional styles for your content if needed */
+body {
+    display: flex;
+}
+#footerImage {
+    margin: auto;
+    height:auto;
+
+
+}

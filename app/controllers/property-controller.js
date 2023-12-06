@@ -51,3 +51,14 @@ export const remove = async (req, res) => {
         setErrorResponse(err, res);
     }
 }
+
+export const getLikedUsers = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const apartment = await propertyService.find(id);
+        const likedUsers = apartment.liked_by;
+        setResponse(likedUsers, res);
+    } catch (err) {
+        setErrorResponse(err, res);
+    }
+} 
