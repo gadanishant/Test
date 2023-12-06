@@ -22,7 +22,6 @@ export const post = async (req, res) => {
 }
 
 export const get = async (req, res) => {
-    console.log("get");
     try {
         const id = req.params.id;
         const user = await userService.find(id);
@@ -42,7 +41,6 @@ export const authenticateUser = async (req, res) => {
         console.log("authenticateUser: user => ", user)
         setResponse(user, res);
     } catch (err) {
-        console.log("authenticateUser: catch block");
         setErrorResponse(err, res);
     }
 }
