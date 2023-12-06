@@ -1,8 +1,6 @@
 import { Card, Row, Col } from "antd";
-// import "./feed.css";
-// import "boston-town/src/assets/css/global_css.css";
-import ".././assets/css/global_css.css";
-
+// import ".././assets/css/global_css.css";
+// import logo from '../../public/images/logo.png'
 const Feed = () => {
     return (
         <>
@@ -16,6 +14,7 @@ const Feed = () => {
                     <Card className="card">
                         <Row>
                             <Col>
+                            <img src=""></img>
                             </Col>
                             <Col>
                             </Col>
