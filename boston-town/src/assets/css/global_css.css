@@ -5,18 +5,6 @@
     --grey:#8E8D8A;
     --peach:#E98074;
     --red: #E85A4F;
-  }
+    --light_grey:#dbdad6;
 
-  .background{
-    background-color: var(--off_white);
-    padding: 3rem;
-  }
-
-  .card{
-    border-color: var(--grey);
-    padding: 1rem;
-  }
-
-  .card:hover{
-    border-color: var(--peach);
   }
