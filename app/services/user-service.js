@@ -32,7 +32,8 @@ export const updateUserDetails = async (username, newUser) => {
     return user;
 }
 
-export const remove = async (id) => {
-    const user = await UserModel.findByIdAndDelete(id).exec();
+export const remove = async (username) => {
+    const userId = await UserModel.findOne({ username: username }).exec();
+    const user = await UserModel.findByIdAndDelete(userId).exec();
     return user;
 }

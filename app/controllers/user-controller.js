@@ -87,9 +87,10 @@ export const updateUserDetails = async (req, res) => {
 }
 
 export const remove = async (req, res) => {
+    console.log("remove");
     try {
-        const id = req.params.id;
-        const user = await userService.remove(id);
+        const requestUsername = req.body.username
+        const user = await userService.remove(requestUsername);
         setResponse(user, res);
     } catch (err) {
         setErrorResponse(err, res);
