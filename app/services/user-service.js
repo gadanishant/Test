@@ -25,6 +25,13 @@ export const update = async (id, newUser) => {
     return user;
 }
 
+export const updateUserDetails = async (username, newUser) => {
+    const userId = await UserModel.findOne({ username: username }).exec();
+    console.log("updateUserDetails: userId => ", userId.id);
+    const user = await UserModel.findByIdAndUpdate(userId, newUser, { new: true }).exec();
+    return user;
+}
+
 export const remove = async (id) => {
     const user = await UserModel.findByIdAndDelete(id).exec();
     return user;

@@ -2,21 +2,26 @@ import * as userService from "../services/user-service.js";
 import { setResponse, setErrorResponse } from "./response-handler.js";
 
 export const find = async (req, res) => {
+    console.log("find");
     try {
         const params = { ...req.query };
         const users = await userService.search(params);
+        console.log("find: users => ", users);
         setResponse(users, res);
     } catch (error) {
+        console.log("find: catch block");
         setErrorResponse(error, res);
     }
 }
 
 export const post = async (req, res) => {
+    console.log("post: ");
     try {
         const newUser = { ...req.body };
         const user = await userService.save(newUser);
         setResponse(user, res);
     } catch (error) {
+        console.log("post: catch block");
         setErrorResponse(error, res);
     }
 }
@@ -62,6 +67,20 @@ export const put = async (req, res) => {
         const updatedData = { ...req.body };
         const user = await userService.update(id, updatedData);
         setResponse(user, res);
+    } catch (err) {
+        setErrorResponse(err, res);
+    }
+}
+
+export const updateUserDetails = async (req, res) => {
+    console.log("updateUserDetails");
+    // console.log("updateUserDetails: req => ", req);
+    try {
+        const requestUsername = req.body.username
+        const updatedData = { ...req.body };
+        const user = await userService.updateUserDetails(requestUsername, updatedData);
+        setResponse(user, res);
+        console.log("Update successful!");
     } catch (err) {
         setErrorResponse(err, res);
     }
