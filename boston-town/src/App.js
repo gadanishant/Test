@@ -5,6 +5,7 @@ import Login from './pages/customer/login/login';
 import Signup from './pages/customer/signup/signup';
 import Home from './pages/home';
 import Feed from './pages/feed';
+import Profile from './pages/profile';
 
 function App() {
 	return (
@@ -15,10 +16,11 @@ function App() {
 					<hr />
 					{/* <Home /> */}
 					<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/feed" element={<Feed />} />
+						<Route path="/" element={<Home />} />
+						<Route path="/feed" element={<Feed />} />
 						<Route path="/signup" element={<Signup />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/profile" element={<Profile />} />
 					</Routes>
 					<Footer />
 				</div>

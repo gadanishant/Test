@@ -1,5 +1,7 @@
 import { Card, Col, Row, Divider } from "antd";
 import "./feed.css";
+import { Link } from 'react-router-dom';
+
 
 import { UserOutlined } from "@ant-design/icons"
 
@@ -20,7 +22,7 @@ const Feed = () => {
                             </Col>
                             <Col>
                             <Row>
-                            <Link to="/username">User Name</Link>
+                            <Link to="/profile">User Name</Link>
                             </Row>
                             <Row>
                                 New apartment
