@@ -184,6 +184,8 @@ const Signup = () => {
                 </Select>
             </Form.Item>
 
+            <Button type="primary">Submit</Button>
+
 
         </>
     );
