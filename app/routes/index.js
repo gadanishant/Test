@@ -2,6 +2,7 @@ import propertyRouter from './property-route.js';
 import userRouter from './user-route.js';
 import postRouter from './post-route.js'
 import authenticationRouter from './authenticate-route.js'
+import rentalApplicationRouter from './rental-application-route.js'
 
 export default (app) => {
     app.use('/property', propertyRouter);
@@ -16,4 +17,9 @@ export default (app) => {
     app.use('/getAllPosts', postRouter);
     
     app.use('/authenticateUser', authenticationRouter);
+    
+    app.use('/submitRentalApplication', rentalApplicationRouter);
+    app.use('/updateRentalApplicationDetails', rentalApplicationRouter);
+    app.use('/getAllApplications', rentalApplicationRouter);
+    app.use('/deleteApplication', rentalApplicationRouter);
 };
