@@ -1,5 +1,5 @@
 import { Card, Col, Row, Divider } from "antd";
-import "./feed.css";
+import './feed.css';
 import { Link } from 'react-router-dom';
 
 
