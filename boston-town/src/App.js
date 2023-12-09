@@ -3,7 +3,7 @@ import Footer from './components/footer/footer';
 import Navbar from './components/navbar/navbar';
 import Login from './pages/customer/login/login';
 import Signup from './pages/customer/signup/signup';
-
+import ApartmentListings from './pages/customer/apartmentListings/apartmentListings'
 function App() {
 	return (
 		<div className="App">
@@ -14,6 +14,8 @@ function App() {
 					<Routes>
 						<Route path="/signup" element={<Signup />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/listing" element={<ApartmentListings />} />
+
 					</Routes>
 					<Footer />
 				</div>
