@@ -1,0 +1,35 @@
+.padding_home{
+    padding: 5rem;
+}
+
+.home{
+    width: -webkit-fill-available;
+
+}
+
+.accent_blue{
+    color: #96ABBD;
+}
+
+.what_made_easy{
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 4rem;
+}
+
+.grey2{
+    color: #424242;
+
+}
+
+.finding_apt{
+    font-size: 3rem;
+}
+
+.find_button{
+    margin-top: 2rem;
+}
+
+.ant-btn.find_apt{
+    /* padding: 0.8rem; */
+}
