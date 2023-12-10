@@ -1,0 +1,16 @@
+
+.padding{
+    padding: 3rem;
+}
+
+.background_feed{
+    background-color: #dbdad6;
+}
+
+.card{
+    border-color: #8E8D8A;
+}
+
+.card:hover{
+    border-color: #E98074;
+}
