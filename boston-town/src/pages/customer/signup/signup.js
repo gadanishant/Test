@@ -24,7 +24,7 @@ const Signup = () => {
 
     const [mobile, setMobile] = useState("");
 
-    const [image, setImage] = useState("");
+    //const [image, setImage] = useState("");
 
     const [emailId, setEmail] = useState("");
 
@@ -35,6 +35,7 @@ const Signup = () => {
     const [petPreference, setPetPreference] = useState("");
 
     const [foodPreference, setFoodPreference] = useState("");
+
 
 
 
@@ -75,10 +76,10 @@ const Signup = () => {
                 "username": userName,
                 "password": password,
                 "confirm_password": confirmPassword,
+                //"image":file.originFileObj,
                 "age": age,
                 "country": country,
                 "mobile": mobile,
-                "image": image,
                 "email": emailId,
                 "profession": profession,
                 "description": description,
@@ -124,10 +125,6 @@ const Signup = () => {
         setMobile(e.target.value);
     }
 
-    const onChangeImage = (e) => {
-        setImage(e.target.value);
-    }
-
     const onChangeEmail = (e) => {
         setEmail(e.target.value);
     }
@@ -148,9 +145,6 @@ const Signup = () => {
       const onChangePetPreference = (value) => {
         setPetPreference(value);
     }
-
-    console.log("firstName => ", firstName);
-    console.log("lastName", lastName);
 
 
     return (
@@ -287,7 +281,9 @@ const Signup = () => {
             label="Upload Profile Picture"
             valuePropName="fileList"
             >
-            <Upload name="logo" action="/upload.do" listType="picture">
+            <Upload
+            maxCount={1}
+            >
                 <Button icon={<UploadOutlined />}>Click to upload</Button>
             </Upload>
             </Form.Item>
