@@ -1,11 +1,12 @@
-import* as postService from "../services/post-service.js";
+import * as postService from "../services/post-service.js";
 import { setResponse, setErrorResponse } from "./response-handler.js";
 
 export const find = async (req, res) => {
     try {
-        const params = {...req.query};
+        const params = { ...req.query };
         const posts = await postService.search(params);
-        setResponse(posts, res);        
+        console.log("count: ", posts.length);
+        setResponse(posts, res);
     } catch (error) {
         setErrorResponse(error, res);
     }
@@ -13,7 +14,7 @@ export const find = async (req, res) => {
 
 export const post = async (req, res) => {
     try {
-        const newPost = {...req.body};
+        const newPost = { ...req.body };
         const post = await postService.save(newPost);
         setResponse(post, res);
     } catch (error) {
