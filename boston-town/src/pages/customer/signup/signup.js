@@ -1,7 +1,8 @@
-import {Form, Input, Select, Button, Upload, message} from 'antd';
+import {Form, Input, Select, Button, Upload, message, Card, Row, Col} from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
+import "./signup.css"
 
 const Signup = () => {
     const [countries, setCountries] = useState([]);
@@ -168,6 +169,11 @@ const Signup = () => {
 
     return (
         <>
+        <div className="centered-card-container">
+        <Card className = "signUpCard">
+        <Form>
+        <Row gutter={16}>
+        <Col span={12}>
             <Form.Item
                 label="FirstName"
                 name="firstname"
@@ -180,7 +186,9 @@ const Signup = () => {
                 >
                 <Input onBlur={onChangeFirstName} />
                 </Form.Item>
+        </Col>
 
+        <Col span={12}>
             <Form.Item
             label="LastName"
             name="lastname"
@@ -193,7 +201,11 @@ const Signup = () => {
             >
                 <Input onBlur={onChangeLastName} />
             </Form.Item>
+        </Col>
+        </Row>
 
+        <Row gutter={16}>
+        <Col span={12}>
             <Form.Item
                 label="Username"
                 name="username"
@@ -206,6 +218,8 @@ const Signup = () => {
                 >
             <Input onBlur={onChangeUserName} />
             </Form.Item>
+        </Col>
+        <Col span={12}>
 
             <Form.Item
             label="Password"
@@ -219,7 +233,11 @@ const Signup = () => {
             >
             <Input.Password onBlur={onChangePassword}/>
             </Form.Item>
+        </Col>
+        </Row>
 
+        <Row gutter={16}>
+        <Col span={12}>
             <Form.Item
             label="Confirm Password"
             name="confirmpassword"
@@ -232,6 +250,8 @@ const Signup = () => {
             >
             <Input.Password onBlur={onChangeConfirmPassword}/>
             </Form.Item>
+        </Col>
+        <Col span={12}>
 
             <Form.Item
             label="Age"
@@ -246,6 +266,12 @@ const Signup = () => {
             >
                 <Input onBlur={onChangeAge}/>
             </Form.Item>
+        </Col>
+
+        </Row>
+
+        <Row gutter={16}>
+        <Col span={12}>
             <Form.Item label="Country" required>
                 <Select
                     showSearch
@@ -269,6 +295,8 @@ const Signup = () => {
                         ))}
                 </Select>
             </Form.Item>
+            </Col>
+            <Col span={12}>
 
                 <Form.Item
                 name="phone"
@@ -277,7 +305,13 @@ const Signup = () => {
             >
                 <Input onBlur={onChangeMobile} />
             </Form.Item>
+            </Col>
 
+            </Row>
+
+
+            <Row gutter={16}>
+            <Col span={12}>
             <Form.Item
                 name="email"
                 label="E-mail"
@@ -300,6 +334,9 @@ const Signup = () => {
             >
                 <Input onBlur={onChangeEmail} />
             </Form.Item>
+            </Col>
+
+            <Col span={12}>
 
             <Form.Item
             name="uploadProfilePicture"
@@ -312,6 +349,12 @@ const Signup = () => {
                 <Button icon={<UploadOutlined />}>Click to upload</Button>
             </Upload>
             </Form.Item>
+            </Col>
+
+        </Row>
+
+        <Row gutter={16}>
+        <Col span={12}>
 
             <Form.Item
                 name="profession"
@@ -320,6 +363,9 @@ const Signup = () => {
             >
                 <Input onBlur={onChangeProfession} />
             </Form.Item>
+            </Col>
+
+            <Col span={12}>
 
             <Form.Item
                 name="description"
@@ -328,6 +374,12 @@ const Signup = () => {
             >
                 <Input onBlur={onChangeDescription} />
             </Form.Item>
+            </Col>
+
+        </Row>
+
+        <Row gutter={16}>
+        <Col span={12}>
 
             <Form.Item label="Food Preference" required>
                 <Select onChange={onChangeFoodPreference} value={foodPreference}>
@@ -336,6 +388,11 @@ const Signup = () => {
                 <Select.Option value="none">None</Select.Option>
                 </Select>
             </Form.Item>
+            </Col>
+
+
+        <Col span={12}>
+
 
             <Form.Item label="Pet Preference">
                 <Select onChange={onChangePetPreference} value={petPreference}>
@@ -345,7 +402,19 @@ const Signup = () => {
                 </Select>
             </Form.Item>
 
-            <Button onClick={callCreateNewUserAPI} type="primary">Submit</Button>
+            </Col>
+            </Row>
+
+            <Form.Item>
+                <Button className = "submitButton" onClick={callCreateNewUserAPI}  type="primary">
+                    Submit
+                </Button>
+            </Form.Item>
+
+
+            </Form>
+            </Card>
+            </div>
 
 
         </>
