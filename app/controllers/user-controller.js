@@ -27,20 +27,6 @@ export const get = async (req, res) => {
         const user = await userService.find(id);
         setResponse(user, res);
     } catch (err) {
-        console.log("get: catch block");
-        setErrorResponse(err, res);
-    }
-}
-
-export const authenticateUser = async (req, res) => {
-    console.log("authenticateUser");
-    try {
-        const username = req.params.username;
-        console.log("authenticateUser: username => ", username)
-        const user = await userService.find(username);
-        console.log("authenticateUser: user => ", user)
-        setResponse(user, res);
-    } catch (err) {
         setErrorResponse(err, res);
     }
 }
@@ -65,13 +51,3 @@ export const remove = async (req, res) => {
         setErrorResponse(err, res);
     }
 }
-
-export const findUser = async (req, res) => {
-    try {
-        const username = req.params.username;        
-        const user = await userService.findByUsername(username);
-        setResponse(user, res);
-    } catch (err) {
-        setErrorResponse(err, res);
-    }
-};

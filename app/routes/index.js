@@ -8,5 +8,4 @@ export default (app) => {
     app.use('/getUserDetails', userRouter);
     app.use('/createNewPost', postRouter);
     app.use('/getAllPosts', postRouter);
-    app.use('/authenticateUser', userRouter);
 };
