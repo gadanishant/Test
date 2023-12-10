@@ -1,5 +1,6 @@
+import UserModel from "../models/user.js";
 import * as userService from "../services/user-service.js";
-import { setResponse, setErrorResponse } from "./response-handler.js";
+import { setResponse, setErrorResponse, badRequest } from "./response-handler.js";
 
 export const find = async (req, res) => {
     console.log("find");
@@ -16,13 +17,22 @@ export const find = async (req, res) => {
 
 export const post = async (req, res) => {
     console.log("post: ");
-    try {
-        const newUser = { ...req.body };
-        const user = await userService.save(newUser);
-        setResponse(user, res);
-    } catch (error) {
-        console.log("post: catch block");
-        setErrorResponse(error, res);
+
+    let requestUsername = req.body.username;
+    const usernameFromDB = await UserModel.findOne({ username: requestUsername }).exec();
+
+    if (usernameFromDB === null) {
+        try {
+            const newUser = { ...req.body };
+            const user = await userService.save(newUser);
+            setResponse(user, res);
+        } catch (error) {
+            console.log("post: catch block");
+            setErrorResponse(error, res);
+        }
+    } else {
+        console.log("Username Already Exists!");
+        badRequest("Username Already Exists!", res);
     }
 }
 
@@ -73,8 +83,8 @@ export const put = async (req, res) => {
 }
 
 export const updateUserDetails = async (req, res) => {
-    console.log("updateUserDetails");
-    // console.log("updateUserDetails: req => ", req);
+    console.log("user-controller: updateUserDetails");
+    // TODO: Don't allow user to modify username
     try {
         const requestUsername = req.body.username
         const updatedData = { ...req.body };

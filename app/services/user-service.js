@@ -26,8 +26,10 @@ export const update = async (id, newUser) => {
 }
 
 export const updateUserDetails = async (username, newUser) => {
+    console.log("user-service: updateUserDetails");
+    console.log("user-service: username => ", username);
     const userId = await UserModel.findOne({ username: username }).exec();
-    console.log("updateUserDetails: userId => ", userId.id);
+    console.log("user-service: userId => ", userId.id);
     const user = await UserModel.findByIdAndUpdate(userId, newUser, { new: true }).exec();
     return user;
 }
