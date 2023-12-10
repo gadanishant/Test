@@ -284,12 +284,18 @@ const Signup = () => {
                 rules={[
                 {
                     type: 'email',
-                    message: 'The input is not valid E-mail!',
+                    message: 'The input is not valid email address!',
                 },
                 {
                     required: true,
-                    message: 'Please input your E-mail!',
+                    message: 'Please input your email address!',
                 },
+
+                {
+                    pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                    message: 'Please enter a valid email address!',
+                }
+
                 ]}
             >
                 <Input onBlur={onChangeEmail} />
