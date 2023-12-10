@@ -3,11 +3,12 @@ import * as userService from "../services/user-service.js";
 import { setResponse, setErrorResponse, badRequest } from "./response-handler.js";
 
 export const find = async (req, res) => {
-    console.log("find");
+    console.log("user-controller: find");
     try {
         const params = { ...req.query };
         const users = await userService.search(params);
         console.log("find: users => ", users);
+        users.unshift({ "count": users.length })
         setResponse(users, res);
     } catch (error) {
         console.log("find: catch block");
@@ -16,7 +17,7 @@ export const find = async (req, res) => {
 }
 
 export const post = async (req, res) => {
-    console.log("post: ");
+    console.log("user-controller: post");
 
     let requestUsername = req.body.username;
     const usernameFromDB = await UserModel.findOne({ username: requestUsername }).exec();
@@ -37,7 +38,7 @@ export const post = async (req, res) => {
 }
 
 export const get = async (req, res) => {
-    console.log("get");
+    console.log("user-controller: get");
     try {
         const id = req.params.id;
         const user = await userService.find(id);
@@ -49,6 +50,7 @@ export const get = async (req, res) => {
 }
 
 export const authenticateUser = async (req, res) => {
+    console.log("user-controller: authenticateUser");
     const requestUsername = req.body.username
     const requestPassword = req.body.password
 
@@ -72,6 +74,7 @@ export const authenticateUser = async (req, res) => {
 }
 
 export const put = async (req, res) => {
+    console.log("user-controller: put");
     try {
         const id = req.params.id;
         const updatedData = { ...req.body };
@@ -97,7 +100,7 @@ export const updateUserDetails = async (req, res) => {
 }
 
 export const remove = async (req, res) => {
-    console.log("remove");
+    console.log("user-controller: remove");
     try {
         const requestUsername = req.body.username
         const user = await userService.remove(requestUsername);
