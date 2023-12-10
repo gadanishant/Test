@@ -5,7 +5,7 @@ import sendRequest from '../../../../src/components/sendRequest';
 
 const Login = () => {
 
-    const [username, setUserName] = useState("");
+    const [emailId, setUserName] = useState("");
 
     const [password, setPassword] = useState("");
 
