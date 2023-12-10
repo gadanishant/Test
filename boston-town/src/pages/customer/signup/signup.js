@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 const Signup = () => {
     const [countries, setCountries] = useState([]);
 
+    const [searchValue, setSearchValue] = useState('');
+
     useEffect(() => {
         const fetchCountries = async () => {
             try {
@@ -21,6 +23,16 @@ const Signup = () => {
 
         fetchCountries();
     }, []);
+
+    const handleSearch = (value) => {
+        setSearchValue(value);
+    };
+
+    const sortedCountries = countries.slice().sort((a, b) => {
+        const nameA = a.name.common.toLowerCase();
+        const nameB = b.name.common.toLowerCase();
+        return nameA.localeCompare(nameB);
+    });
     return (
         <>
             <Form.Item
@@ -76,6 +88,19 @@ const Signup = () => {
             </Form.Item>
 
             <Form.Item
+            label="Confirm Password"
+            name="confirmpassword"
+            rules={[
+                {
+                required: true,
+                message: 'Please confirm your password!',
+                },
+            ]}
+            >
+            <Input.Password />
+            </Form.Item>
+
+            <Form.Item
             label="Age"
             name="age"
             rules={[
@@ -89,27 +114,27 @@ const Signup = () => {
                 <Input />
             </Form.Item>
             <Form.Item label="Country" required>
-            <Select id="country" name="country">
-                <Select.Option value="" disabled>
-                Select your country
-                </Select.Option>
-                {countries
-                .slice() // Create a shallow copy of the array before sorting
-                .sort((a, b) => {
-                    // Customize the sorting logic based on your data structure
-                    const nameA = a.name.common.toLowerCase();
-                    const nameB = b.name.common.toLowerCase();
-                    if (nameA < nameB) return -1;
-                    if (nameA > nameB) return 1;
-                    return 0;
-                })
-                .map((country) => (
-                    <Select.Option key={country.name.common} value={country.name.common}>
-                    {country.name.common}
+                <Select
+                    showSearch
+                    id="country"
+                    name="country"
+                    filterOption={false}
+                    onSearch={handleSearch}
+                >
+                    <Select.Option value="" disabled>
+                        Select your country
                     </Select.Option>
-                ))}
+                    {sortedCountries
+                        .filter((country) =>
+                            country.name.common.toLowerCase().includes(searchValue.toLowerCase())
+                        )
+                        .map((country) => (
+                            <Select.Option key={country.name.common} value={country.name.common}>
+                                {country.name.common}
+                            </Select.Option>
+                        ))}
                 </Select>
-                </Form.Item>
+            </Form.Item>
 
                 <Form.Item
                 name="phone"
