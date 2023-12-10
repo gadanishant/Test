@@ -8,7 +8,7 @@
 }
 
 .accent_blue{
-    color: #96ABBD;
+    color: #68a2d5;
 }
 
 .what_made_easy{
@@ -31,5 +31,32 @@
 }
 
 .ant-btn.find_apt{
-    /* padding: 0.8rem; */
+    height: 3rem;
+    color: #fff;
+    background-color: #68a2d5;
+}
+
+.ant-btn-default.find_apt:hover{
+    border-color: #68a2d5 !important;
+    background-color: #fff !important;
+    color:#68a2d5 !important ;
+
+}
+
+.ant-btn.find_rm{
+    height: 3rem;
+    color: #68a2d5;
+    background-color: #fff;
+}
+
+.ant-btn-default.find_rm:hover{
+    border-color: #68a2d5 !important;
+    background-color: #68a2d5 !important;
+    color:#fff !important ;
+
+}
+
+.apartment{
+    height: 8rem;
+    margin-top: 4rem;
 }

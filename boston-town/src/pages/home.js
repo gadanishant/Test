@@ -1,6 +1,8 @@
 import { Card, Col, Row, Divider, Button } from "antd";
 import './home.css';
 import home from '../../../boston-town/src/assets/images/home.png';
+import apartment from '../../../boston-town/src/assets/images/apartment.png';
+
 
 const Home = () => {
     return (
@@ -12,12 +14,12 @@ const Home = () => {
                         <Row gutter={[24,24]} className="find_button">
                             <Col>
                                 <Button className="find_apt">
-                                   <h3 className="find_apt"> Find a Apartment</h3>
+                                   <h3 > Find a Apartment</h3>
                                 </Button>
                             </Col>
                             <Col>
-                                <Button>
-                                <h3> Find Roomates</h3>
+                                <Button className="find_rm">
+                                <h3 > Find Roomates</h3>
                                 </Button>
                             </Col>
                         </Row>
@@ -29,6 +31,19 @@ const Home = () => {
 
                 <Col span={24} className="what_made_easy grey2">
                     <b> What we have made easy for students</b>
+                </Col>
+            </Row>
+            <Row>
+                <Col span={8} justify="center" align="middle">
+                    <div>
+                        <img className="apartment" src={apartment}></img>
+                    </div>
+                </Col>
+                <Col span={8}>
+                    test
+                </Col>
+                <Col span={8}>
+                    test
                 </Col>
             </Row>
 
