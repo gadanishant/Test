@@ -1,11 +1,11 @@
 import { Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
-import logo from '../../../src/assets/images/logo.png';
+import logo from '../../../src/assets/images/logo3.png';
 import "./navbar.css";
 
 const Navbar = () => {
     return (
-        <div>
+        <div className='navposition'>
             <Row className="background margin_auto">
                 <Col xs={2} sm={4} md={6} lg={3} xl={3} xxl={3}>
                     <h2> <Link to="/feed">Feed</Link></h2>

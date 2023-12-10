@@ -5,14 +5,23 @@
 
 .nav_logo{
     height: 4rem;
+    margin-top: -1rem;
 }
 
 .background{
-    background-color: #EAE7DC;
+    background-color: #dedede;
     /* padding: 0rem 2rem 0rem 2rem; */
     padding: 1rem !important;
+    height: 4rem;
+
 }
 
 .margin_auto #Col{
     margin: auto;
+}
+
+.navposition{
+    position: fixed;
+    width: -webkit-fill-available;
+    z-index: 100;
 }

@@ -1,5 +1,5 @@
 .padding_home{
-    padding: 5rem;
+    padding: 9rem 5rem 5rem 5rem;
 }
 
 .home{
@@ -59,4 +59,11 @@
 .apartment{
     height: 8rem;
     margin-top: 4rem;
+}
+.row3_color {
+    background: #68a2d5; /* Fallback color */
+    background: linear-gradient(to top, #fff 0%, #68a2d5 100%);
+    margin-left: -5rem;
+    margin-right: -5rem;
+    height: 10rem;
 }
