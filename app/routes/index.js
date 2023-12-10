@@ -3,6 +3,7 @@ import userRouter from './user-route.js';
 import postRouter from './post-route.js'
 import authenticationRouter from './authenticate-route.js'
 import rentalApplicationRouter from './rental-application-route.js'
+import incidentRouter from './incident-route.js'
 
 export default (app) => {
     app.use('/property', propertyRouter);
@@ -22,4 +23,7 @@ export default (app) => {
     app.use('/updateRentalApplicationDetails', rentalApplicationRouter);
     app.use('/getAllApplications', rentalApplicationRouter);
     app.use('/deleteApplication', rentalApplicationRouter);
+    
+    app.use('/getAllIncidents', incidentRouter);
+    app.use('/addNewIncident', incidentRouter);
 };
