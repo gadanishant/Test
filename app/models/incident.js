@@ -37,7 +37,7 @@ const IncidentSchema = new Schema({
     },
     profession: {
         type: String,
-        required: true
+        required: false
     },
     incidentTitle: {
         type: String,

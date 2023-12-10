@@ -26,4 +26,6 @@ export default (app) => {
     
     app.use('/getAllIncidents', incidentRouter);
     app.use('/addNewIncident', incidentRouter);
+    app.use('/updateIncidentDetails', incidentRouter);
+    app.use('/deleteIncident', incidentRouter);
 };

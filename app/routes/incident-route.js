@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route("/")
     .get(incidentController.find)
-    .put(incidentController.updateUserDetails)
+    .put(incidentController.updateIncidentDetails)
     .post(incidentController.post)
     .delete(incidentController.remove);
 

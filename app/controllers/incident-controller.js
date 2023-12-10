@@ -7,7 +7,7 @@ export const find = async (req, res) => {
         const params = { ...req.query };
         const incidents = await incidentService.search(params);
         console.log("find: incidents => ", incidents);
-        incidents.push({"count": incidents.length})
+        incidents.unshift({ "count": incidents.length })
         setResponse(incidents, res);
     } catch (error) {
         console.log("find: catch block");
@@ -51,15 +51,16 @@ export const put = async (req, res) => {
     }
 }
 
-export const updateUserDetails = async (req, res) => {
-    console.log("updateUserDetails");
-    // console.log("updateUserDetails: req => ", req);
+export const updateIncidentDetails = async (req, res) => {
+    console.log("incident-controller: updateIncidentDetails");
+    // console.log("updateIncidentDetails: req => ", req);
     try {
-        const requestUsername = req.body.username
+        const requestUsername = req.body.Username
         const updatedData = { ...req.body };
-        const incident = await incidentService.updateUserDetails(requestUsername, updatedData);
+        console.log("incident-controller: updatedData => ", updatedData);
+        const incident = await incidentService.updateIncidentDetails(requestUsername, updatedData);
         setResponse(incident, res);
-        console.log("Update successful!");
+        console.log("incident-controller: Update successful!");
     } catch (err) {
         setErrorResponse(err, res);
     }
@@ -68,7 +69,7 @@ export const updateUserDetails = async (req, res) => {
 export const remove = async (req, res) => {
     console.log("incident-controller: remove");
     try {
-        const requestUsername = req.body.username
+        const requestUsername = req.body.Username
         const incident = await incidentService.remove(requestUsername);
         setResponse(incident, res);
     } catch (err) {
