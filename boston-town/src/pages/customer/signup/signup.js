@@ -1,11 +1,43 @@
 import {Form, Input, Select, Button, Upload} from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
+import sendRequest from '../../../../src/components/sendRequest';
 
 const Signup = () => {
     const [countries, setCountries] = useState([]);
 
     const [searchValue, setSearchValue] = useState('');
+
+    const [firstName, setFirstName] = useState("");
+
+    const [lastName, setLastName] = useState("");
+
+    const [userName, setUserName] = useState("");
+
+    const [password, setPassword] = useState("");
+
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    const [age, setAge] = useState("");
+
+    const [country, setCountry] = useState("");
+
+    const [mobile, setMobile] = useState("");
+
+    const [image, setImage] = useState("");
+
+    const [emailId, setEmail] = useState("");
+
+    const [profession, setProfession] = useState("");
+
+    const [description, setDescription] = useState("");
+
+    const [petPreference, setPetPreference] = useState("");
+
+    const [foodPreference, setFoodPreference] = useState("");
+
+
+
 
     useEffect(() => {
         const fetchCountries = async () => {
@@ -33,6 +65,94 @@ const Signup = () => {
         const nameB = b.name.common.toLowerCase();
         return nameA.localeCompare(nameB);
     });
+
+    const callCreateNewUserAPI = async () => {
+        try {
+            console.log("callCreateNewUserAPI: try");
+            const response = await sendRequest("http://localhost:3000/createNewUser", {
+                "firstname": firstName,
+                "lastname": lastName,
+                "username": userName,
+                "password": password,
+                "confirm_password": confirmPassword,
+                "age": age,
+                "country": country,
+                "mobile": mobile,
+                "image": image,
+                "email": emailId,
+                "profession": profession,
+                "description": description,
+                "food_preferences": foodPreference,
+                "pet_preferences": petPreference
+            }, "POST", {})
+
+            console.log("response => ", response);
+        } catch (error) {
+            console.log("callCreateNewUserAPI: catch");
+        }
+    }
+
+    const onChangeFirstName = (e) => {
+        setFirstName(e.target.value);
+    }
+
+    const onChangeLastName = (e) => {
+        setLastName(e.target.value);
+    }
+
+    const onChangeUserName = (e) => {
+        setUserName(e.target.value);
+    }
+
+    const onChangePassword = (e) => {
+        setPassword(e.target.value);
+    }
+
+    const onChangeConfirmPassword = (e) => {
+        setConfirmPassword(e.target.value);
+    }
+
+    const onChangeAge = (e) => {
+        setAge(e.target.value);
+    }
+
+    const onChangeCountry = (value) => {
+        setCountry(value);
+    }
+
+    const onChangeMobile = (e) => {
+        setMobile(e.target.value);
+    }
+
+    const onChangeImage = (e) => {
+        setImage(e.target.value);
+    }
+
+    const onChangeEmail = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const onChangeProfession = (e) => {
+        setProfession(e.target.value);
+    }
+
+    const onChangeDescription= (e) => {
+        setDescription(e.target.value);
+    }
+
+
+    const onChangeFoodPreference = (value) => {
+        setFoodPreference(value);
+    }
+    
+      const onChangePetPreference = (value) => {
+        setPetPreference(value);
+    }
+
+    console.log("firstName => ", firstName);
+    console.log("lastName", lastName);
+
+
     return (
         <>
             <Form.Item
@@ -45,7 +165,7 @@ const Signup = () => {
                     },
                 ]}
                 >
-                <Input />
+                <Input onBlur={onChangeFirstName} />
                 </Form.Item>
 
             <Form.Item
@@ -58,7 +178,7 @@ const Signup = () => {
                 },
             ]}
             >
-                <Input />
+                <Input onBlur={onChangeLastName} />
             </Form.Item>
 
             <Form.Item
@@ -71,7 +191,7 @@ const Signup = () => {
                     },
                 ]}
                 >
-            <Input />
+            <Input onBlur={onChangeUserName} />
             </Form.Item>
 
             <Form.Item
@@ -84,7 +204,7 @@ const Signup = () => {
                 },
             ]}
             >
-            <Input.Password />
+            <Input.Password onBlur={onChangePassword}/>
             </Form.Item>
 
             <Form.Item
@@ -97,7 +217,7 @@ const Signup = () => {
                 },
             ]}
             >
-            <Input.Password />
+            <Input.Password onBlur={onChangeConfirmPassword}/>
             </Form.Item>
 
             <Form.Item
@@ -111,7 +231,7 @@ const Signup = () => {
                 
             ]}
             >
-                <Input />
+                <Input onBlur={onChangeAge}/>
             </Form.Item>
             <Form.Item label="Country" required>
                 <Select
@@ -120,6 +240,7 @@ const Signup = () => {
                     name="country"
                     filterOption={false}
                     onSearch={handleSearch}
+                    onChange = {onChangeCountry}
                 >
                     <Select.Option value="" disabled>
                         Select your country
@@ -141,7 +262,7 @@ const Signup = () => {
                 label="Phone Number"
                 rules={[{ required: true, message: 'Please input your phone number!' }]}
             >
-                <Input/>
+                <Input onBlur={onChangeMobile} />
             </Form.Item>
 
             <Form.Item
@@ -158,7 +279,7 @@ const Signup = () => {
                 },
                 ]}
             >
-                <Input />
+                <Input onBlur={onChangeEmail} />
             </Form.Item>
 
             <Form.Item
@@ -176,7 +297,7 @@ const Signup = () => {
                 label= "Profession"
                 rules={[{ required: true, message: 'Please input your profession!' }]}
             >
-                <Input/>
+                <Input onBlur={onChangeProfession} />
             </Form.Item>
 
             <Form.Item
@@ -184,14 +305,11 @@ const Signup = () => {
                 label= "Description"
                 rules={[{ required: false, message: 'Please input your profession!' }]}
             >
-                <Input/>
+                <Input onBlur={onChangeDescription} />
             </Form.Item>
 
             <Form.Item label="Food Preference" required>
-                <Select>
-                <Select.Option value="" disabled required>
-                Select your Food Preference
-                </Select.Option>
+                <Select onChange={onChangeFoodPreference} value={foodPreference}>
                 <Select.Option value="veg">Veg</Select.Option>
                 <Select.Option value="nonVeg">Non-Veg</Select.Option>
                 <Select.Option value="none">None</Select.Option>
@@ -199,17 +317,14 @@ const Signup = () => {
             </Form.Item>
 
             <Form.Item label="Pet Preference">
-                <Select>
-                <Select.Option value="" disabled required>
-                Select your Pet Preference
-                </Select.Option>
+                <Select onChange={onChangePetPreference} value={petPreference}>
                 <Select.Option value="dog">Dog</Select.Option>
                 <Select.Option value="cat">Cat</Select.Option>
                 <Select.Option value="none">None</Select.Option>
                 </Select>
             </Form.Item>
 
-            <Button type="primary">Submit</Button>
+            <Button onClick={callCreateNewUserAPI} type="primary">Submit</Button>
 
 
         </>
