@@ -7,6 +7,7 @@ import ApartmentListings from './pages/customer/apartmentListings/apartmentListi
 import Home from './pages/home';
 import Feed from './pages/feed';
 import Profile from './pages/profile';
+import AboutUs from './pages/aboutUs'
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 						<Route path="/login" element={<Login />} />
 						<Route path="/listing" element={<ApartmentListings />} />
 						<Route path="/profile" element={<Profile />} />
+						<Route path="/aboutUs" element={<AboutUs />} />
 					</Routes>
 					<Footer />
 				</div>
