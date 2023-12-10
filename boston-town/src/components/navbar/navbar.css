@@ -2,3 +2,17 @@
     margin: 0;
     padding: 0;
 }
+
+.nav_logo{
+    height: 4rem;
+}
+
+.background{
+    background-color: #EAE7DC;
+    /* padding: 0rem 2rem 0rem 2rem; */
+    padding: 1rem !important;
+}
+
+.margin_auto #Col{
+    margin: auto;
+}
