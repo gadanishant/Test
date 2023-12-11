@@ -9,7 +9,7 @@ import { UserOutlined } from "@ant-design/icons"
 const Feed = () => {
     return (
         <>
-        <div className='padding background_feed '>
+        <div className='padding_background_feed '>
             <Row  gutter={[24, 24]}>
                 <Col xs={6} sm={6} md={6} lg={5} xl={5} xxl={5}>
                     <Card className="card"></Card>
