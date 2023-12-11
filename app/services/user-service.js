@@ -20,6 +20,17 @@ export const findUserByUsername = async (param) => {
     return user;
 }
 
+export const findUserByIdentifier = async (identifier) => {
+    const user = await UserModel.findOne({
+        $or: [
+            { username: identifier },
+            { email: identifier }
+        ]
+    }).exec();
+
+    return user;
+}
+
 export const update = async (id, newUser) => {
     const user = await UserModel.findByIdAndUpdate(id, newUser, { new: true }).exec();
     return user;
