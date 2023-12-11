@@ -402,6 +402,8 @@ const Signup = () => {
                 </Select>
             </Form.Item>
 
+
+        </Form>
             </Col>
             </Row>
 
@@ -412,15 +414,9 @@ const Signup = () => {
             </Button>
             </Col>
             </Row>
-
-
-
-
             </Form>
             </Card>
             </div>
-
-
         </>
     );
 }

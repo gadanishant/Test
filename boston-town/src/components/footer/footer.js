@@ -90,7 +90,7 @@ const AppFooter = () => {
         <Link><TwitterOutlined className = "footer-icons"/></Link>
         </div>
 
-        <img src = {Boston_Town_Footer_Image}></img>
+        <img className='footerimg' src = {Boston_Town_Footer_Image}></img>
 
         
     </Footer>
