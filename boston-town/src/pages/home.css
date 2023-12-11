@@ -32,6 +32,11 @@
     color: #424242;
 }
 
+.font2rem:hover{
+    color: #E98074;
+    transition: 0.3s;
+}
+
 .find_button{
     margin-top: 2rem;
 }

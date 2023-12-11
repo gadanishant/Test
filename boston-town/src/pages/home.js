@@ -112,6 +112,31 @@ const Home = () => {
                     />
                 </Col>
             </Row>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <Row gutter={[24,24]}>
+                <Col align="middle" span={24}>
+                <h1>Top 10 Picks</h1>
+                </Col>
+               
+                <Col span={8}>
+                <Card>
+
+                </Card>
+                </Col>
+                <Col span={8}>
+                <Card>
+
+                </Card>
+                </Col>
+                <Col span={8}>
+                <Card>
+
+                </Card>
+                </Col>
+            </Row>
 
         </div>
     );
