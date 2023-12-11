@@ -9,6 +9,7 @@ import Feed from './pages/feed';
 import Profile from './pages/profile';
 import AboutUs from './pages/aboutUs'
 import Incidents from './pages/incident'
+import ApartmentDetails from './pages/customer/apartmentListings/apartmentdetails';
 
 function App() {
 	return (
@@ -27,6 +28,7 @@ function App() {
 						<Route path="/profile" element={<Profile />} />
 						<Route path="/aboutUs" element={<AboutUs />} />
 						<Route path="/incidents" element={<Incidents />} />
+						<Route path="/apartmentdetails" element={<ApartmentDetails />} />
 					</Routes>
 					<Footer />
 				</div>
