@@ -16,6 +16,8 @@ export default (app) => {
 
     app.use('/createNewPost', postRouter);
     app.use('/getAllPosts', postRouter);
+    app.use('/updatePost', postRouter);
+    app.use('/deletePost', postRouter);
     
     app.use('/authenticateUser', authenticationRouter);
     
