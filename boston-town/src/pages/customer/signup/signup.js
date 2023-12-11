@@ -70,6 +70,15 @@ const Signup = () => {
     };
 
     const callCreateNewUserAPI = async () => {
+
+        if(firstName === "" || lastName === "" || userName === "" || password === "" ||
+        confirmPassword === "" || age === "" || country === "" || mobile === "" || emailId === ""
+        || profession === "")
+        {
+            alert("Please enter all required fields");
+        }
+        else{
+
         try {
             console.log("callCreateNewUserAPI: try");
             const response = await sendRequest("http://localhost:3000/createNewUser", {
@@ -93,6 +102,7 @@ const Signup = () => {
             console.log("callCreateNewUserAPI: catch");
         }
     }
+}
 
     const onChangeFirstName = (e) => {
         setFirstName(e.target.value);
@@ -165,7 +175,7 @@ const Signup = () => {
                     },
                 ]}
                 >
-                <Input onBlur={onChangeFirstName} />
+                <Input className = "InputFieldClass" onBlur={onChangeFirstName} />
                 </Form.Item>
         </Col>
 
@@ -180,7 +190,7 @@ const Signup = () => {
                 },
             ]}
             >
-                <Input onBlur={onChangeLastName} />
+                <Input className = "InputFieldClass" onBlur={onChangeLastName} />
             </Form.Item>
         </Col>
         </Row>
@@ -197,7 +207,7 @@ const Signup = () => {
                     },
                 ]}
                 >
-            <Input onBlur={onChangeUserName} />
+            <Input className = "InputFieldClass" onBlur={onChangeUserName} />
             </Form.Item>
         </Col>
         <Col span={12}>
@@ -212,7 +222,7 @@ const Signup = () => {
                 },
             ]}
             >
-            <Input.Password onBlur={onChangePassword}/>
+            <Input.Password className = "InputFieldClass" onBlur={onChangePassword}/>
             </Form.Item>
         </Col>
         </Row>
@@ -229,7 +239,7 @@ const Signup = () => {
                 },
             ]}
             >
-            <Input.Password onBlur={onChangeConfirmPassword}/>
+            <Input.Password className = "InputFieldClass" onBlur={onChangeConfirmPassword}/>
             </Form.Item>
         </Col>
         <Col span={12}>
@@ -245,11 +255,11 @@ const Signup = () => {
                 
             ]}
             >
-                <Input onBlur={onChangeAge}/>
+                <Input onBlur={onChangeAge} className = "InputFieldClass"/>
             </Form.Item>
         </Col>
 
-        </Row>
+                        </Row>
 
         <Row gutter={16}>
         <Col span={12}>
@@ -262,7 +272,7 @@ const Signup = () => {
                     onSearch={handleSearch}
                     onChange = {onChangeCountry}
                 >
-                    <Select.Option value="" disabled>
+                    <Select.Option value="" disabled className = "InputFieldClass">
                         Select your country
                     </Select.Option>
                     {sortedCountries
@@ -284,86 +294,84 @@ const Signup = () => {
                 label="Phone Number"
                 rules={[{ required: true, message: 'Please input your phone number!' }]}
             >
-                <Input onBlur={onChangeMobile} />
+                <Input onBlur={onChangeMobile} className = "InputFieldClass"/>
             </Form.Item>
             </Col>
 
-            </Row>
+                        </Row>
 
 
-            <Row gutter={16}>
-            <Col span={12}>
-            <Form.Item
-                name="email"
-                label="E-mail"
-                rules={[
-                {
-                    type: 'email',
-                    message: 'The input is not valid email address!',
-                },
-                {
-                    required: true,
-                    message: 'Please input your email address!',
-                },
+                        <Row gutter={16}>
+                            <Col span={12}>
+                                <Form.Item
+                                    name="email"
+                                    label="E-mail"
+                                    rules={[
+                                        {
+                                            type: 'email',
+                                            message: 'The input is not valid email address!',
+                                        },
+                                        {
+                                            required: true,
+                                            message: 'Please input your email address!',
+                                        },
 
-                {
-                    pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                    message: 'Please enter a valid email address!',
-                }
+                                        {
+                                            pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                                            message: 'Please enter a valid email address!',
+                                        }
 
                 ]}
             >
-                <Input onBlur={onChangeEmail} />
+                <Input onBlur={onChangeEmail} className = "InputFieldClass"/>
             </Form.Item>
             </Col>
 
-            <Col span={12}>
+                            <Col span={12}>
 
             <Form.Item
             name="uploadProfilePicture"
             label="Upload Profile Picture"
             valuePropName="fileList"
             >
-            <Upload {...UploadImageprops}
+            <Upload {...UploadImageprops} className = "InputFieldClass"
             maxCount={1}
             >
                 <Button icon={<UploadOutlined />}>Click to upload</Button>
             </Upload>
             </Form.Item>
             </Col>
+                        </Row>
 
-        </Row>
-
-        <Row gutter={16}>
-        <Col span={12}>
-
+                        <Row gutter={16}>
+                            <Col span={12}>
             <Form.Item
                 name="profession"
                 label= "Profession"
                 rules={[{ required: true, message: 'Please input your profession!' }]}
             >
-                <Input onBlur={onChangeProfession} />
+                <Input onBlur={onChangeProfession} className = "InputFieldClass"/>
             </Form.Item>
             </Col>
 
-            <Col span={12}>
+                            <Col span={12}>
 
             <Form.Item
                 name="description"
                 label= "Description"
                 rules={[{ required: false, message: 'Please input your profession!' }]}
             >
-                <Input onBlur={onChangeDescription} />
+                <Input onBlur={onChangeDescription} className = "InputFieldClass"/>
             </Form.Item>
             </Col>
 
-        </Row>
+                        </Row>
 
-        <Row gutter={16}>
-        <Col span={12}>
+                        <Row gutter={16}>
+                            <Col span={12}>
 
             <Form.Item label="Food Preference" required>
-                <Select onChange={onChangeFoodPreference} value={foodPreference}>
+                <Select onChange={onChangeFoodPreference} value={foodPreference} className = "InputFieldClass">
                 <Select.Option value="veg">Veg</Select.Option>
                 <Select.Option value="nonVeg">Non-Veg</Select.Option>
                 <Select.Option value="none">None</Select.Option>
@@ -371,30 +379,23 @@ const Signup = () => {
             </Form.Item>
             </Col>
 
-
-        <Col span={12}>
+                            <Col span={12}>
 
 
             <Form.Item label="Pet Preference">
-                <Select onChange={onChangePetPreference} value={petPreference}>
+                <Select onChange={onChangePetPreference} value={petPreference} className = "InputFieldClass">
                 <Select.Option value="dog">Dog</Select.Option>
                 <Select.Option value="cat">Cat</Select.Option>
                 <Select.Option value="none">None</Select.Option>
                 </Select>
             </Form.Item>
-
-
-        {/* </Form> */}
             </Col>
             </Row>
 
-            <Row justify="center" style={{ marginTop: 16 }}>
-            <Col span={12}>
+
             <Button className = "submitButton" onClick={callCreateNewUserAPI}  type="primary">
-                Submit
+                Sign Up!
             </Button>
-            </Col>
-            </Row>
             </Form>
             </Card>
         </div >
