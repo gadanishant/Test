@@ -14,8 +14,6 @@ const { Meta } = Card;
 
 
 const Home = () => {
-
-    // Sample data for cards (you can replace this with your data)
     const [cards, setCards] = useState([
         { id: 1, title: 'Card 1', description: 'Description for card 1' },
         { id: 2, title: 'Card 2', description: 'Description for card 2' },
@@ -26,23 +24,16 @@ const Home = () => {
         { id: 72, title: 'Card 2', description: 'Description for card 2' },
         { id: 8, title: 'Card 2', description: 'Description for card 2' },
         { id: 9, title: 'Card 2', description: 'Description for card 2' },
-        // Add more cards as needed
-        // ...
         { id: 10, title: 'Card 10', description: 'Description for card 10' },
-        // Add more cards as needed
-        // ...
     ]);
 
-    // Pagination configuration
     const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 4; // Number of cards per page
+    const pageSize = 3;
 
-    // Function to handle page change
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
 
-    // Calculate cards to display based on current page
     const indexOfLastCard = currentPage * pageSize;
     const indexOfFirstCard = indexOfLastCard - pageSize;
     const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
@@ -78,26 +69,23 @@ const Home = () => {
                 <Col span={8} justify="center" align="middle">
                     <div>
                         <img className="apartment" src={apartment}></img>
-
                     </div>
                     <br />
-                    <h2>  <b>Find a Apartment</b></h2>
+                     <b className="font2rem">Find a Apartment</b>
                 </Col>
-                <Col span={8} justify="center" align="middle">
+                <Col  span={8} justify="center" align="middle">
                     <div>
                         <img className="apartment" src={roomates}></img>
                     </div>
                     <br />
-                    <h2> <b>Find a Roommate</b></h2>
+                    <b className="font2rem">Find a Roommate</b>
                 </Col>
                 <Col span={8} justify="center" align="middle">
                     <div>
                         <img className="apartment" src={maps}></img>
                     </div>
                     <br />
-                    <h2> <b>
-                        Safe Areas
-                    </b></h2>
+                    <b className="font2rem">Safe Areas</b>
                 </Col>
             </Row>
             <br />
@@ -105,14 +93,16 @@ const Home = () => {
             <br />
 
             <Row className="row3_color">
-                <div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+                <Col span={24}>
+                    <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
                         {currentCards.map((card) => (
-                            <Card key={card.id} style={{ width: 300 }}>
-                                <Meta title={card.title} description={card.description} />
-                            </Card>
+                            <Col span={8}>
+                                <Card className="review_card" key={card.id}>
+                                    <Meta title={card.title} description={card.description} />
+                                </Card>
+                            </Col>
                         ))}
-                    </div>
+                    </Row>
                     <Pagination
                         style={{ marginTop: '20px', textAlign: 'center' }}
                         current={currentPage}
@@ -120,7 +110,7 @@ const Home = () => {
                         total={cards.length}
                         onChange={handlePageChange}
                     />
-                </div>
+                </Col>
             </Row>
 
         </div>
