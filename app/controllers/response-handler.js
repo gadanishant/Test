@@ -1,5 +1,9 @@
 export const setResponse = (data, res) => {
-    res.status(200).json(data);
+    // res.status(200).json(data);
+    res.status(200).json({
+        "success": true,
+        "description": data
+    });
 }
 
 export const badRequest = (err, res) => {
