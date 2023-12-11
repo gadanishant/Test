@@ -1,4 +1,4 @@
-import {Form, Input, Select, Button, Upload, message, Card, Row, Col} from 'antd';
+import { Form, Input, Select, Button, Upload, message, Card, Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
@@ -6,39 +6,21 @@ import "./signup.css"
 
 const Signup = () => {
     const [countries, setCountries] = useState([]);
-
     const [searchValue, setSearchValue] = useState('');
-
     const [firstName, setFirstName] = useState("");
-
     const [lastName, setLastName] = useState("");
-
     const [userName, setUserName] = useState("");
-
     const [password, setPassword] = useState("");
-
     const [confirmPassword, setConfirmPassword] = useState("");
-
     const [age, setAge] = useState("");
-
     const [country, setCountry] = useState("");
-
     const [mobile, setMobile] = useState("");
-
-    //const [image, setImage] = useState("");
-
+    const [image, setImage] = useState("");
     const [emailId, setEmail] = useState("");
-
     const [profession, setProfession] = useState("");
-
     const [description, setDescription] = useState("");
-
     const [petPreference, setPetPreference] = useState("");
-
     const [foodPreference, setFoodPreference] = useState("");
-
-
-
 
 
     useEffect(() => {
@@ -73,19 +55,19 @@ const Signup = () => {
         //replace this url with api endpoint that handles file uploads
         action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
         headers: {
-          authorization: 'authorization-text',
+            authorization: 'authorization-text',
         },
         onChange(info) {
-          if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
-          }
-          if (info.file.status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully`);
-          } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-          }
+            if (info.file.status !== 'uploading') {
+                console.log(info.file, info.fileList);
+            }
+            if (info.file.status === 'done') {
+                message.success(`${info.file.name} file uploaded successfully`);
+            } else if (info.file.status === 'error') {
+                message.error(`${info.file.name} file upload failed.`);
+            }
         },
-      };
+    };
 
     const callCreateNewUserAPI = async () => {
         try {
@@ -96,7 +78,6 @@ const Signup = () => {
                 "username": userName,
                 "password": password,
                 "confirm_password": confirmPassword,
-                //"image":file.originFileObj,
                 "age": age,
                 "country": country,
                 "mobile": mobile,
@@ -153,7 +134,7 @@ const Signup = () => {
         setProfession(e.target.value);
     }
 
-    const onChangeDescription= (e) => {
+    const onChangeDescription = (e) => {
         setDescription(e.target.value);
     }
 
@@ -161,8 +142,8 @@ const Signup = () => {
     const onChangeFoodPreference = (value) => {
         setFoodPreference(value);
     }
-    
-      const onChangePetPreference = (value) => {
+
+    const onChangePetPreference = (value) => {
         setPetPreference(value);
     }
 
@@ -416,7 +397,7 @@ const Signup = () => {
             </Row>
             </Form>
             </Card>
-            </div>
+        </div >
         </>
     );
 }
