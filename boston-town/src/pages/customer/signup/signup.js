@@ -341,12 +341,10 @@ const Signup = () => {
             </Upload>
             </Form.Item>
             </Col>
-
                         </Row>
 
                         <Row gutter={16}>
                             <Col span={12}>
-
             <Form.Item
                 name="profession"
                 label= "Profession"
@@ -381,7 +379,6 @@ const Signup = () => {
             </Form.Item>
             </Col>
 
-
                             <Col span={12}>
 
 
@@ -392,7 +389,6 @@ const Signup = () => {
                 <Select.Option value="none">None</Select.Option>
                 </Select>
             </Form.Item>
-
             </Col>
             </Row>
 
@@ -400,10 +396,6 @@ const Signup = () => {
             <Button className = "submitButton" onClick={callCreateNewUserAPI}  type="primary">
                 Sign Up!
             </Button>
-
-
-
-
             </Form>
             </Card>
         </div >
