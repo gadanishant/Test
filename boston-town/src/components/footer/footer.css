@@ -1,10 +1,37 @@
-/* Add additional styles for your content if needed */
-body {
-    display: flex;
-}
-#footerImage {
-    margin: auto;
-    height:auto;
+.app-footer {
+    text-align: center;
+    /* background-color:#D8C3A5; */
+  }
+  
+  .app-footer .footer-link{
+    margin: 6px 8px; 
+    display: inline-block;
+  }
 
+  .horizontal-line {
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    margin: 16px auto;
+  }
 
-}
+  .footer-para {
+    width: 50%;
+    margin: 16px auto; 
+  }
+
+  .footer-para > P {
+    padding-top:2%;
+  }
+
+  .footer-icons {
+    font-size: 50px;
+    padding:2%;
+    color:#E98074;
+
+  }
+
+  .footerimg {
+    height:20%;
+    width:80%;
+  }

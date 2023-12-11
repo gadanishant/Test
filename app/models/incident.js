@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
-    firstname: {
+const IncidentSchema = new Schema({
+    firstName: {
         type: String,
         required: true
     },
-    lastname: {
+    lastName: {
         type: String,
         required: true
     },
@@ -15,7 +15,11 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    password: {
+    email: {
+        type: String,
+        required: true
+    },
+    gender: {
         type: String,
         required: true
     },
@@ -25,43 +29,46 @@ const UserSchema = new Schema({
     },
     country: {
         type: String,
-        required: true
+        required: false
     },
     mobile: {
         type: String,
         required: true
     },
-    image: {
-        type: Buffer,
-        required: false
-    },
-    email: {
-        type: String,
-        required: true
-    },
     profession: {
         type: String,
+        required: false
+    },
+    incidentTitle: {
+        type: String,
         required: true
     },
-    description: {
+    incidentDescription: {
         type: String,
         required: false
     },
-    food_preferences: {
+    incidentIntensity: {
         type: String,
-        enum: ["Vegetarian", "Non-vegetarian"],
+        enum: ["Fatal", "Threatening", "Scary", "Manageable"],
         required: true
     },
-    pet_preferences: {
+    incidentLocation: {
         type: String,
-        enum: ["Dogs", "Cats"],
-        required: false
+        required: true
+    },
+    incidentDate: {
+        type: Date,
+        required: true
+    },
+    submissionDate: {
+        type: Date,
+        required: true
     },
 },
-{
-    versionKey: false
-});
+    {
+        versionKey: false
+    });
 
-const UserModel = mongoose.model("User", UserSchema);
+const IncidentModel = mongoose.model("Incident", IncidentSchema);
 
-export default UserModel;
+export default IncidentModel;

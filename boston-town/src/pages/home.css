@@ -1,0 +1,79 @@
+.padding_home{
+    padding: 9rem 5rem 5rem 5rem;
+}
+
+.home{
+    width: -webkit-fill-available;
+
+}
+
+.accent_blue{
+    color: #68a2d5;
+}
+
+.what_made_easy{
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+}
+
+.grey2{
+    color: #424242;
+
+}
+
+.finding_apt{
+    font-size: 3rem;
+}
+
+.font2rem{
+    font-size: 2rem;
+    color: #424242;
+}
+
+.find_button{
+    margin-top: 2rem;
+}
+
+.ant-btn.find_apt{
+    height: 3rem;
+    color: #fff;
+    background-color: #68a2d5;
+}
+
+.ant-btn-default.find_apt:hover{
+    border-color: #68a2d5 !important;
+    background-color: #fff !important;
+    color:#68a2d5 !important ;
+
+}
+
+.ant-btn.find_rm{
+    height: 3rem;
+    color: #68a2d5;
+    background-color: #fff;
+}
+
+.ant-btn-default.find_rm:hover{
+    border-color: #68a2d5 !important;
+    background-color: #68a2d5 !important;
+    color:#fff !important ;
+
+}
+
+.apartment{
+    height: 8rem;
+    margin-top: 4rem;
+}
+.row3_color {
+    background: #68a2d5; /* Fallback color */
+    background: linear-gradient(to top, #fff 0%, #68a2d5 100%);
+    margin-left: -5rem;
+    margin-right: -5rem;
+}
+
+.review_card{
+    margin: 3rem;
+}
+

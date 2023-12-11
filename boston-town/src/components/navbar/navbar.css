@@ -2,3 +2,46 @@
     margin: 0;
     padding: 0;
 }
+
+.nav_logo{
+    height: 3.9rem;
+    margin-top: -1rem;
+}
+
+.background{
+    /* background-color: #dedede; */
+    /* padding: 0rem 2rem 0rem 2rem; */
+    padding: 1rem !important;
+    height: 4rem;
+    /* border-bottom: 1px solid lightgrey; */
+    background: white;
+    box-shadow: 3px 3px 27px lightgray;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 30px;
+}
+
+.margin_auto #Col{
+    margin: auto;
+}
+
+.navposition{
+    position: fixed;
+    width: -webkit-fill-available;
+    z-index: 100;
+}
+
+/* .underline{
+    border-bottom: 1px solid #c70023;
+    padding-bottom: 22px;
+} */
+
+.navtabs{
+    color: #68a2d5 !important;
+}
+
+.navtabs:hover{
+    color: #8E8D8A !important;
+    border-bottom: 1px solid #E85A4F;
+    padding-bottom: 22px;
+    transition: 0.2s;
+}
