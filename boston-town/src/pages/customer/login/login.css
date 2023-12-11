@@ -1,0 +1,16 @@
+.centered-card-login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9rem 5rem 5rem 5rem;
+
+}
+
+.loginCard {
+    width:25%;
+    height:50%
+}
+
+.LoginButtonClass {
+    margin-left: 40%;
+}

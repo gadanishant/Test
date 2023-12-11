@@ -1,6 +1,7 @@
-import {Form, Input, Button} from 'antd';
+import {Form, Input, Button, Row, Card} from 'antd';
 import { useEffect, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
+import "./login.css"
 
 
 const Login = () => {
@@ -25,6 +26,27 @@ const Login = () => {
         }
     }
 
+    const onFinish = () => {
+        // Your form submission logic here
+        if(password === "" && emailId === "")
+        {
+            alert("Please enter email address and password");
+        }
+
+        else if(emailId === "")
+        {
+            alert("Please enter email address");
+        }
+
+        else if(password === "")
+        {
+            alert("Please enter password");
+        }
+        else{
+            callCustomerLoginAPI();   
+        }
+      };
+
 
     const onChangeEmailId = (e) => {
         setUserName(e.target.value);
@@ -37,8 +59,12 @@ const Login = () => {
 
     return (
         <>
+        <div className="centered-card-login-container">
+        <Card className = "loginCard">
+        <Form>
+    
         <Form.Item
-        label="emailId"
+        label="Email Id"
         name="emailId"
         rules={[
             {
@@ -52,8 +78,9 @@ const Login = () => {
             }
         ]}
         >
-        <Input onBlur = {onChangeEmailId} />
+        <Input onBlur = {onChangeEmailId} className = "InputFieldClass"/>
         </Form.Item>
+
 
         <Form.Item
         label="Password"
@@ -65,13 +92,23 @@ const Login = () => {
         },
         ]}
         >
-        <Input.Password onBlur = {onChangePassword}/>
+        <Input.Password onBlur = {onChangePassword} className = "InputFieldClass"/>
         </Form.Item>
 
-            <Button onClick={callCustomerLoginAPI} type="primary">Submit</Button>
+
+
+        <Form.Item>
+        <Button className = "LoginButtonClass" onClick = {onFinish} type="primary">Login!</Button>
+        </Form.Item>
+
+
+        </Form>
+        </Card>
+        </div>
 
 
         </>
+
     );
 }
 

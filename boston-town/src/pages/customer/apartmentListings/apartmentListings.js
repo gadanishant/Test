@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Row, Col } from 'antd';
+import "./apartmentListing.css"
 
 const ApartmentListings = () => {
   // Example data for apartment listings
@@ -22,6 +23,7 @@ const ApartmentListings = () => {
   ];
 
   return (
+    <div className='paddingListings'>
     <Row gutter={16}>
       {apartmentListings.map((apartment) => (
         <Col key={apartment.id} xs={24} sm={12} md={8} lg={6}>
@@ -41,6 +43,7 @@ const ApartmentListings = () => {
         </Col>
       ))}
     </Row>
+    </div>
   );
 };
 
