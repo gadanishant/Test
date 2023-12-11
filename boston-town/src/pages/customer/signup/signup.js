@@ -23,6 +23,7 @@ const Signup = () => {
     }, []);
     return (
         <>
+        <Form>
             <Form.Item
                 label="FirstName"
                 name="firstname"
@@ -185,7 +186,7 @@ const Signup = () => {
             </Form.Item>
 
             <Button type="primary">Submit</Button>
-
+        </Form>
 
         </>
     );
