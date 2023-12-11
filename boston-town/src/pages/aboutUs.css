@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.container img {
+    max-width: 50%; /* Adjust the width of the image as needed */
+    margin: 30px 30px 30px 30px; /* Adjust the margin between the image and text */
+}
+
+.aboutUs-container {
+    flex-grow: 1;
+}
+
+.aboutUs-container > p {
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+  
