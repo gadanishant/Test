@@ -1,28 +1,28 @@
 import { setResponse, setErrorResponse } from "./response-handler.js";
-import Message from "../models/chat.js";
+import * as ChatService from '../services/chat-service.js';
 
-export const sendMessage = async (req, res) => {
-  try {
-    const message = new Message(req.body);
-    await message.save();
-    res.status(201).send(message);
-  } catch (error) {
-    console.log("sending message error => ", error);
-    setErrorResponse(error, res);
-  }
+export const sendChatMessage = async (req, res) => {
+    try {
+        const newMessage = {
+            senderId: req.body.senderId,
+            receiverId: req.body.receiverId,
+            content: req.body.content
+        };
+        const message = await ChatService.sendMessage(newMessage);
+        res.status(201).json(message);
+    } catch (error) {
+        console.log("Message not sent! error => ", error);
+        setErrorResponse(error, res);
+    }
 };
 
-export const getMessageHistory = async (req, res) => {
-  try {
-    const messages = await Message.find({
-      $or: [
-        { senderId: req.user._id, receiverId: req.params.userId },
-        { senderId: req.params.userId, receiverId: req.user._id }
-      ]
-    });
-    res.send(messages);
-  } catch (error) {
-    console.log("getting message history error => ", error);
-    setErrorResponse(error, res);
-  }
+export const getChatHistory = async (req, res) => {
+    try {
+        const { userId1, userId2 } = req.params; // or req.query
+        const messages = await ChatService.getMessageHistory(userId1, userId2);
+        res.json(messages);
+    } catch (error) {
+        console.log("History not found! error => ", error);
+        setErrorResponse(error, res);
+    }
 };
