@@ -1,5 +1,7 @@
 import React from 'react';
 import { Card, Row, Col } from 'antd';
+import { Link } from 'react-router-dom';
+
 
 const ApartmentListings = () => {
   // Example data for apartment listings
@@ -25,6 +27,7 @@ const ApartmentListings = () => {
     <Row gutter={16}>
       {apartmentListings.map((apartment) => (
         <Col key={apartment.id} xs={24} sm={12} md={8} lg={6}>
+          <Link to="/apartmentdetails">
           <Card
             hoverable
             cover={<img alt="apartment" src={apartment.image} />}
@@ -38,6 +41,7 @@ const ApartmentListings = () => {
               {/* Add more details as needed */}
             </div>
           </Card>
+          </Link>
         </Col>
       ))}
     </Row>

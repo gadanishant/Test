@@ -403,7 +403,7 @@ const Signup = () => {
             </Form.Item>
 
 
-        </Form>
+        {/* </Form> */}
             </Col>
             </Row>
 
