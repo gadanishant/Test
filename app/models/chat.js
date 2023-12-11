@@ -9,6 +9,6 @@ const MessageSchema = Schema({
     timestamp: { type: Date, default: Date.now },
   });
 
-const ChatModel = mongoose.model("chat", MessageSchema);
+const ChatModel = mongoose.model("Chat", MessageSchema);
 
 export default ChatModel;
