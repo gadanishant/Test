@@ -1,18 +1,16 @@
 .app-footer {
     text-align: center;
-    padding: 24px 0;
-    background-color:#D8C3A5;
-    padding: '24px 0';
+    /* background-color:#D8C3A5; */
   }
   
   .app-footer .footer-link{
-    margin: 6px 8px; /* Adjust the space between links as needed */
+    margin: 6px 8px; 
     display: inline-block;
   }
 
   .horizontal-line {
-    border: none; /* Remove default border */
-    border-top: 1px solid #ccc; /* Adjust color and thickness as needed */
+    border: none;
+    border-top: 1px solid #ccc;
     width: 50%;
     margin: 16px auto;
   }
@@ -33,7 +31,7 @@
 
   }
 
-  img {
+  .footerimg {
     height:20%;
     width:80%;
   }

@@ -1,5 +1,5 @@
 .padding_home{
-    padding: 5rem;
+    padding: 9rem 5rem 5rem 5rem;
 }
 
 .home{
@@ -15,6 +15,7 @@
     text-align: center;
     font-size: 3rem;
     margin-top: 4rem;
+    margin-bottom: 3rem;
 }
 
 .grey2{
@@ -24,6 +25,11 @@
 
 .finding_apt{
     font-size: 3rem;
+}
+
+.font2rem{
+    font-size: 2rem;
+    color: #424242;
 }
 
 .find_button{
@@ -60,3 +66,14 @@
     height: 8rem;
     margin-top: 4rem;
 }
+.row3_color {
+    background: #68a2d5; /* Fallback color */
+    background: linear-gradient(to top, #fff 0%, #68a2d5 100%);
+    margin-left: -5rem;
+    margin-right: -5rem;
+}
+
+.review_card{
+    margin: 3rem;
+}
+

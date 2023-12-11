@@ -11,7 +11,7 @@ const AppFooter = () => {
     <Footer className="app-footer">
       <Row gutter={16} justify="center">
 
-          <Link className="footer-link">About</Link>
+          <Link href = "/aboutUs" className="footer-link">About</Link>
           <Link className="footer-link">Zestimates</Link>
           <Link className="footer-link">Research</Link>
           <Link className="footer-link">Careers</Link>
@@ -90,7 +90,7 @@ const AppFooter = () => {
         <Link><TwitterOutlined className = "footer-icons"/></Link>
         </div>
 
-        <img src = {Boston_Town_Footer_Image}></img>
+        <img className='footerimg' src = {Boston_Town_Footer_Image}></img>
 
         
     </Footer>
