@@ -1,7 +1,5 @@
 import { Button, Card, Form, Input, Row } from 'antd';
 import { useState } from 'react';
-import {Form, Input, Button, Row, Card} from 'antd';
-import { useEffect, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
 import "./login.css"
 
@@ -57,25 +55,12 @@ const Login = () => {
 
     return (
         <>
-            <div className="centered-card-container">
-                <Card className="signUpCard" style={{ width: 400 }}>
-                    <Form>
-
-                        <Row gutter={16}>
-                            <Form.Item
-                                label="Email Id"
-                                name="emailId"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input your email address!',
-                                    },
         <div className="centered-card-login-container">
         <Card className = "loginCard">
         <Form>
     
         <Form.Item
-        label="Email Id"
+        label="Username / Email Id"
         name="emailId"
         rules={[
             {
@@ -83,52 +68,28 @@ const Login = () => {
             message: 'Please input your email address!',
             },
 
-                                    {
-                                        // pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                                        message: 'Please enter a valid email address!'
-                                    }
-                                ]}
-                            >
-                                <Input onBlur={onChangeEmailId} className="InputFieldClass" style={{ width: '100%' }} />
-                            </Form.Item>
-                        </Row>
             {
-                pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                message: 'Please enter a valid email address!',
+                // pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: 'Please enter a valid email address!'
             }
-        ]}
-        >
-        <Input onBlur = {onChangeEmailId} className = "InputFieldClass"/>
+        ]}>
+        <Input placeholder = "Enter your username or email address" onBlur = {onChangeEmailId} className = "InputFieldClass"/>
         </Form.Item>
 
-
-                        <Row gutter={16}>
-                            <Form.Item
-                                label="Password"
-                                name="password"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input your password!',
-                                    },
-                                ]}
-                            >
-                                <Input.Password onBlur={onChangePassword} className="InputFieldClass" style={{ width: '100%' }} />
-                            </Form.Item>
-                        </Row>
 
         <Form.Item
-        label="Password"
-        name="password"
-        rules={[
-        {
-            required: true,
-            message: 'Please input your password!',
-        },
-        ]}
+            label="Password"
+            name="password"
+            rules={[
+                {
+                    required: true,
+                    message: 'Please input your password!',
+                },
+            ]}
         >
-        <Input.Password onBlur = {onChangePassword} className = "InputFieldClass"/>
+            <Input.Password placeholder = "Enter your password" onBlur={onChangePassword} className="InputFieldClass" style={{ width: '100%' }} />
         </Form.Item>
+
 
 
 
@@ -136,19 +97,11 @@ const Login = () => {
         <Button className = "LoginButtonClass" onClick = {onFinish} type="primary">Login!</Button>
         </Form.Item>
 
-                        <Row gutter={16}>
-                            <Form.Item>
-                                <Button onClick={callCustomerLoginAPI} type="primary">Submit</Button>
-                            </Form.Item>
-                        </Row>
 
-                    </Form>
-                </Card>
-            </div>
-
-        </Form>
+            </Form>
         </Card>
-        </div>
+    </div>
+
 
 
         </>
