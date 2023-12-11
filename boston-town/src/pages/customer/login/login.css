@@ -1,0 +1,6 @@
+.centered-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9rem 5rem 5rem 5rem;
+}
