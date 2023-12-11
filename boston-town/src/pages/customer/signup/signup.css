@@ -3,14 +3,3 @@
     align-items: center;
     justify-content: center;
 }
-
-.signUpCard {
-    width:800px;
-}
-
-
-.submitButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}

@@ -405,11 +405,15 @@ const Signup = () => {
             </Col>
             </Row>
 
-            <Form.Item>
-                <Button className = "submitButton" onClick={callCreateNewUserAPI}  type="primary">
-                    Submit
-                </Button>
-            </Form.Item>
+            <Row justify="center" style={{ marginTop: 16 }}>
+            <Col span={12}>
+            <Button className = "submitButton" onClick={callCreateNewUserAPI}  type="primary">
+                Submit
+            </Button>
+            </Col>
+            </Row>
+
+
 
 
             </Form>
