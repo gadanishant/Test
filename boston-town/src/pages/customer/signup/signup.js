@@ -150,250 +150,252 @@ const Signup = () => {
 
     return (
         <>
-            <div className="centered-card-container">
-                <Card className="signUpCard">
-                    <Form>
-                        <Row gutter={16}>
-                            <Col span={12}>
-                                <Form.Item
-                                    label="FirstName"
-                                    name="firstname"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your firstname!',
-                                        },
-                                    ]}
-                                >
-                                    <Input onBlur={onChangeFirstName} />
-                                </Form.Item>
-                            </Col>
+        <div className="centered-card-container">
+        <Card className = "signUpCard">
+        <Form>
+        <Row gutter={16}>
+        <Col span={12}>
+            <Form.Item
+                label="FirstName"
+                name="firstname"
+                rules={[
+                    {
+                    required: true,
+                    message: 'Please input your firstname!',
+                    },
+                ]}
+                >
+                <Input onBlur={onChangeFirstName} />
+                </Form.Item>
+        </Col>
 
-                            <Col span={12}>
-                                <Form.Item
-                                    label="LastName"
-                                    name="lastname"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your lastname!',
-                                        },
-                                    ]}
-                                >
-                                    <Input onBlur={onChangeLastName} />
-                                </Form.Item>
-                            </Col>
-                        </Row>
+        <Col span={12}>
+            <Form.Item
+            label="LastName"
+            name="lastname"
+            rules={[
+                {
+                required: true,
+                message: 'Please input your lastname!',
+                },
+            ]}
+            >
+                <Input onBlur={onChangeLastName} />
+            </Form.Item>
+        </Col>
+        </Row>
 
-                        <Row gutter={16}>
-                            <Col span={12}>
-                                <Form.Item
-                                    label="Username"
-                                    name="username"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your username!',
-                                        },
-                                    ]}
-                                >
-                                    <Input onBlur={onChangeUserName} />
-                                </Form.Item>
-                            </Col>
-                            <Col span={12}>
+        <Row gutter={16}>
+        <Col span={12}>
+            <Form.Item
+                label="Username"
+                name="username"
+                rules={[
+                    {
+                    required: true,
+                    message: 'Please input your username!',
+                    },
+                ]}
+                >
+            <Input onBlur={onChangeUserName} />
+            </Form.Item>
+        </Col>
+        <Col span={12}>
 
-                                <Form.Item
-                                    label="Password"
-                                    name="password"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your password!',
-                                        },
-                                    ]}
-                                >
-                                    <Input.Password onBlur={onChangePassword} />
-                                </Form.Item>
-                            </Col>
-                        </Row>
+            <Form.Item
+            label="Password"
+            name="password"
+            rules={[
+                {
+                required: true,
+                message: 'Please input your password!',
+                },
+            ]}
+            >
+            <Input.Password onBlur={onChangePassword}/>
+            </Form.Item>
+        </Col>
+        </Row>
 
-                        <Row gutter={16}>
-                            <Col span={12}>
-                                <Form.Item
-                                    label="Confirm Password"
-                                    name="confirmpassword"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please confirm your password!',
-                                        },
-                                    ]}
-                                >
-                                    <Input.Password onBlur={onChangeConfirmPassword} />
-                                </Form.Item>
-                            </Col>
-                            <Col span={12}>
+        <Row gutter={16}>
+        <Col span={12}>
+            <Form.Item
+            label="Confirm Password"
+            name="confirmpassword"
+            rules={[
+                {
+                required: true,
+                message: 'Please confirm your password!',
+                },
+            ]}
+            >
+            <Input.Password onBlur={onChangeConfirmPassword}/>
+            </Form.Item>
+        </Col>
+        <Col span={12}>
 
-                                <Form.Item
-                                    label="Age"
-                                    name="age"
-                                    rules={[
-                                        {
-                                            required: true,
-                                            message: 'Please input your age!',
-                                        },
+            <Form.Item
+            label="Age"
+            name="age"
+            rules={[
+                {
+                required: true,
+                message: 'Please input your age!',
+                },
+                
+            ]}
+            >
+                <Input onBlur={onChangeAge}/>
+            </Form.Item>
+        </Col>
 
-                                    ]}
-                                >
-                                    <Input onBlur={onChangeAge} />
-                                </Form.Item>
-                            </Col>
+        </Row>
 
-                        </Row>
+        <Row gutter={16}>
+        <Col span={12}>
+            <Form.Item label="Country" required>
+                <Select
+                    showSearch
+                    id="country"
+                    name="country"
+                    filterOption={false}
+                    onSearch={handleSearch}
+                    onChange = {onChangeCountry}
+                >
+                    <Select.Option value="" disabled>
+                        Select your country
+                    </Select.Option>
+                    {sortedCountries
+                        .filter((country) =>
+                            country.name.common.toLowerCase().includes(searchValue.toLowerCase())
+                        )
+                        .map((country) => (
+                            <Select.Option key={country.name.common} value={country.name.common}>
+                                {country.name.common}
+                            </Select.Option>
+                        ))}
+                </Select>
+            </Form.Item>
+            </Col>
+            <Col span={12}>
 
-                        <Row gutter={16}>
-                            <Col span={12}>
-                                <Form.Item label="Country" required>
-                                    <Select
-                                        showSearch
-                                        id="country"
-                                        name="country"
-                                        filterOption={false}
-                                        onSearch={handleSearch}
-                                        onChange={onChangeCountry}
-                                    >
-                                        <Select.Option value="" disabled>
-                                            Select your country
-                                        </Select.Option>
-                                        {sortedCountries
-                                            .filter((country) =>
-                                                country.name.common.toLowerCase().includes(searchValue.toLowerCase())
-                                            )
-                                            .map((country) => (
-                                                <Select.Option key={country.name.common} value={country.name.common}>
-                                                    {country.name.common}
-                                                </Select.Option>
-                                            ))}
-                                    </Select>
-                                </Form.Item>
-                            </Col>
-                            <Col span={12}>
+                <Form.Item
+                name="phone"
+                label="Phone Number"
+                rules={[{ required: true, message: 'Please input your phone number!' }]}
+            >
+                <Input onBlur={onChangeMobile} />
+            </Form.Item>
+            </Col>
 
-                                <Form.Item
-                                    name="phone"
-                                    label="Phone Number"
-                                    rules={[{ required: true, message: 'Please input your phone number!' }]}
-                                >
-                                    <Input onBlur={onChangeMobile} />
-                                </Form.Item>
-                            </Col>
-
-                        </Row>
-
-
-                        <Row gutter={16}>
-                            <Col span={12}>
-                                <Form.Item
-                                    name="email"
-                                    label="E-mail"
-                                    rules={[
-                                        {
-                                            type: 'email',
-                                            message: 'The input is not valid email address!',
-                                        },
-                                        {
-                                            required: true,
-                                            message: 'Please input your email address!',
-                                        },
-
-                                        {
-                                            pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                                            message: 'Please enter a valid email address!',
-                                        }
-
-                                    ]}
-                                >
-                                    <Input onBlur={onChangeEmail} />
-                                </Form.Item>
-                            </Col>
-
-                            <Col span={12}>
-
-                                <Form.Item
-                                    name="uploadProfilePicture"
-                                    label="Upload Profile Picture"
-                                    valuePropName="fileList"
-                                >
-                                    <Upload {...UploadImageprops}
-                                        maxCount={1}
-                                    >
-                                        <Button icon={<UploadOutlined />}>Click to upload</Button>
-                                    </Upload>
-                                </Form.Item>
-                            </Col>
-
-                        </Row>
-
-                        <Row gutter={16}>
-                            <Col span={12}>
-
-                                <Form.Item
-                                    name="profession"
-                                    label="Profession"
-                                    rules={[{ required: true, message: 'Please input your profession!' }]}
-                                >
-                                    <Input onBlur={onChangeProfession} />
-                                </Form.Item>
-                            </Col>
-
-                            <Col span={12}>
-
-                                <Form.Item
-                                    name="description"
-                                    label="Description"
-                                    rules={[{ required: false, message: 'Please input your profession!' }]}
-                                >
-                                    <Input onBlur={onChangeDescription} />
-                                </Form.Item>
-                            </Col>
-
-                        </Row>
-
-                        <Row gutter={16}>
-                            <Col span={12}>
-
-                                <Form.Item label="Food Preference" required>
-                                    <Select onChange={onChangeFoodPreference} value={foodPreference}>
-                                        <Select.Option value="Vegetarian">Vegetarian</Select.Option>
-                                        <Select.Option value="Non-vegetarian">Non-vegetarian</Select.Option>
-                                        <Select.Option value="none">None</Select.Option>
-                                    </Select>
-                                </Form.Item>
-                            </Col>
+            </Row>
 
 
-                            <Col span={12}>
+            <Row gutter={16}>
+            <Col span={12}>
+            <Form.Item
+                name="email"
+                label="E-mail"
+                rules={[
+                {
+                    type: 'email',
+                    message: 'The input is not valid email address!',
+                },
+                {
+                    required: true,
+                    message: 'Please input your email address!',
+                },
+
+                {
+                    pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                    message: 'Please enter a valid email address!',
+                }
+
+                ]}
+            >
+                <Input onBlur={onChangeEmail} />
+            </Form.Item>
+            </Col>
+
+            <Col span={12}>
+
+            <Form.Item
+            name="uploadProfilePicture"
+            label="Upload Profile Picture"
+            valuePropName="fileList"
+            >
+            <Upload {...UploadImageprops}
+            maxCount={1}
+            >
+                <Button icon={<UploadOutlined />}>Click to upload</Button>
+            </Upload>
+            </Form.Item>
+            </Col>
+
+        </Row>
+
+        <Row gutter={16}>
+        <Col span={12}>
+
+            <Form.Item
+                name="profession"
+                label= "Profession"
+                rules={[{ required: true, message: 'Please input your profession!' }]}
+            >
+                <Input onBlur={onChangeProfession} />
+            </Form.Item>
+            </Col>
+
+            <Col span={12}>
+
+            <Form.Item
+                name="description"
+                label= "Description"
+                rules={[{ required: false, message: 'Please input your profession!' }]}
+            >
+                <Input onBlur={onChangeDescription} />
+            </Form.Item>
+            </Col>
+
+        </Row>
+
+        <Row gutter={16}>
+        <Col span={12}>
+
+            <Form.Item label="Food Preference" required>
+                <Select onChange={onChangeFoodPreference} value={foodPreference}>
+                <Select.Option value="veg">Veg</Select.Option>
+                <Select.Option value="nonVeg">Non-Veg</Select.Option>
+                <Select.Option value="none">None</Select.Option>
+                </Select>
+            </Form.Item>
+            </Col>
 
 
-                                <Form.Item label="Pet Preference">
-                                    <Select onChange={onChangePetPreference} value={petPreference}>
-                                        <Select.Option value="Dogs">Dogs</Select.Option>
-                                        <Select.Option value="Cats">Cats</Select.Option>
-                                        <Select.Option value="None">None</Select.Option>
-                                    </Select>
-                                </Form.Item>
-                                </Col>
-                                </Row>
+        <Col span={12}>
 
 
-                    <Row justify="center" style={{ marginTop: 16 }}>
-                        <Col span={12}>
-                            <Button className="submitButton" onClick={callCreateNewUserAPI} type="primary">
-                                Submit
-                            </Button>
-                        </Col>
-                    </Row>
-                </Form>
+            <Form.Item label="Pet Preference">
+                <Select onChange={onChangePetPreference} value={petPreference}>
+                <Select.Option value="dog">Dog</Select.Option>
+                <Select.Option value="cat">Cat</Select.Option>
+                <Select.Option value="none">None</Select.Option>
+                </Select>
+            </Form.Item>
+
+
+        {/* </Form> */}
+            </Col>
+            </Row>
+
+            <Row justify="center" style={{ marginTop: 16 }}>
+            <Col span={12}>
+            <Button className = "submitButton" onClick={callCreateNewUserAPI}  type="primary">
+                Submit
+            </Button>
+            </Col>
+            </Row>
+            </Form>
             </Card>
         </div >
         </>
