@@ -1,6 +1,7 @@
 import { Button, Card, Form, Input, Row } from 'antd';
 import { useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
+import "./login.css"
 
 
 const Login = () => {
@@ -21,6 +22,27 @@ const Login = () => {
         }
     }
 
+    const onFinish = () => {
+        // Your form submission logic here
+        if(password === "" && emailId === "")
+        {
+            alert("Please enter email address and password");
+        }
+
+        else if(emailId === "")
+        {
+            alert("Please enter email address");
+        }
+
+        else if(password === "")
+        {
+            alert("Please enter password");
+        }
+        else{
+            callCustomerLoginAPI();   
+        }
+      };
+
 
     const onChangeEmailId = (e) => {
         setUserName(e.target.value);
@@ -33,58 +55,57 @@ const Login = () => {
 
     return (
         <>
-            <div className="centered-card-container">
-                <Card className="signUpCard" style={{ width: 400 }}>
-                    <Form>
+        <div className="centered-card-login-container">
+        <Card className = "loginCard">
+        <Form>
+    
+        <Form.Item
+        label="Username / Email Id"
+        name="emailId"
+        rules={[
+            {
+            required: true,
+            message: 'Please input your email address!',
+            },
 
-                        <Row gutter={16}>
-                            <Form.Item
-                                label="Email Id"
-                                name="emailId"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input your email address!',
-                                    },
-
-                                    {
-                                        // pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                                        message: 'Please enter a valid email address!'
-                                    }
-                                ]}
-                            >
-                                <Input onBlur={onChangeEmailId} className="InputFieldClass" style={{ width: '100%' }} />
-                            </Form.Item>
-                        </Row>
-
-                        <Row gutter={16}>
-                            <Form.Item
-                                label="Password"
-                                name="password"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input your password!',
-                                    },
-                                ]}
-                            >
-                                <Input.Password onBlur={onChangePassword} className="InputFieldClass" style={{ width: '100%' }} />
-                            </Form.Item>
-                        </Row>
+            {
+                // pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                message: 'Please enter a valid email address!'
+            }
+        ]}>
+        <Input placeholder = "Enter your username or email address" onBlur = {onChangeEmailId} className = "InputFieldClass"/>
+        </Form.Item>
 
 
-                        <Row gutter={16}>
-                            <Form.Item>
-                                <Button onClick={callCustomerLoginAPI} type="primary">Submit</Button>
-                            </Form.Item>
-                        </Row>
+        <Form.Item
+            label="Password"
+            name="password"
+            rules={[
+                {
+                    required: true,
+                    message: 'Please input your password!',
+                },
+            ]}
+        >
+            <Input.Password placeholder = "Enter your password" onBlur={onChangePassword} className="InputFieldClass" style={{ width: '100%' }} />
+        </Form.Item>
 
-                    </Form>
-                </Card>
-            </div>
+
+
+
+        <Form.Item>
+        <Button className = "LoginButtonClass" onClick = {onFinish} type="primary">Login!</Button>
+        </Form.Item>
+
+
+            </Form>
+        </Card>
+    </div>
+
 
 
         </>
+
     );
 }
 

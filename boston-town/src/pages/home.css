@@ -32,6 +32,11 @@
     color: #424242;
 }
 
+.font2rem:hover{
+    color: #E98074;
+    transition: 0.3s;
+}
+
 .find_button{
     margin-top: 2rem;
 }
@@ -73,7 +78,21 @@
     margin-right: -5rem;
 }
 
+.row4_color {
+    background: #68a2d5; /* Fallback color */
+    background: linear-gradient(to bottom, #fff 0%, #68a2d5 100%);
+    margin-left: -5rem !important;
+    margin-right: -5rem !important;
+}
+
 .review_card{
     margin: 3rem;
 }
 
+.top_pic{
+    width: -webkit-fill-available;
+}
+
+.top_card{
+    border-radius: 20px;
+}

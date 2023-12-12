@@ -4,6 +4,7 @@ import postRouter from './post-route.js'
 import authenticationRouter from './authenticate-route.js'
 import rentalApplicationRouter from './rental-application-route.js'
 import incidentRouter from './incident-route.js'
+import chatRouter from './chat-route.js'
 
 export default (app) => {
     app.use('/property', propertyRouter);
@@ -30,4 +31,6 @@ export default (app) => {
     app.use('/addNewIncident', incidentRouter);
     app.use('/updateIncidentDetails', incidentRouter);
     app.use('/deleteIncident', incidentRouter);
+
+    app.use('/chat', chatRouter);
 };
