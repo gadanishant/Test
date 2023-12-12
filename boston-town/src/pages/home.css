@@ -4,6 +4,38 @@
 
 .home{
     width: -webkit-fill-available;
+    left:70px;
+    bottom:-150px;
+    opacity: 0;
+    animation: slider 5s infinite;
+    z-index: -1;
+
+}
+
+@keyframes slider {
+    0% {
+        transform: translateX(50px);
+        opacity: 0;
+
+    }
+
+    30% {
+        transform: translateX(-55px);
+        opacity: 1;
+
+    }
+
+    50% {
+        transform: translateX(55px);
+        opacity: 1;
+
+    }
+
+    100% {
+        transform: translateX(-100px);
+        opacity: 0;
+
+    }
 
 }
 
@@ -67,7 +99,7 @@
 
 }
 
-.apartment{
+.apartment, .apartmentsRented, .renters, .apartmentTours{
     height: 8rem;
     margin-top: 4rem;
 }

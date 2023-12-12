@@ -6,7 +6,7 @@ const About = () => {
     return (
         <>
 
-            <div class="container">
+            <div class="aboutUsContainer">
                 <img src={logo} alt="aboutUsImage" class="about_us_image"></img>
                 <div class="aboutUs-container">
                 <p>Welcome to Boston Town – Your Gateway to Safe and Convenient Student Living! 

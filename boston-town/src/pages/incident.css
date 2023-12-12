@@ -2,8 +2,11 @@
     padding: 9rem 5rem 5rem 5rem;
 }
 
-.showAllIncidents{
+.showAllIncidents , .addIncident{
     margin-top:40px;
     float: left;
+}
 
+.incidentList{
+    cursor: pointer;
 }
