@@ -1,4 +1,4 @@
-.centered-card-login-container{
+.centered-card-login-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,8 +7,8 @@
 }
 
 .loginCard {
-    width:30%;
-    height:50%
+    width: 80%;
+    height: 50%
 }
 
 .LoginButtonClass {
