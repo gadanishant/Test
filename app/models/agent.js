@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const AgentSchema = new Schema({
     firstname: {
         type: String,
         required: true
@@ -18,10 +18,6 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-        required: true
-    },
-    age: {
-        type: Number,
         required: true
     },
     country: {
@@ -41,34 +37,14 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
-    profession: {
-        type: String,
-        required: true
-    },
     description: {
         type: String,
         required: false
     },
-    food_preferences: {
-        type: String,
-        enum: ["Vegetarian", "Non-vegetarian"],
-        required: true
-    },
-    pet_preferences: {
-        type: String,
-        enum: ["Dogs", "Cats"],
-        required: false
-    },
-    posts: [
+    listings: [
         {
             type: Schema.Types.ObjectId,
-            ref: "Post"
-        }
-    ],
-    incidents: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Incident"
+            ref: "Property"
         }
     ]
 },
@@ -76,6 +52,6 @@ const UserSchema = new Schema({
     versionKey: false
 });
 
-const UserModel = mongoose.model("User", UserSchema);
+const AgentModel = mongoose.model("Agent", AgentSchema);
 
-export default UserModel;
+export default AgentModel;
