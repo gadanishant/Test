@@ -7,6 +7,8 @@ const Login = () => {
     const [emailId, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
+    const logout = 1000 * 60 * 2;
+
     const callCustomerLoginAPI = async () => {
         try {
             console.log("callCustomerLoginAPI: try");
@@ -16,6 +18,14 @@ const Login = () => {
             }, "POST", {})
 
             console.log("response => ", response);
+            console.log("Successfully logged in!");
+            sessionStorage.setItem("isAuthenticated", true);
+            
+            setTimeout(() => {
+                console.log("setTimeout");
+                sessionStorage.setItem("isAuthenticated", false);
+            }, [logout])
+
         } catch (error) {
             console.log("callCustomerLoginAPI: catch");
         }
@@ -82,8 +92,6 @@ const Login = () => {
                     </Form>
                 </Card>
             </div>
-
-
         </>
     );
 }
