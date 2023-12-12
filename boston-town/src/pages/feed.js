@@ -14,7 +14,7 @@ const Feed = () => {
     const getAllPostsAPI = async () => {
         try {
             const response = await sendRequest("http://localhost:3000/getAllPosts", {}, "GET", {});
-            setTimeout(() => { setLoading(false) }, [1000 * 3])
+            setTimeout(() => { setLoading(false) }, [1000 * 0.1])
             const data = response.data.description.slice(1);
             console.log("data => ", data);
             setListOfPosts(data)
@@ -38,51 +38,48 @@ const Feed = () => {
             ? <>
                 {loading ? <Loader /> :
                     <div className='padding_background_feed'>
-                        <Row gutter={[24, 24]}>
-                            {
-                                listOfPosts.map((post) => (
-                                    <div key={post.id}>
-                                        <Col xs={6} sm={6} md={6} lg={5} xl={5} xxl={5}>
-                                            <Card className="card"></Card>
-                                        </Col>
-                                        <Col xs={6} sm={6} md={6} lg={13} xl={13} xxl={13}>
-                                            <Card className="card">
-                                                <Row>
-                                                    <Col>
-                                                        <UserOutlined />
-                                                    </Col>
-                                                    <Col>
-                                                        <Row>
-                                                            <Link to="/profile">{post.username}</Link>
-                                                        </Row>
-                                                        <Row>
-                                                            {post.title}
-                                                        </Row>
-                                                        <Row>
-                                                            {post.timestamp}
-                                                        </Row>
-                                                    </Col>
-                                                </Row>
-                                                <Row>
-                                                    <h3>
-                                                        This is a new feed post
-                                                    </h3>
-                                                </Row>
-                                                <Row>
-                                                    {post.description}
-                                                </Row>
-                                                <Divider></Divider>
-                                            </Card>
-                                        </Col>
-                                        <Col xs={2} sm={4} md={8} lg={6} xl={6} xxl={6}>
-                                            <Card className="card">
 
-                                            </Card>
-                                        </Col>
-                                    </div>
-                                ))
-                            }
-                        </Row>
+                        {
+                            listOfPosts.map((post) => (
+                                <Row gutter={[24, 24]}>
+                                    <Col span={4}>
+                                    </Col>
+
+                                    <Col key={post.id} xs={6} sm={6} md={6} lg={14} xl={14} xxl={14}>
+                                        <Card className="card">
+                                            <Row>
+                                                <Col>
+                                                    <UserOutlined />
+                                                </Col>
+                                                <Col>
+                                                    <Row >
+                                                      <b>  <Link className="username" to="/profile">{post.username}</Link></b>
+                                                    </Row>
+                                                    <Row>
+                                                        {post.title}
+                                                    </Row>
+                                                    <Row>
+                                                        {post.timestamp}
+                                                    </Row>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <h3>
+                                                    This is a new feed post
+                                                </h3>
+                                            </Row>
+                                            <Row>
+                                                {post.description}
+                                            </Row>
+                                        </Card>
+                                    </Col>
+                                    <Col span={6}>
+                                    </Col>
+
+                                </Row>
+                            ))
+                        }
+
                     </div>
                 }
             </>
