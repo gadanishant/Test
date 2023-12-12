@@ -1,6 +1,7 @@
-.container {
+.aboutUsContainer{
     display: flex;
-    align-items: center; /* Center items vertically */
+    align-items: center; 
+    padding: 9rem 5rem 5rem 5rem;
 }
 
 .container img {

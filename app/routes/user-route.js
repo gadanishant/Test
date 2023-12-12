@@ -9,8 +9,4 @@ router.route("/")
     .post(userController.post)
     .delete(userController.remove);
 
-router.route("/:id")
-    .get(userController.get)
-    .put(userController.put)
-
 export default router;

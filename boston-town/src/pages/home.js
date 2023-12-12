@@ -5,7 +5,9 @@ import apartment from '../../../boston-town/src/assets/images/apartment.png';
 import roomates from '../../../boston-town/src/assets/images/roomates.png';
 import maps from '../../../boston-town/src/assets/images/maps.png';
 import { Link } from 'react-router-dom';
-
+import apartmentTours from '../../../boston-town/src/assets/images/apartmentTours.png';
+import apartmentsRented from '../../../boston-town/src/assets/images/apartmentsRented.png';
+import renters from '../../../boston-town/src/assets/images/renters.png';
 
 import React, { useState } from 'react';
 import { Pagination } from 'antd';
@@ -69,7 +71,6 @@ const Home = () => {
                 <img className="home" src={home} alt="Home" />
             </Col>
         </Row>
-
         <Row className="what_made_easy grey2">
             <Col span={24}>
                 <b>What we have made easy for students</b>
@@ -99,7 +100,6 @@ const Home = () => {
                 <b className="font2rem">Safe Areas</b>
             </Col>
         </Row>
-
         <Row className="row3_color">
             <Col span={24}>
                 <Row gutter={[24, 24]}>

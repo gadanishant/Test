@@ -4,7 +4,9 @@ import "./contact.css"
 const Contact = () => {
     return (
         <>
-        
+        <div className = "contactUsContainer">
+
+        </div>
         </>
     );
 }
