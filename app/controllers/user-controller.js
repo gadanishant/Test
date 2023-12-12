@@ -2,19 +2,41 @@ import UserModel from "../models/user.js";
 import * as userService from "../services/user-service.js";
 import { setResponse, setErrorResponse, badRequest } from "./response-handler.js";
 
-export const find = async (req, res) => {
-    console.log("user-controller: find");
+export const find = (req, res) => {
+    if (req.query.id) {
+        findById(req.query.id, res);
+    } else if (req.query.username) {
+        findByName(req.query.username, res);
+    } else {
+        res.status(400).send('No search criteria provided');
+    }
+};
+
+const findById = async (id, res) => {
     try {
-        const params = { ...req.query };
-        const users = await userService.search(params);
-        console.log("find: users => ", users);
-        users.unshift({ "count": users.length })
-        setResponse(users, res);
+        const user = await UserModel.findById(id).exec();
+        if (!user) {
+            res.status(404).send('User not found');
+        } else {
+            setResponse(user, res);
+        }
     } catch (error) {
-        console.log("find: catch block");
         setErrorResponse(error, res);
     }
-}
+};
+
+const findByName = async (name, res) => {
+    try {
+        const user = await UserModel.findOne({ username: name }).exec();
+        if (!user) {
+            res.status(404).send('User not found');
+        } else {
+            setResponse(user, res);
+        }
+    } catch (error) {
+        setErrorResponse(error, res);
+    }
+};
 
 export const post = async (req, res) => {
     console.log("user-controller: post");
@@ -51,11 +73,11 @@ export const get = async (req, res) => {
 
 export const authenticateUser = async (req, res) => {
     console.log("user-controller: authenticateUser");
-    const identifier = req.body.identifier;
+    const username = req.body.username;
     const requestPassword = req.body.password;
 
     try {
-        const user = await userService.findUserByIdentifier(identifier);
+        const user = await userService.findUserByIdentifier(username);
         if (user && user.password === requestPassword) {
             setResponse(user, res);
             console.log("Authentication Successful!");
