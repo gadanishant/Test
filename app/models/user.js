@@ -57,6 +57,18 @@ const UserSchema = new Schema({
         enum: ["Dogs", "Cats"],
         required: false
     },
+    posts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Post"
+        }
+    ],
+    incidents: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Incident"
+        }
+    ]
 },
 {
     versionKey: false
