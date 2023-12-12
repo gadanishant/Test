@@ -53,14 +53,10 @@ export const put = async (req, res) => {
 
 export const updateIncidentDetails = async (req, res) => {
     console.log("incident-controller: updateIncidentDetails");
-    // console.log("updateIncidentDetails: req => ", req);
     try {
-        const requestUsername = req.body.Username
+        const incidentId = req.body.id;
         const updatedData = { ...req.body };
-        console.log("incident-controller: updatedData => ", updatedData);
-        const incident = await incidentService.updateIncidentDetails(requestUsername, updatedData);
-        setResponse(incident, res);
-        console.log("incident-controller: Update successful!");
+        const incident = await incidentService.updateIncidentDetails(incidentId, updatedData);
     } catch (err) {
         setErrorResponse(err, res);
     }
@@ -69,8 +65,8 @@ export const updateIncidentDetails = async (req, res) => {
 export const remove = async (req, res) => {
     console.log("incident-controller: remove");
     try {
-        const requestUsername = req.body.Username
-        const incident = await incidentService.remove(requestUsername);
+        const incidentId = req.body.id;
+        const incident = await incidentService.remove(incidentId);
         setResponse(incident, res);
     } catch (err) {
         setErrorResponse(err, res);

@@ -41,7 +41,7 @@ const Home = () => {
     const indexOfFirstCard = indexOfLastCard - pageSize;
     const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
     return (
-        <div class="padding_home">
+        <div className="padding_home">
             <Row>
                 <Col className="grey2 finding_apt" xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
                     <div><b>
@@ -114,52 +114,6 @@ const Home = () => {
                         total={cards.length}
                         onChange={handlePageChange}
                     />
-                </Col>
-            </Row>
-            <br />
-            <br />
-            <br />
-            <br />
-            <Row gutter={[24, 24]}>
-                <Col align="middle" span={24}>
-                    <h1>Top 10 Picks</h1>
-                </Col>
-
-                <Col span={8}>
-                    <Card className="top_card">
-                        <Row>
-                            <Col span={24}>
-                                <img className="top_pic" src={home}></img>
-                            </Col>
-                            <Col>
-                                Apartment
-                            </Col>
-                        </Row>
-                    </Card>
-                </Col>
-                <Col span={8}>
-                    <Card className="top_card">
-                        <Row>
-                            <Col span={24}>
-                                <img className="top_pic" src={home}></img>
-                            </Col>
-                            <Col>
-                                Apartment
-                            </Col>
-                        </Row>
-                    </Card>
-                </Col>
-                <Col span={8}>
-                    <Card className="top_card">
-                        <Row>
-                            <Col span={24}>
-                                <img className="top_pic" src={home}></img>
-                            </Col>
-                            <Col>
-                                Apartment
-                            </Col>
-                        </Row>
-                    </Card>
                 </Col>
             </Row>
 
