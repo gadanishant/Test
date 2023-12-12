@@ -5,9 +5,7 @@ import apartment from '../../../boston-town/src/assets/images/apartment.png';
 import roomates from '../../../boston-town/src/assets/images/roomates.png';
 import maps from '../../../boston-town/src/assets/images/maps.png';
 import { Link } from 'react-router-dom';
-import apartmentTours from '../../../boston-town/src/assets/images/apartmentTours.png';
-import apartmentsRented from '../../../boston-town/src/assets/images/apartmentsRented.png';
-import renters from '../../../boston-town/src/assets/images/renters.png';
+
 
 import React, { useState } from 'react';
 import { Pagination } from 'antd';
@@ -43,84 +41,83 @@ const Home = () => {
     const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
     return (
         <div className="padding_home">
-        <Row gutter={[24, 24]}>
-            <Col className="grey2 finding_apt" xs={24} md={12} lg={12}>
-                <div>
-                    <b>
-                        Find your dream <span className="accent_blue">apartment</span> <br /> and the{' '}
-                        <span className="accent_blue">missing</span> pieces to <br /> your{' '}
-                        <span className="accent_blue">roommate puzzle</span>, <br /> all in one click."
-                    </b>
-                    <Row gutter={[24, 24]} className="find_button">
-                        <Col>
-                            <Link to="/listing">
-                                <Button className="find_apt">
-                                    <h3> Find an Apartment</h3>
+            <Row>
+                <Col className="grey2 finding_apt" xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+                    <div><b>
+                        Find your dream <span className="accent_blue">apartment</span> <br /> and the <span className="accent_blue">missing</span> pieces to <br /> your <span className="accent_blue">roommate puzzle</span> ,<br /> all in one click."</b>
+                        <Row gutter={[24, 24]} className="find_button">
+                            <Col>
+                                <Link to="/listing">
+                                    <Button className="find_apt">
+                                        <h3 > Find a Apartment</h3>
+                                    </Button>
+                                </Link>
+                            </Col>
+                            <Col>
+                                <Button className="find_rm">
+                                    <h3 > Find Roomates</h3>
                                 </Button>
-                            </Link>
-                        </Col>
-                        <Col>
-                            <Button className="find_rm">
-                                <h3> Find Roommates</h3>
-                            </Button>
-                        </Col>
-                    </Row>
-                </div>
-            </Col>
-            <Col xs={24} md={12} lg={12}>
-                <img className="home" src={home} alt="Home" />
-            </Col>
-        </Row>
-        <Row className="what_made_easy grey2">
-            <Col span={24}>
-                <b>What we have made easy for students</b>
-            </Col>
-        </Row>
+                            </Col>
+                        </Row>
+                    </div>
+                </Col>
+                <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+                    <img className="home" src={home}></img>
+                </Col>
 
-        <Row gutter={[24, 24]}>
-            <Col xs={24} sm={24} md={8} lg={8}>
-                <div>
-                    <img className="apartment" src={apartment} alt="Apartment" />
-                </div>
-                <br />
-                <b className="font2rem">Find an Apartment</b>
-            </Col>
-            <Col xs={24} sm={24} md={8} lg={8}>
-                <div>
-                    <img className="apartment" src={roomates} alt="Roommates" />
-                </div>
-                <br />
-                <b className="font2rem">Find a Roommate</b>
-            </Col>
-            <Col xs={24} sm={24} md={8} lg={8}>
-                <div>
-                    <img className="apartment" src={maps} alt="Maps" />
-                </div>
-                <br />
-                <b className="font2rem">Safe Areas</b>
-            </Col>
-        </Row>
-        <Row className="row3_color">
-            <Col span={24}>
-                <Row gutter={[24, 24]}>
-                    {currentCards.map((card) => (
-                        <Col key={card.id} xs={24} sm={12} md={8} lg={8}>
-                            <Card className="review_card">
-                                <Card.Meta title={card.title} description={card.description} />
-                            </Card>
-                        </Col>
-                    ))}
-                </Row>
-                <Pagination
-                    style={{ marginTop: '20px', textAlign: 'center' }}
-                    current={currentPage}
-                    pageSize={pageSize}
-                    total={cards.length}
-                    onChange={handlePageChange}
-                />
-            </Col>
-        </Row>
-    </div>
+                <Col span={24} className="what_made_easy grey2">
+                    <b> What we have made easy for students</b>
+                </Col>
+            </Row>
+            <Row>
+                <Col span={8} justify="center" align="middle">
+                    <div>
+                        <img className="apartment" src={apartment}></img>
+                    </div>
+                    <br />
+                    <b className="font2rem">Find a Apartment</b>
+                </Col>
+                <Col span={8} justify="center" align="middle">
+                    <div>
+                        <img className="apartment" src={roomates}></img>
+                    </div>
+                    <br />
+                    <b className="font2rem">Find a Roommate</b>
+                </Col>
+                <Col span={8} justify="center" align="middle">
+                    <div>
+                        <img className="apartment" src={maps}></img>
+                    </div>
+                    <br />
+                    <b className="font2rem">Safe Areas</b>
+                </Col>
+            </Row>
+            <br />
+            <br />
+            <br />
+
+            <Row className="row3_color">
+                <Col span={24}>
+                    <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        {currentCards.map((card) => (
+                            <Col span={8}>
+                                <Card className="review_card" key={card.id}>
+                                    <Meta title={card.title} description={card.description} />
+                                </Card>
+                            </Col>
+                        ))}
+                    </Row>
+                    <Pagination
+                        style={{ marginTop: '20px', textAlign: 'center' }}
+                        current={currentPage}
+                        pageSize={pageSize}
+                        total={cards.length}
+                        onChange={handlePageChange}
+                    />
+                </Col>
+            </Row>
+
+        </div>
     );
 }
 
