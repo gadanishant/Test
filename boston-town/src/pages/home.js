@@ -38,7 +38,7 @@ const Home = () => {
     const indexOfFirstCard = indexOfLastCard - pageSize;
     const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
     return (
-        <div class="padding_home">
+        <div className="padding_home">
             <Row>
                 <Col className="grey2 finding_apt" xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
                     <div><b>
@@ -71,9 +71,9 @@ const Home = () => {
                         <img className="apartment" src={apartment}></img>
                     </div>
                     <br />
-                     <b className="font2rem">Find a Apartment</b>
+                    <b className="font2rem">Find a Apartment</b>
                 </Col>
-                <Col  span={8} justify="center" align="middle">
+                <Col span={8} justify="center" align="middle">
                     <div>
                         <img className="apartment" src={roomates}></img>
                     </div>
@@ -112,7 +112,6 @@ const Home = () => {
                     />
                 </Col>
             </Row>
-            
         </div>
     );
 }
