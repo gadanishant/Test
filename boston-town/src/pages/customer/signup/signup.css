@@ -1,4 +1,4 @@
-.centered-card-container{
+.centered-card-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,14 +6,14 @@
 }
 
 .InputFieldClass {
-    width:100%;
+    width: 100%;
 }
 
 .signUpCard {
-    width:100%;
+    width: 100%;
 }
 
 .submitButton {
-margin-left: 48%;
-margin-top:5%;
+    margin-left: 48%;
+    margin-top: 5%;
 }

@@ -1,7 +1,8 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Card, Col, Divider, Row } from "antd";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { Context } from "../components/context";
 import Loader from "../components/loader";
 import sendRequest from "../components/sendRequest";
 import "./feed.css";
@@ -10,6 +11,7 @@ const Feed = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("isAuthenticated"));
     const [listOfPosts, setListOfPosts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { user, setUser } = useContext(Context);
 
     const getAllPostsAPI = async () => {
         try {
@@ -31,6 +33,7 @@ const Feed = () => {
     useEffect(() => {
         setLoading(true);
         getAllPostsAPI();
+        console.log("user => ", user);
     }, [])
 
     return (
@@ -38,7 +41,6 @@ const Feed = () => {
             ? <>
                 {loading ? <Loader /> :
                     <div className='padding_background_feed'>
-
                         {
                             listOfPosts.map((post) => (
                                 <Row gutter={[24, 24]}>
@@ -53,7 +55,7 @@ const Feed = () => {
                                                 </Col>
                                                 <Col>
                                                     <Row >
-                                                      <b>  <Link className="username" to="/profile">{post.username}</Link></b>
+                                                        <b>  <Link className="username" to="/profile">{post.username}</Link></b>
                                                     </Row>
                                                     <Row>
                                                         {post.title}

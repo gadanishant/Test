@@ -1,25 +1,37 @@
 import { Button, Card, Form, Input, Row } from 'antd';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
 import "./login.css"
+import { Context } from '../../../components/context';
 
 
 const Login = () => {
-    const [emailId, setUserName] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const { user, setUser } = useContext(Context);
 
     const logout = 1000 * 60 * 9999999999;
 
-    const callCustomerLoginAPI = async () => {
+    const authenticateUserAPI = async () => {
         try {
-            console.log("callCustomerLoginAPI: try");
+            console.log("authenticateUserAPI: try");
             const response = await sendRequest("http://localhost:3000/authenticateUser", {
-                "username": emailId,
+                "username": username,
                 "password": password
             }, "POST", {})
 
             console.log("response => ", response);
-            console.log("Successfully logged in!");
+            const userId = response.data.description._id;
+            // console.log("Successfully logged in!");
+            alert("Successfully logged in!")
+
+            setUser({
+                ...user,
+                username: username,
+                password: password,
+                userId: userId
+            })
+
             sessionStorage.setItem("isAuthenticated", "true");
 
             setTimeout(() => {
@@ -28,31 +40,32 @@ const Login = () => {
             }, [logout])
 
         } catch (error) {
-            console.log("callCustomerLoginAPI: catch");
+            console.log("error => ", error);
+            console.log("authenticateUserAPI: catch");
         }
     }
 
     const onFinish = () => {
         // Your form submission logic here
-        if (password === "" && emailId === "") {
-            alert("Please enter email address and password");
+        if (password === "" && username === "") {
+            alert("Please enter username and password");
         }
 
-        else if (emailId === "") {
-            alert("Please enter email address");
+        else if (username === "") {
+            alert("Please enter username");
         }
 
         else if (password === "") {
             alert("Please enter password");
         }
         else {
-            callCustomerLoginAPI();
+            authenticateUserAPI();
         }
     };
 
 
-    const onChangeEmailId = (e) => {
-        setUserName(e.target.value);
+    const onChangeUsername = (e) => {
+        setUsername(e.target.value);
     }
 
     const onChangePassword = (e) => {
@@ -65,10 +78,9 @@ const Login = () => {
             <div className="centered-card-login-container">
                 <Card className="loginCard">
                     <Form>
-
                         <Form.Item
                             label="Username / Email Id"
-                            name="emailId"
+                            name="username"
                             rules={[
                                 {
                                     required: true,
@@ -80,10 +92,8 @@ const Login = () => {
                                     message: 'Please enter a valid email address!'
                                 }
                             ]}>
-                            <Input placeholder="Enter your username or email address" onBlur={onChangeEmailId} className="InputFieldClass" />
+                            <Input placeholder="Enter your username or email address" onBlur={onChangeUsername} className="InputFieldClass" />
                         </Form.Item>
-
-
                         <Form.Item
                             label="Password"
                             name="password"
@@ -94,12 +104,13 @@ const Login = () => {
                                 },
                             ]}
                         >
-                            <Input.Password placeholder="Enter your password" onBlur={onChangePassword} className="InputFieldClass" style={{ width: '100%' }} />
+                            <Input.Password
+                                placeholder="Enter your password"
+                                onBlur={onChangePassword}
+                                className="InputFieldClass"
+                                style={{ width: '100%' }}
+                            />
                         </Form.Item>
-
-
-
-
                         <Form.Item>
                             <Button className="LoginButtonClass" onClick={onFinish} type="primary">Login!</Button>
                         </Form.Item>
