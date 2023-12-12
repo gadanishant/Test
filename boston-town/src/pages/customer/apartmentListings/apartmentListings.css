@@ -19,7 +19,7 @@
     transition: 0.3s;
 }
 
-.neighborhood_card:active{
-    background-color: pink;
-    transition: 0.3s;
-}
+
+.selected {
+    background-color: #5ea3f9;
+  }
