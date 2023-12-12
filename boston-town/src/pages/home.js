@@ -4,6 +4,9 @@ import home from '../../../boston-town/src/assets/images/logo5.png';
 import apartment from '../../../boston-town/src/assets/images/apartment.png';
 import roomates from '../../../boston-town/src/assets/images/roomates.png';
 import maps from '../../../boston-town/src/assets/images/maps.png';
+import apartmentTours from '../../../boston-town/src/assets/images/apartmentTours.png';
+import apartmentsRented from '../../../boston-town/src/assets/images/apartmentsRented.png';
+import renters from '../../../boston-town/src/assets/images/renters.png';
 
 import React, { useState } from 'react';
 import { Pagination } from 'antd';
@@ -57,6 +60,7 @@ const Home = () => {
                         </Row>
                     </div>
                 </Col>
+
                 <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
                     <img className="home" src={home}></img>
                 </Col>
@@ -158,6 +162,44 @@ const Home = () => {
                     </Card>
                 </Col>
             </Row>
+
+
+            <Col span={24} className="what_made_easy grey2">
+                    <b> What we have achieved in past one year</b>
+                </Col>
+
+            <Row>
+                <Col span={8} justify="center" align="middle">
+                    <div>
+                        <img className="apartmentTours" src={apartmentTours}></img>
+                    </div>
+                    <br />
+                    <b className="font2rem">1500+</b>
+                    <br/>
+                    <b className="font2rem">Safe Homes</b>
+                </Col>
+                <Col span={8} justify="center" align="middle">
+                    <div>
+                        <img className="apartmentsRented" src={apartmentsRented}></img>
+                    </div>
+                    <br />
+                    <b className="font2rem">500+</b>
+                    <br/>
+                    <b className="font2rem">Secure Deals</b>
+                </Col>
+                <Col span={8} justify="center" align="middle">
+                    <div>
+                        <img className="renters" src={renters}></img>
+                    </div>
+                    <br />
+                    <b className="font2rem">1000+</b>
+                    <br/>
+                    <b className="font2rem">Happy Renters</b>
+                </Col>
+            </Row>
+            <br />
+            <br />
+            <br />
 
         </div>
     );

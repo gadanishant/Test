@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { List, Button, Modal, Input, Form, DatePicker } from 'antd';
 import './incident.css';
+import Map from "../../src/map"
 
 const Incident = () => {
   // Replace this data with your actual incident data
@@ -73,7 +74,11 @@ const handleAddIncidentCancel = () => {
 };
 
   return (
+    
     <div className="incident-container-padding">
+      <div>
+        <Map/>
+      </div>
       <div style={{ maxHeight: '300px', overflowY: 'auto' }}>
         <List
           dataSource={allIncidentData.slice(0, showAllIncidents ? undefined : 10)}
