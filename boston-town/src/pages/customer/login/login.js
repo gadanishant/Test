@@ -8,7 +8,7 @@ const Login = () => {
     const [emailId, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
-    const logout = 1000 * 60 * 2;
+    const logout = 1000 * 60 * 10;
 
     const callCustomerLoginAPI = async () => {
         try {
