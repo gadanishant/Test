@@ -25,22 +25,14 @@ export const update = async (id, newIncident) => {
     return incident;
 }
 
-export const updateIncidentDetails = async (username, newIncident) => {
+export const updateIncidentDetails = async (id, newIncident) => {
     console.log("incident-service: updateIncidentDetails");
-    const incidentId = await IncidentModel.findOne({ Username: username }).exec();
-    console.log("incident-service: username => ", username);
-    console.log("incident-service: incidentId => ", incidentId.id);
-    console.log("incident-service: newIncident => ", newIncident);
-    const incident = await IncidentModel.findByIdAndUpdate(incidentId.id, newIncident, { new: true }).exec();
-    console.log("incident-service: incident => ", incident);
+    const incident = await IncidentModel.findByIdAndUpdate(id, newIncident, { new: true }).exec();
     return incident;
 }
 
-export const remove = async (username) => {
+export const remove = async (id) => {
     console.log("incident-service: remove");
-    console.log("incident-service: username => ", username);
-    const incidentId = await IncidentModel.findOne({ Username: username }).exec();
-    const deleteId = incidentId.id;
-    const incident = await IncidentModel.findByIdAndDelete(deleteId).exec();
+    const incident = await IncidentModel.findByIdAndDelete(id).exec();
     return incident;
 }
