@@ -5,6 +5,7 @@ export const find = async (req, res) => {
     try {
         const params = {...req.query};
         const apartments = await propertyService.search(params);
+        apartments.unshift({ "count": apartments.length })
         setResponse(apartments, res);        
     } catch (error) {
         setErrorResponse(error, res);

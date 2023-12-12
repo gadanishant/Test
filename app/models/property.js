@@ -7,6 +7,11 @@ const PropertySchema = new Schema({
         type: String,
         required: true
     },
+    agent: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Agent',
+        required: true
+    },
     title: {
         type: String,
         required: true
