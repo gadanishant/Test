@@ -6,3 +6,20 @@
     margin-bottom: 40px;
     padding: 1rem;
 }
+
+ .neighborhood_card{
+   border: 1px solid #424242;
+   padding: 1rem;
+   border-radius: 20px;
+   margin: 0.2rem;
+   text-align: center;
+}
+.neighborhood_card:hover{
+    background-color: #dbdad6;
+    transition: 0.3s;
+}
+
+.neighborhood_card:active{
+    background-color: pink;
+    transition: 0.3s;
+}
