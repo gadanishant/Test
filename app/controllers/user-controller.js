@@ -51,11 +51,11 @@ export const get = async (req, res) => {
 
 export const authenticateUser = async (req, res) => {
     console.log("user-controller: authenticateUser");
-    const identifier = req.body.identifier;
+    const username = req.body.username;
     const requestPassword = req.body.password;
 
     try {
-        const user = await userService.findUserByIdentifier(identifier);
+        const user = await userService.findUserByIdentifier(username);
         if (user && user.password === requestPassword) {
             setResponse(user, res);
             console.log("Authentication Successful!");
