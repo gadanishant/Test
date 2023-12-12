@@ -51,19 +51,19 @@ export const get = async (req, res) => {
 
 export const authenticateUser = async (req, res) => {
     console.log("user-controller: authenticateUser");
-    const requestUsername = req.body.username
-    const requestPassword = req.body.password
+    const identifier = req.body.identifier;
+    const requestPassword = req.body.password;
 
     try {
-        const user = await userService.findUserByUsername(requestUsername);
-        if (user.username === requestUsername && user.password === requestPassword) {
+        const user = await userService.findUserByIdentifier(identifier);
+        if (user && user.password === requestPassword) {
             setResponse(user, res);
             console.log("Authentication Successful!");
         } else {
             console.log("Authentication Failed!");
             res.status(401).json({
                 code: "AuthenticationError",
-                message: "Username or Password entered is incorrect"
+                message: "Identifier or Password entered is incorrect"
             });
         }
     } catch (err) {

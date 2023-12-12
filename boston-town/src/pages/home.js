@@ -1,6 +1,6 @@
 import { Card, Col, Row, Divider, Button } from "antd";
 import './home.css';
-import home from '../../../boston-town/src/assets/images/home.png';
+import home from '../../../boston-town/src/assets/images/logo5.png';
 import apartment from '../../../boston-town/src/assets/images/apartment.png';
 import roomates from '../../../boston-town/src/assets/images/roomates.png';
 import maps from '../../../boston-town/src/assets/images/maps.png';
@@ -17,13 +17,13 @@ const Home = () => {
     const [cards, setCards] = useState([
         { id: 1, title: 'Card 1', description: 'Description for card 1' },
         { id: 2, title: 'Card 2', description: 'Description for card 2' },
-        { id: 3, title: 'Card 2', description: 'Description for card 2' },
-        { id: 4, title: 'Card 2', description: 'Description for card 2' },
-        { id: 5, title: 'Card 2', description: 'Description for card 2' },
-        { id: 6, title: 'Card 2', description: 'Description for card 2' },
-        { id: 72, title: 'Card 2', description: 'Description for card 2' },
-        { id: 8, title: 'Card 2', description: 'Description for card 2' },
-        { id: 9, title: 'Card 2', description: 'Description for card 2' },
+        { id: 3, title: 'Card 3', description: 'Description for card 2' },
+        { id: 4, title: 'Card 4', description: 'Description for card 2' },
+        { id: 5, title: 'Card 5', description: 'Description for card 2' },
+        { id: 6, title: 'Card 6', description: 'Description for card 2' },
+        { id: 72, title: 'Card 7', description: 'Description for card 2' },
+        { id: 8, title: 'Card 8', description: 'Description for card 2' },
+        { id: 9, title: 'Card 9', description: 'Description for card 2' },
         { id: 10, title: 'Card 10', description: 'Description for card 10' },
     ]);
 
@@ -112,6 +112,7 @@ const Home = () => {
                     />
                 </Col>
             </Row>
+
         </div>
     );
 }
