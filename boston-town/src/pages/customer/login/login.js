@@ -20,11 +20,11 @@ const Login = () => {
 
             console.log("response => ", response);
             console.log("Successfully logged in!");
-            sessionStorage.setItem("isAuthenticated", true);
+            sessionStorage.setItem("isAuthenticated", "true");
 
             setTimeout(() => {
                 console.log("setTimeout");
-                sessionStorage.setItem("isAuthenticated", false);
+                sessionStorage.setItem("isAuthenticated", "false");
             }, [logout])
 
         } catch (error) {
