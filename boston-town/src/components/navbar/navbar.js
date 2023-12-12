@@ -23,7 +23,7 @@ const Navbar = () => {
                     </h2>
                 </Col>
                 <Col align='middle' xs={2} sm={4} md={6} lg={5} xl={5} xxl={5}>
-                    <Link to="/"> <img class="nav_logo" src={logo} alt="" /></Link>
+                    <Link to="/"> <img className="nav_logo" src={logo} alt="" /></Link>
                 </Col>
                 <Col  align='middle' xs={2} sm={4} md={6} lg={4} xl={4} xxl={4}>
                     <h2>
