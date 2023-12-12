@@ -38,15 +38,10 @@ export const get = async (req, res) => {
 export const updatePost = async (req, res) => {
     console.log("post-controller: updatePost");
     try {
-        const requestUsername = req.body.username
+        const postId = req.body.id;
         const updatedData = { ...req.body };
-
-        console.log("requestUsername => ", requestUsername);
-        console.log("updatedData => ", updatedData);
-        
-        const user = await postService.updatePost(requestUsername, updatedData);
+        const post = await postService.updatePost(postId, updatedData);
         setResponse("Update successful!", res);
-        console.log("Update successful!");
     } catch (err) {
         setErrorResponse(err, res);
     }
@@ -55,8 +50,8 @@ export const updatePost = async (req, res) => {
 export const remove = async (req, res) => {
     console.log("post-controller: remove");
     try {
-        const requestUsername = req.body.username
-        const post = await postService.remove(requestUsername);
+        const postId = req.body.id;
+        const post = await postService.remove(postId);
         setResponse("Post deleted successfully!", res);
     } catch (err) {
         setErrorResponse(err, res);
