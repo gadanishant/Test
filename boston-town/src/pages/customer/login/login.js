@@ -8,6 +8,8 @@ const Login = () => {
     const [emailId, setUserName] = useState("");
     const [password, setPassword] = useState("");
 
+    const logout = 1000 * 60 * 10;
+
     const callCustomerLoginAPI = async () => {
         try {
             console.log("callCustomerLoginAPI: try");
@@ -17,6 +19,14 @@ const Login = () => {
             }, "POST", {})
 
             console.log("response => ", response);
+            console.log("Successfully logged in!");
+            sessionStorage.setItem("isAuthenticated", "true");
+
+            setTimeout(() => {
+                console.log("setTimeout");
+                sessionStorage.setItem("isAuthenticated", "false");
+            }, [logout])
+
         } catch (error) {
             console.log("callCustomerLoginAPI: catch");
         }
@@ -24,24 +34,21 @@ const Login = () => {
 
     const onFinish = () => {
         // Your form submission logic here
-        if(password === "" && emailId === "")
-        {
+        if (password === "" && emailId === "") {
             alert("Please enter email address and password");
         }
 
-        else if(emailId === "")
-        {
+        else if (emailId === "") {
             alert("Please enter email address");
         }
 
-        else if(password === "")
-        {
+        else if (password === "") {
             alert("Please enter password");
         }
-        else{
-            callCustomerLoginAPI();   
+        else {
+            callCustomerLoginAPI();
         }
-      };
+    };
 
 
     const onChangeEmailId = (e) => {
@@ -55,52 +62,52 @@ const Login = () => {
 
     return (
         <>
-        <div className="centered-card-login-container">
-        <Card className = "loginCard">
-        <Form>
-    
-        <Form.Item
-        label="Username / Email Id"
-        name="emailId"
-        rules={[
-            {
-            required: true,
-            message: 'Please input your email address!',
-            },
+            <div className="centered-card-login-container">
+                <Card className="loginCard">
+                    <Form>
 
-            {
-                // pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                message: 'Please enter a valid email address!'
-            }
-        ]}>
-        <Input placeholder = "Enter your username or email address" onBlur = {onChangeEmailId} className = "InputFieldClass"/>
-        </Form.Item>
+                        <Form.Item
+                            label="Username / Email Id"
+                            name="emailId"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your email address!',
+                                },
 
-
-        <Form.Item
-            label="Password"
-            name="password"
-            rules={[
-                {
-                    required: true,
-                    message: 'Please input your password!',
-                },
-            ]}
-        >
-            <Input.Password placeholder = "Enter your password" onBlur={onChangePassword} className="InputFieldClass" style={{ width: '100%' }} />
-        </Form.Item>
+                                {
+                                    // pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                                    message: 'Please enter a valid email address!'
+                                }
+                            ]}>
+                            <Input placeholder="Enter your username or email address" onBlur={onChangeEmailId} className="InputFieldClass" />
+                        </Form.Item>
 
 
+                        <Form.Item
+                            label="Password"
+                            name="password"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your password!',
+                                },
+                            ]}
+                        >
+                            <Input.Password placeholder="Enter your password" onBlur={onChangePassword} className="InputFieldClass" style={{ width: '100%' }} />
+                        </Form.Item>
 
 
-        <Form.Item>
-        <Button className = "LoginButtonClass" onClick = {onFinish} type="primary">Login!</Button>
-        </Form.Item>
 
 
-            </Form>
-        </Card>
-    </div>
+                        <Form.Item>
+                            <Button className="LoginButtonClass" onClick={onFinish} type="primary">Login!</Button>
+                        </Form.Item>
+
+
+                    </Form>
+                </Card>
+            </div>
 
 
 
