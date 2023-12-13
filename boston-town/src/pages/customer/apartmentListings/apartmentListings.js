@@ -33,28 +33,13 @@ const ApartmentListings = () => {
 		getAllpropertyAPI();
 	}, []);
 
-	useEffect(() => {
-		if (zipCodeFilter.trim() === '' && selectedNeighborhoods.length === 0) {
-			setFilteredProperties(listOfProperties);
-		} else {
-			let filtered = listOfProperties;
-
-			if (zipCodeFilter.trim() !== '') {
-				filtered = filtered.filter(
-					(property) => property.zip_code === zipCodeFilter.trim()
-				);
-			}
-
-			if (selectedNeighborhoods.length > 0) {
-				filtered = filtered.filter((property) =>
-					selectedNeighborhoods.includes(property.neighborhood)
-				);
-			}
-
-			setFilteredProperties(filtered);
-		}
-		setCurrentPage(1); // Reset to first page when filters change
-	}, [listOfProperties, zipCodeFilter, selectedNeighborhoods]);
+	const filteredProperties = useMemo(() => {
+		return listOfProperties.filter(property => {
+		  const zipCodeMatch = zipCodeFilter.trim() === '' || property.zip_code.startsWith(zipCodeFilter.trim());
+		  const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(property.neighborhood);
+		  return zipCodeMatch && neighborhoodMatch;
+		});
+	  }, [listOfProperties, zipCodeFilter, selectedNeighborhoods]);	  
 
 	const indexOfLastProperty = currentPage * pageSize;
 	const indexOfFirstProperty = indexOfLastProperty - pageSize;
