@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Loader from '../../../components/loader';
 import sendRequest from '../../../components/sendRequest';
 import './apartmentListings.css';
+import { Link } from 'react-router-dom';
+
 
 const ApartmentListings = () => {
 	const [listOfProperties, setListOfProperties] = useState([]);
@@ -137,6 +139,7 @@ const ApartmentListings = () => {
 									<Row gutter={16}>
 										{currentProperties.map((apartment) => (
 											<Col key={apartment.id} xs={24} sm={12} md={8} lg={6}>
+												<Link to="/apartmentdetails">
 												<Card
 													hoverable
 													cover={<img alt="apartment" src={apartment.image} />}
@@ -156,6 +159,7 @@ const ApartmentListings = () => {
 														Neighborhood - {apartment.neighborhood}
 													</div>
 												</Card>
+												</Link>
 											</Col>
 										))}
 									</Row>
@@ -165,6 +169,7 @@ const ApartmentListings = () => {
 										pageSize={pageSize}
 										onChange={handlePageChange}
 										style={{ marginTop: '20px', textAlign: 'center' }}
+										showSizeChanger={false}
 									/>
 								</Col>
 							</Row>
