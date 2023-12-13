@@ -3,6 +3,10 @@ import { useContext, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
 import "./login.css"
 import { Context } from '../../../components/context';
+import { Navigate } from 'react-router-dom';
+
+// Inside your component's logic, after successful authentication
+
 
 
 const Login = () => {
@@ -10,7 +14,7 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const { user, setUser } = useContext(Context);
 
-    const logout = 1000 * 60 * 9999999999;
+    const logout = 1000 * 60 * 2;
 
     const authenticateUserAPI = async () => {
         try {
@@ -23,7 +27,7 @@ const Login = () => {
             console.log("response => ", response);
             const userId = response.data.description._id;
             // console.log("Successfully logged in!");
-            alert("Successfully logged in!")
+            // alert("Successfully logged in!")
 
             setUser({
                 ...user,
@@ -45,7 +49,7 @@ const Login = () => {
         }
     }
 
-    const onFinish = () => {
+    const onClickLogin = () => {
         // Your form submission logic here
         if (password === "" && username === "") {
             alert("Please enter username and password");
@@ -72,6 +76,9 @@ const Login = () => {
         setPassword(e.target.value);
     }
 
+    if (sessionStorage.getItem("isAuthenticated") === "true") {
+        return <Navigate to="/feed" />;
+    }
 
     return (
         <>
@@ -112,7 +119,7 @@ const Login = () => {
                             />
                         </Form.Item>
                         <Form.Item>
-                            <Button className="LoginButtonClass" onClick={onFinish} type="primary">Login!</Button>
+                            <Button className="LoginButtonClass" onClick={onClickLogin} type="primary">Login!</Button>
                         </Form.Item>
 
 

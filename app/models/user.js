@@ -70,7 +70,17 @@ const UserSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: "Incident"
         }
-    ]
+    ],
+    social_media: {
+        linkedin: {
+            type: String,
+            required: false
+        },
+        instagram: {
+            type: String,
+            required: false
+        }
+    }
 },
 {
     versionKey: false
