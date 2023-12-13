@@ -55,9 +55,24 @@ const PropertySchema = new Schema({
         type: [String],
         default: []
     },
-    images: [{
-        type: String,
-    }]
+    images: {
+        building: [{
+            type: String,
+            required: false
+        }],
+        living_room: [{
+            type: String,
+            required: false
+        }],
+        bed_room: [{
+            type: String,
+            required: false
+        }],
+        kitchen: [{
+            type: String,
+            required: false
+        }]
+    } 
 },
 {
     versionKey: false
