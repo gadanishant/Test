@@ -63,7 +63,7 @@ const Profile = () => {
 	console.log("petPreferences => ", petPreferences)
 
 	return (
-		<div style={{ maxWidth: '600px', margin: 'auto', paddingTop: '20px' }}>
+		<div className='profile_page'>
 			<Card>
 				<div style={{ textAlign: 'center' }}>
 					<Avatar size={128} src="URL_TO_YOUR_IMAGE" />
