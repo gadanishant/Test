@@ -63,7 +63,7 @@ const Feed = () => {
                                                 </Col>
                                                 <Col>
                                                     <Row>
-                                                        <b><Link className="username" to="/profile">{post.username}</Link></b>
+                                                        <b><Link className="username" to={`/profile/${post.username}`}>{post.username}</Link></b>
                                                     </Row>
                                                     <Row>
                                                         {post.title}
