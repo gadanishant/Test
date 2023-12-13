@@ -56,23 +56,40 @@ const PropertySchema = new Schema({
         default: []
     },
     images: {
-        building: [{
-            type: String,
-            required: false
-        }],
-        living_room: [{
-            type: String,
-            required: false
-        }],
-        bed_room: [{
-            type: String,
-            required: false
-        }],
-        kitchen: [{
-            type: String,
-            required: false
-        }]
-    } 
+        type: [String],
+        default: []
+    },
+    bedrooms: {
+        type: Number,
+        required: true
+    },
+    bathrooms: {
+        type: Number,
+        required: true
+    },
+    floor: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    area: {
+        type: String,
+        required: true
+    },
+    move_in: {
+        type: Date,
+        required: true
+    },
+    in_unit_laundary: {
+        type: Boolean,
+        required: true
+    },
+    facilities: {
+        type: [String],
+    }
 },
 {
     versionKey: false
