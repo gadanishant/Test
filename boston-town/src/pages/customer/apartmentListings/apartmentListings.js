@@ -30,11 +30,11 @@ const ApartmentListings = () => {
 
 	const filteredProperties = useMemo(() => {
 		return listOfProperties.filter(property => {
-			const zipCodeMatch = zipCodeFilter.trim() === '' || property.zip_code.includes(zipCodeFilter.trim());
-			const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(property.neighborhood);
-			return zipCodeMatch && neighborhoodMatch;
+		  const zipCodeMatch = zipCodeFilter.trim() === '' || property.zip_code.startsWith(zipCodeFilter.trim());
+		  const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(property.neighborhood);
+		  return zipCodeMatch && neighborhoodMatch;
 		});
-	}, [listOfProperties, zipCodeFilter, selectedNeighborhoods]);
+	  }, [listOfProperties, zipCodeFilter, selectedNeighborhoods]);	  
 
 	const indexOfLastProperty = currentPage * pageSize;
 	const indexOfFirstProperty = indexOfLastProperty - pageSize;
