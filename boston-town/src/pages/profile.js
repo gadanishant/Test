@@ -2,6 +2,10 @@ import { Avatar, Card, Divider, Typography } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import sendRequest from '../components/sendRequest';
+import {MailOutlined, PhoneOutlined, HomeOutlined, InstagramOutlined, LinkedinOutlined} from '@ant-design/icons';
+import "./profile.css"
+import contactInfo from '../../../boston-town/src/assets/images/contactInfo.png';
+
 
 const Profile = () => {
 	const { Title, Paragraph } = Typography;
@@ -74,10 +78,12 @@ const Profile = () => {
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
 						placerat tristique elit, sed maximus nunc posuere nec.
 					</Paragraph>
-					<Title level={4}>Contact Information</Title>
-					<Paragraph>Email: john@example.com</Paragraph>
-					<Paragraph>Phone: +1234567890</Paragraph>
-					<Title level={4}>Address</Title>
+					<Title level={4}><img id = "contactInfo" src = {contactInfo}></img>Contact Information</Title>
+					<Paragraph> <MailOutlined className = "profileIcons"/> john@example.com</Paragraph>
+					<Paragraph> <PhoneOutlined className = "profileIcons"/> +1234567890</Paragraph>
+					<Paragraph><InstagramOutlined className = "profileIcons"/>Instagram Link</Paragraph>
+					<Paragraph><LinkedinOutlined className = "profileIcons"/>LinkedIn Link</Paragraph>
+					<Title level={4}> <HomeOutlined className = "profileIcons"/> Address</Title>
 					<Paragraph>
 						123 Street Name, City, Country, Postal Code
 					</Paragraph>
