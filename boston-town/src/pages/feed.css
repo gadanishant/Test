@@ -8,13 +8,11 @@
 
 .card {
     border-color: #8E8D8A;
-}
-
-.card:hover {
-    border-color: #E98074;
+    margin-top: 2rem;
 }
 
 .username{
     color: #424242;
-    
+    font-size: 1.4rem;
+
 }

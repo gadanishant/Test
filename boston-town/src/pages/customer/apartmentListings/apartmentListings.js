@@ -3,6 +3,8 @@ import { Row, Col, Card, Input, Divider, Pagination } from 'antd';
 import Loader from '../../../components/loader';
 import sendRequest from '../../../components/sendRequest';
 import './apartmentListings.css';
+import { Link } from 'react-router-dom';
+
 
 const ApartmentListings = () => {
 	const [listOfProperties, setListOfProperties] = useState([]);
@@ -85,42 +87,41 @@ const ApartmentListings = () => {
 								<div style={{ marginTop: '20px' }}>
 									<div>Neighborhood</div>
 									<Row gutter={16}>
-										{Array.from(uniqueNeighborhoods).map((neighborhood, index) => (
-											<Col span={24} key={index}>
-												<div
-													className={`neighborhood_card ${selectedNeighborhoods.includes(neighborhood) ? 'selected' : ''}`}
-													onClick={() => handleNeighborhoodSelect(neighborhood)}
+										{currentProperties.map((apartment) => (
+											<Col key={apartment.id} xs={24} sm={12} md={8} lg={6}>
+												<Link to="/apartmentdetails">
+												<Card
+													hoverable
+													cover={<img alt="apartment" src={apartment.image} />}
+													className="property-card"
 												>
-													{neighborhood}
-												</div>
+													<Card.Meta
+														title={apartment.title}
+														description={apartment.description}
+													/>
+													<div style={{ marginTop: '16px' }}>
+														<p>{apartment.price}</p>
+													</div>
+													<div>
+														Zip Code - {apartment.zip_code}
+													</div>
+													<div>
+														Neighborhood - {apartment.neighborhood}
+													</div>
+												</Card>
+												</Link>
 											</Col>
 										))}
 									</Row>
-								</div>
-							</Card>
-						</Col>
-						<Col span={19}>
-							<h1>{filteredProperties.length} Apartments Found</h1>
-							<Row gutter={16}>
-								{currentProperties.map((apartment, index) => (
-									<Col key={index} xs={24} sm={12} md={8} lg={6}>
-										<Card
-											hoverable
-											cover={<img alt="apartment" src={apartment.image} />}
-											className="property-card"
-										>
-											<Card.Meta
-												title={apartment.title}
-												description={apartment.description}
-											/>
-											<div style={{ marginTop: '16px' }}>
-												<p>{apartment.price}</p>
-											</div>
-											<div>Zip Code - {apartment.zip_code}</div>
-											<div>Neighborhood - {apartment.neighborhood}</div>
-										</Card>
-									</Col>
-								))}
+									<Pagination
+										current={currentPage}
+										total={filteredProperties.length}
+										pageSize={pageSize}
+										onChange={handlePageChange}
+										style={{ marginTop: '20px', textAlign: 'center' }}
+										showSizeChanger={false}
+									/>
+								</Col>
 							</Row>
 							<Pagination
 								current={currentPage}
