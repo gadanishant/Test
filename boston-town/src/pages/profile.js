@@ -101,17 +101,14 @@ const Profile = () => {
 					<Paragraph className = "profileRow"> <FontAwesomeIcon icon={faUserTie} className = "profileIcons" ></FontAwesomeIcon>Profession: India</Paragraph>
 
 					</Col>
-					<Col span={12}>
-					<Paragraph className = "profileRow"> <FontAwesomeIcon icon={faFilePen} className = "profileIcons" ></FontAwesomeIcon> Description: 22</Paragraph>
 
-					</Col>
-					</Row>
-					<Row gutter={16}>
 					<Col span={12}>
 
 					<Paragraph className = "profileRow"><FontAwesomeIcon icon={faBowlFood} className = "profileIcons" ></FontAwesomeIcon> Food Preference: India</Paragraph>
 
 					</Col>
+					</Row>
+					<Row gutter={16}>
 					<Col span={12}>
 					<Paragraph className = "profileRow"> <FontAwesomeIcon icon={faDog} className = "profileIcons" ></FontAwesomeIcon>Pet Preference: 22</Paragraph>
 
@@ -119,11 +116,25 @@ const Profile = () => {
 					</Row>
 
 					<Title level={4} className = "profileRow"><img id = "contactInfo" src = {contactInfo}></img>Contact Information</Title>
+					<Row gutter={16}>
+					<Col span={12}>
 					<Paragraph className = "profileRow"> <MailOutlined className = "profileIcons"/> john@example.com</Paragraph>
+					</Col>
+					<Col span={12}>
 					<Paragraph className = "profileRow"> <PhoneOutlined className = "profileIcons"/> +1234567890</Paragraph>
+					</Col>
+					</Row>
+
+
+					<Row gutter={16}>
+					<Col span={12}>
 					<Paragraph className = "profileRow"><InstagramOutlined className = "profileIcons"/>Instagram Link</Paragraph>
+					</Col>
+					<Col span={12}>
 					<Paragraph className = "profileRow"><FontAwesomeIcon icon={faLinkedinIn} className = "profileIcons" ></FontAwesomeIcon>LinkedIn Link</Paragraph>				
-					<Title level={4} className = "profileRow"> <HomeOutlined className = "profileIcons"/> Address</Title>
+					</Col>
+					</Row>
+					<Title level={4} className = "profileRow"> <FontAwesomeIcon icon={faFilePen} className = "profileIcons" ></FontAwesomeIcon> Description</Title>
 					<Paragraph>
 						123 Street Name, City, Country, Postal Code
 					</Paragraph>
