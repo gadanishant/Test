@@ -20,11 +20,11 @@ const Navbar = () => {
         console.log("user => ", user);
         const status = sessionStorage.getItem("isAuthenticated");
         console.log("status => ", status);
-        if (status === "true") setIsAuthenticated(status)
+        setIsAuthenticated(status)
     }, [sessionStorage.getItem("isAuthenticated")])
 
     console.log("isAuthenticated => ", isAuthenticated);
-
+ 
     return (
         <div className='navposition'>
             {
@@ -54,7 +54,7 @@ const Navbar = () => {
                             </h2>
                         </Col>
                         <Col align='middle' xs={2} sm={4} md={6} lg={3} xl={3} xxl={3}>
-                            <h2> <Link to="/profile" className='navtabs'>{user.username}</Link> </h2>
+                            <h2> <Link to={`/profile/${user.username}`} className='navtabs'>{user.username}</Link> </h2>
                         </Col>
                         <Col align='middle' xs={2} sm={4} md={6} lg={4} xl={4} xxl={4}>
                             <h2>
