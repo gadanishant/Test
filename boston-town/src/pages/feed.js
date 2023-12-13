@@ -46,7 +46,6 @@ const Feed = () => {
                                 <Row gutter={[24, 24]}>
                                     <Col span={4}>
                                     </Col>
-
                                     <Col key={post.id} xs={6} sm={6} md={6} lg={14} xl={14} xxl={14}>
                                         <Card className="card">
                                             <Row>

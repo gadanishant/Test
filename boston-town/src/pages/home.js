@@ -54,9 +54,11 @@ const Home = () => {
                                 </Link>
                             </Col>
                             <Col>
+                            <Link to="/feed">
                                 <Button className="find_rm">
                                     <h3 > Find Roomates</h3>
                                 </Button>
+                                </Link>
                             </Col>
                         </Row>
                     </div>
