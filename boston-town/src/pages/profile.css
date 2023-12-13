@@ -1,5 +1,5 @@
 .profileIcons {
-    font-size:20px;
+    font-size:15px;
     margin-right:10px;
 }
 
@@ -7,4 +7,22 @@
     height:20px;
     width:20px;
     margin-right:10px;
+}
+
+#ageIcon {
+    height:20px;
+    width:20px;
+    margin-right:10px;
+}
+
+.profile_page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9rem 5rem 5rem 5rem;
+}
+
+.profileRow {
+    display:flex;
+    align-items: center;
 }

@@ -1,10 +1,14 @@
-import { Avatar, Card, Divider, Typography } from 'antd';
+import { Avatar, Card, Divider, Typography, Col, Row } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedinIn  } from '@fortawesome/free-brands-svg-icons';
+import { faBowlFood ,faDog, faFilePen, faUserTie, faGlobe} from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 import sendRequest from '../components/sendRequest';
 import {MailOutlined, PhoneOutlined, HomeOutlined, InstagramOutlined, LinkedinOutlined} from '@ant-design/icons';
 import "./profile.css"
 import contactInfo from '../../../boston-town/src/assets/images/contactInfo.png';
+import ageIcon from '../../../boston-town/src/assets/images/ageIcon.png';
 
 
 const Profile = () => {
@@ -72,18 +76,54 @@ const Profile = () => {
 					</Title>
 				</div>
 				<Divider />
+
 				<Typography style={{ padding: '0 20px' }}>
 					<Title level={4}>About Me</Title>
 					<Paragraph>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
 						placerat tristique elit, sed maximus nunc posuere nec.
 					</Paragraph>
-					<Title level={4}><img id = "contactInfo" src = {contactInfo}></img>Contact Information</Title>
-					<Paragraph> <MailOutlined className = "profileIcons"/> john@example.com</Paragraph>
-					<Paragraph> <PhoneOutlined className = "profileIcons"/> +1234567890</Paragraph>
-					<Paragraph><InstagramOutlined className = "profileIcons"/>Instagram Link</Paragraph>
-					<Paragraph><LinkedinOutlined className = "profileIcons"/>LinkedIn Link</Paragraph>
-					<Title level={4}> <HomeOutlined className = "profileIcons"/> Address</Title>
+
+					<Row gutter={16}>
+                	<Col span={12}>
+
+					<Paragraph className = "profileRow">  <FontAwesomeIcon icon={faGlobe} className = "profileIcons" ></FontAwesomeIcon> Country: India</Paragraph>
+
+					</Col>
+					<Col span={12}>
+					<Paragraph className = "profileRow"> <img id = "ageIcon" src = {ageIcon} className = "profileIcons"></img>Age: 22</Paragraph>
+
+					</Col>
+					</Row>
+					<Row gutter={16}>
+                	<Col span={12}>
+
+					<Paragraph className = "profileRow"> <FontAwesomeIcon icon={faUserTie} className = "profileIcons" ></FontAwesomeIcon>Profession: India</Paragraph>
+
+					</Col>
+					<Col span={12}>
+					<Paragraph className = "profileRow"> <FontAwesomeIcon icon={faFilePen} className = "profileIcons" ></FontAwesomeIcon> Description: 22</Paragraph>
+
+					</Col>
+					</Row>
+					<Row gutter={16}>
+					<Col span={12}>
+
+					<Paragraph className = "profileRow"><FontAwesomeIcon icon={faBowlFood} className = "profileIcons" ></FontAwesomeIcon> Food Preference: India</Paragraph>
+
+					</Col>
+					<Col span={12}>
+					<Paragraph className = "profileRow"> <FontAwesomeIcon icon={faDog} className = "profileIcons" ></FontAwesomeIcon>Pet Preference: 22</Paragraph>
+
+					</Col>
+					</Row>
+
+					<Title level={4} className = "profileRow"><img id = "contactInfo" src = {contactInfo}></img>Contact Information</Title>
+					<Paragraph className = "profileRow"> <MailOutlined className = "profileIcons"/> john@example.com</Paragraph>
+					<Paragraph className = "profileRow"> <PhoneOutlined className = "profileIcons"/> +1234567890</Paragraph>
+					<Paragraph className = "profileRow"><InstagramOutlined className = "profileIcons"/>Instagram Link</Paragraph>
+					<Paragraph className = "profileRow"><FontAwesomeIcon icon={faLinkedinIn} className = "profileIcons" ></FontAwesomeIcon>LinkedIn Link</Paragraph>				
+					<Title level={4} className = "profileRow"> <HomeOutlined className = "profileIcons"/> Address</Title>
 					<Paragraph>
 						123 Street Name, City, Country, Postal Code
 					</Paragraph>
