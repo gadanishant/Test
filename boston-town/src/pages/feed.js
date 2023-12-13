@@ -1,5 +1,5 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Card, Col, Divider, Row } from "antd";
+import { Card, Col, Row } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Context } from "../components/context";
@@ -18,7 +18,7 @@ const Feed = () => {
             const response = await sendRequest("http://localhost:3000/getAllPosts", {}, "GET", {});
             setTimeout(() => { setLoading(false) }, [1000 * 0.1])
             const data = response.data.description.slice(1);
-            console.log("data => ", data);
+            // console.log("data => ", data);
             setListOfPosts(data)
         } catch (error) {
             console.log("error => ", error);
@@ -27,13 +27,13 @@ const Feed = () => {
 
     useEffect(() => {
         setIsAuthenticated(sessionStorage.getItem("isAuthenticated"));
-        console.log("isAuthenticated => ", isAuthenticated);
+        // console.log("isAuthenticated => ", isAuthenticated);
     }, [sessionStorage.getItem("isAuthenticated")])
 
     useEffect(() => {
         setLoading(true);
         getAllPostsAPI();
-        console.log("user => ", user);
+        // console.log("user => ", user);
     }, [])
 
     return (
@@ -55,7 +55,7 @@ const Feed = () => {
                                                 </Col>
                                                 <Col>
                                                     <Row >
-                                                        <b>  <Link className="username" to="/profile">{post.username}</Link></b>
+                                                        <b>  <Link className="username" to={`/profile/${post.username}`}>{post.username}</Link></b>
                                                     </Row>
                                                     <Row>
                                                         {post.title}
