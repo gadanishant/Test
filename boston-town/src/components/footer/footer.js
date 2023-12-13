@@ -12,15 +12,13 @@ const AppFooter = () => {
             <Row gutter={16} justify="center">
 
                 <Link href="/aboutUs" className="footer-link">About</Link>
-                <Link className="footer-link">Terms of use</Link>
-                <Link className="footer-link">Privacy Policy</Link>
+                <Link href = "./termsOfService"className="footer-link">Terms Of Service</Link>
+                <Link href="./privacypolicy" className="footer-link">Privacy Policy</Link>
+                <Link><FacebookOutlined className="footer-icons" /></Link>
+                <Link><InstagramOutlined className="footer-icons" /></Link>
+                <Link><TwitterOutlined className="footer-icons" /></Link>
 
 
-
-            </Row>
-
-            <Row gutter={16} justify="center">
-                <Link className="footer-link">Do Not Sell or Share my Personal information</Link>
             </Row>
 
             <hr className="horizontal-line" />
@@ -62,12 +60,6 @@ const AppFooter = () => {
                 are members of CREA. Used under license.
             </p>
 
-            </div>
-
-            <div>
-                <Link><FacebookOutlined className="footer-icons" /></Link>
-                <Link><InstagramOutlined className="footer-icons" /></Link>
-                <Link><TwitterOutlined className="footer-icons" /></Link>
             </div>
 
             <img className='footerimg' src={Boston_Town_Footer_Image}></img>
