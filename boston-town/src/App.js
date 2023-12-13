@@ -11,6 +11,8 @@ import Home from './pages/home';
 import Incidents from './pages/incident';
 import Profile from './pages/profile';
 import { ContextProvider } from './components/context';
+import PrivacyPolicy from './pages/privacyPolicy';
+import TermsOfService from './pages/termsOfService';
 
 function App() {
 	return (
@@ -31,6 +33,8 @@ function App() {
 							<Route path="/aboutUs" element={<AboutUs />} />
 							<Route path="/incidents" element={<Incidents />} />
 							<Route path="/apartmentdetails" element={<ApartmentDetails />} />
+							<Route path="/privacypolicy" element={<PrivacyPolicy />} />
+							<Route path="/termsOfService" element={<TermsOfService />} />
 						</Routes>
 						<Footer />
 					</div>
