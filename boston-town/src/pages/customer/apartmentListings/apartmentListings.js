@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Row, Col, Card, Input, Divider, Pagination, Slider, Space } from 'antd';
+import { Row, Col, Card, Input, Divider, Pagination } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import Loader from '../../../components/loader';
 import sendRequest from '../../../components/sendRequest';
 import './apartmentListings.css';
@@ -36,7 +37,14 @@ const ApartmentListings = () => {
 			}
 			: {}; // Return default styles if not selected
 	};
+    const navigate = useNavigate();
 
+    // Click event handler
+    const handleCardClick = (apartment) => {
+        // Navigate to details page with apartment info
+		console.log("apartment => ", apartment);
+        navigate(`/apartmentdetails`, { state: { apartment } });
+    };
 	const getAllpropertyAPI = async () => {
 		try {
 			const response = await sendRequest("http://localhost:3000/property/getAllproperty", {}, "GET", {});
@@ -225,6 +233,7 @@ const ApartmentListings = () => {
 											hoverable
 											// cover={<img alt="apartment" src={apartment.image} />}
 											className="property-card"
+											onClick={() => handleCardClick(apartment)} // Add click event
 										>
 
 											{/* <Card.Meta
