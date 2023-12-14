@@ -51,12 +51,12 @@ const UserSchema = new Schema({
     },
     food_preferences: {
         type: String,
-        enum: ["Vegetarian", "Non-vegetarian"],
+        enum: ["Vegetarian", "Non-vegetarian", "None"],
         required: true
     },
     pet_preferences: {
         type: String,
-        enum: ["Dogs", "Cats"],
+        enum: ["Dogs", "Cats", "None"],
         required: false
     },
     posts: [
