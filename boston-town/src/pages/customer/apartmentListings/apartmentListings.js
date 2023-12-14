@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Row, Col, Card, Input, Divider, Pagination, Slider, Space} from 'antd';
+import { Row, Col, Card, Input, Divider, Pagination, Slider, Space } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../../components/loader';
 import sendRequest from '../../../components/sendRequest';
@@ -130,9 +130,9 @@ const ApartmentListings = () => {
 				<div className="paddingListings">
 					<Row>
 						<Col span={5}>
-							<h2 className='accent_red'>
+							{/* <h2 className='accent_red'>
 								Find the best<br /> apartment
-							</h2>
+							</h2> */}
 						</Col>
 						<Col span={19}>
 							<h1>{filteredProperties.length} Apartments Found</h1>
@@ -141,7 +141,7 @@ const ApartmentListings = () => {
 					<br />
 					<br />
 					<Row gutter={24}>
-						<Col span={5}>
+						<Col className="filter_show"  xs={24} sm={24} md={24} lg={5} xl={5} xxl={5}>
 							<Card>
 								<div>Filter By :</div>
 								<Divider />
@@ -235,7 +235,7 @@ const ApartmentListings = () => {
 								</div>
 							</Card>
 						</Col>
-						<Col span={19}>
+						<Col xs={24} sm={24} md={24} lg={19} xl={19} xxl={19}>
 							<Row gutter={16}>
 								{currentProperties.map((apartment, index) => (
 									<Col key={index} xs={24} sm={12} md={8} lg={8}>

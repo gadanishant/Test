@@ -54,8 +54,8 @@ const Feed = () => {
                         {
                             currentPosts.map((post) => (
                                 <Row gutter={[24, 24]} key={post.id}>
-                                    <Col span={4}></Col>
-                                    <Col xs={6} sm={6} md={6} lg={14} xl={14} xxl={14}>
+                                    <Col  xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
+                                    <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={14}>
                                         <Card className="card">
                                             <Row>
                                                 <Col>
@@ -83,7 +83,7 @@ const Feed = () => {
                                             </Row>
                                         </Card>
                                     </Col>
-                                    <Col span={6}></Col>
+                                    <Col xs={0} sm={0} md={2} lg={6} xl={6} xxl={6}></Col>
                                 </Row>
                             ))
                         }
@@ -109,9 +109,7 @@ const Feed = () => {
                                     Click here to Login
                                 </Button>
                             </Link>
-
                         </Col>
-
                     </Row>
                 </div>
             </>
