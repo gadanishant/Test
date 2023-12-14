@@ -41,11 +41,13 @@ const ApartmentDetails = () => {
         <div className="details_padding">
             <Row gutter={[42, 42]}>
                 <Col span={16}>
-                    <Carousel className="carousel_apt" ref={carouselRef}>
-                        <div >
-
-                        </div>
-                    </Carousel>
+                <Carousel className="carousel_apt">
+      {apartment.images.map((imageUrl, index) => (
+        <div key={index}>
+          <img src={imageUrl} alt={`Image ${index + 1}`} style={{ width: '100%', marginBottom: '10px' }} />
+        </div>
+      ))}
+    </Carousel>
                     <div style={{ textAlign: 'center', marginTop: '10px' }}>
                         <Button onClick={prev} style={{ marginRight: '10px' }}>Previous</Button>
                         <Button onClick={next}>Next</Button>
