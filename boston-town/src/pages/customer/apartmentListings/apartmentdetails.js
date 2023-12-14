@@ -46,10 +46,9 @@ const ApartmentDetails = () => {
                         </div>
                     </Carousel>
                     <div style={{ textAlign: 'center', marginTop: '10px' }}>
-                        {/* Button to go to previous slide */}
                         <Button onClick={prev} style={{ marginRight: '10px' }}>Previous</Button>
-                        {/* Button to go to next slide */}
                         <Button onClick={next}>Next</Button>
+                        <Button>Like</Button>
                     </div>
                 </Col>
                 <Col span={8}>
