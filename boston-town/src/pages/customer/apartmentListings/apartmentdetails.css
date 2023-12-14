@@ -22,3 +22,17 @@
     padding: 10px;
     opacity: 1;
 }
+
+.apartmentContent {
+    text-align: center;
+
+}
+.apartmentRent {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ApartmentCardIcon {
+    margin-left:90px;
+}
+
