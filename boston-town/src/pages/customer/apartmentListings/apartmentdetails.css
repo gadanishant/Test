@@ -25,6 +25,7 @@
 
 .apartmentContent {
     text-align: center;
+    font-size: 20px;
 
 }
 .apartmentRent {
@@ -36,3 +37,9 @@
     margin-left:90px;
 }
 
+
+.apartmentCardHeading {
+    font-size: 20px;
+    text-align:center;
+    margin-bottom: 10px;
+}
