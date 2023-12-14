@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Row, Col, Card, Input, Divider, Pagination } from 'antd';
+import { Row, Col, Card, Input, Divider, Pagination, Slider, Space } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../../components/loader';
 import sendRequest from '../../../components/sendRequest';

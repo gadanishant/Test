@@ -128,3 +128,13 @@
 .top_card{
     border-radius: 20px;
 }
+
+.row_11 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row_21 {
+    margin-top: 20px;
+    text-align: center;
+  }

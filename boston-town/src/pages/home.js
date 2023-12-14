@@ -43,7 +43,7 @@ const Home = () => {
     return (
         <div className="padding_home">
             <Row>
-                <Col className="grey2 finding_apt" xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+                <Col className="grey2 finding_apt" xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
                     <div><b>
                         Find your dream <span className="accent_blue">apartment</span> <br /> and the <span className="accent_blue">missing</span> pieces to <br /> your <span className="accent_blue">roommate puzzle</span> ,<br /> all in one click."</b>
                         <Row gutter={[24, 24]} className="find_button">
@@ -55,16 +55,16 @@ const Home = () => {
                                 </Link>
                             </Col>
                             <Col>
-                            <Link to="/feed">
-                                <Button className="find_rm">
-                                    <h3 > Find Roomates</h3>
-                                </Button>
+                                <Link to="/feed">
+                                    <Button className="find_rm">
+                                        <h3 > Find Roomates</h3>
+                                    </Button>
                                 </Link>
                             </Col>
                         </Row>
                     </div>
                 </Col>
-                <Col xs={12} sm={12} md={12} lg={12} xl={12} xxl={12}>
+                <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
                     <img className="home" src={home}></img>
                 </Col>
 
@@ -73,21 +73,21 @@ const Home = () => {
                 </Col>
             </Row>
             <Row>
-                <Col span={8} justify="center" align="middle">
+                <Col  xs={24} sm={24} md={12} lg={8} xl={8} xxl={8} justify="center" align="middle">
                     <div>
                         <img className="apartment" src={apartment}></img>
                     </div>
                     <br />
                     <b className="font2rem">Find a Apartment</b>
                 </Col>
-                <Col span={8} justify="center" align="middle">
+                <Col xs={24} sm={24} md={12} lg={8} xl={8} xxl={8} justify="center" align="middle">
                     <div>
                         <img className="apartment" src={roomates}></img>
                     </div>
                     <br />
                     <b className="font2rem">Find a Roommate</b>
                 </Col>
-                <Col span={8} justify="center" align="middle">
+                <Col xs={24} sm={24} md={12} lg={8} xl={8} xxl={8} justify="center" align="middle">
                     <div>
                         <img className="apartment" src={maps}></img>
                     </div>
@@ -101,9 +101,9 @@ const Home = () => {
 
             <Row className="row3_color">
                 <Col span={24}>
-                    <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    <Row className="row_11">
                         {currentCards.map((card) => (
-                            <Col span={8}>
+                            <Col xs={24} sm={24} md={12} lg={8} xl={8} xxl={8}>
                                 <Card className="review_card" key={card.id}>
                                     <Meta title={card.title} description={card.description} />
                                 </Card>
@@ -111,7 +111,7 @@ const Home = () => {
                         ))}
                     </Row>
                     <Pagination
-                        style={{ marginTop: '20px', textAlign: 'center' }}
+                        className="row_21"
                         current={currentPage}
                         pageSize={pageSize}
                         total={cards.length}
@@ -119,23 +119,23 @@ const Home = () => {
                     />
                 </Col>
             </Row>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <Row>
-                <Col className="finding_apt" span={12}>
-                    
+                <Col className="finding_apt" xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+
                     <div><b>
-                    Find the <span className="accent_blue">safest</span><br/> area for <br/>accomnodation </b>
+                        Find the <span className="accent_blue">safest</span><br /> area for <br />accomnodation </b>
                     </div>
                 </Col>
-                <Col span={12}>
-                <div>
-                    <img className="home" src={home}></img>
-                </div>
+                <Col  xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+                    <div>
+                        <img className="home" src={home}></img>
+                    </div>
                 </Col>
             </Row>
 
