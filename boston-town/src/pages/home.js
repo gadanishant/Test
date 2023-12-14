@@ -7,6 +7,7 @@ import maps from '../../../boston-town/src/assets/images/maps.png';
 import { Link } from 'react-router-dom';
 
 
+
 import React, { useState } from 'react';
 import { Pagination } from 'antd';
 // import 'antd/dist/antd.css';
@@ -118,6 +119,26 @@ const Home = () => {
                     />
                 </Col>
             </Row>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <Row>
+                <Col className="finding_apt" span={12}>
+                    
+                    <div><b>
+                    Find the <span className="accent_blue">safest</span><br/> area for <br/>accomnodation </b>
+                    </div>
+                </Col>
+                <Col span={12}>
+                <div>
+                    <img className="home" src={home}></img>
+                </div>
+                </Col>
+            </Row>
+
 
         </div>
     );
