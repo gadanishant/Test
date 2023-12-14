@@ -1,5 +1,5 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Card, Col, Pagination, Row } from "antd";
+import { Card, Col, Pagination, Row, Button } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Context } from "../components/context";
@@ -87,8 +87,7 @@ const Feed = () => {
                                 </Row>
                             ))
                         }
-                        {/* Pagination component */}
-                        <div className='pagination'>
+\                        <div className='pagination'>
                             <Pagination
                                 current={currentPage}
                                 total={listOfPosts.length}
@@ -102,7 +101,18 @@ const Feed = () => {
             </>
             : <>
                 <div className='padding_background_feed'>
-                    <p>Kindly login!</p>
+                    <Row gutter={[24,40]} justify="center">
+                        <Col span={24} align="middle">Kindly login!</Col>
+                        <Col spna={24}>
+                            <Link>
+                                <Button>
+                                    Click here to Login
+                                </Button>
+                            </Link>
+
+                        </Col>
+
+                    </Row>
                 </div>
             </>
         )
