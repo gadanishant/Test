@@ -160,11 +160,6 @@ const Profile = () => {
 							<Paragraph className="profileRow"><FontAwesomeIcon icon={faLinkedinIn} className="profileIcons" ></FontAwesomeIcon>{linkedinLink}</Paragraph>
 						</Col>
 					</Row>
-
-					<Title level={4} className="profileRow"> <FontAwesomeIcon className="profileIcons" ></FontAwesomeIcon> My Posts</Title>
-					<Paragraph>
-						{posts}
-					</Paragraph>
 				</Typography>
 			</Card>
 		</div>
