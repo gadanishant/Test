@@ -19,8 +19,15 @@ Features
 
 Getting Started
 ---------------
-* Install the required packages:
-
+* 1. Start the Node server:
+```
+node server.js
+```
+* 2. Enter the React directory:
+```
+cd boston-town
+```
+* 3. Install the required packages and run:
 ```
 npm i
 npm start
