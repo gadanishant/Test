@@ -53,39 +53,53 @@ const ApartmentDetails = () => {
                 </Col>
                 <Col span={8}>
                     <Row gutter={[24, 24]}>
-                        <Col className='rent_card' span={11}>
-                            <div>
-                                Rent
-                            </div>
-                        </Col>
+                    <Col className='rent_card' span={11}>
+                    <div class = "apartmentCardHeading">
+                        Rent
+                    </div>
+                    <div class ="apartmentContent">
+                        <p class = "apartmentRent">$2650</p>/month
+                    </div>
+                    </Col>
                         <Col span={1}></Col>
                         <Col className='rent_card' span={11}>
-                            <div>
+                            <div class = "apartmentCardHeading">
                                 Bedrooms
                             </div>
+                            <img class = "ApartmentCardIcon" src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167139089x172125820032762440/Vectorbed.svg"></img>
+                            <p class = "apartmentContent">3 Bedrooms</p>
                         </Col>
                         
                         <Col className='rent_card' span={11}>
-                            <div>
+                            <div class = "apartmentCardHeading">
                                 Bathrooms
                             </div>
+
+                            <img class = "ApartmentCardIcon" src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167200873x190593201659127420/Group%2070bath.svg"></img>
+                            <p class = "apartmentContent">1 Bathroom</p>
                         </Col>
                         <Col span={1}></Col>
                         <Col className='rent_card' span={11}>
-                            <div>
+                            <div class = "apartmentCardHeading">
                                 Area
                             </div>
+                            <img class = "ApartmentCardIcon" src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167207372x370943336758121400/Group%2081area.svg"></img>
+                            <p class = "apartmentContent">1000 Sq Ft</p>
                         </Col>
                         <Col className='rent_card' span={11}>
-                            <div>
+                            <div class = "apartmentCardHeading">
                                 Move - In
                             </div>
+                            <img class = "ApartmentCardIcon"src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167222340x313042430337722160/Group%20125movein.svg"></img>
+                            <p class = "apartmentContent">12th May 2024</p>
                         </Col>
                         <Col span={1}></Col>
                         <Col className='rent_card' span={11}>
-                            <div>
+                            <div class = "apartmentCardHeading">
                                Laundary
                             </div>
+                            <img class = "ApartmentCardIcon" src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167259642x229271827691618800/washing-machine%201laundry.svg"></img>
+                            <p class = "apartmentContent">Available</p>
                         </Col>
                     </Row>
                 </Col>
