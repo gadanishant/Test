@@ -1,6 +1,6 @@
 import './apartmentdetails.css';
 import React from 'react';
-import { Carousel, Row, Col, Button, Card } from 'antd'; // Import Button from antd
+import { Carousel, Row, Col, Button, Card, Divider} from 'antd'; // Import Button from antd
 import logo from '../../../../src/assets/images/logo4.png';
 import pic1 from '../../../../src/assets/images/pic1.png';
 import pic2 from '../../../../src/assets/images/pic2.png';
@@ -108,15 +108,22 @@ const ApartmentDetails = () => {
 
 
             <Card className = "apartmentDetailDescription">
-            <h2>Title: {apartment.title}</h2>
-            <h2>Address: {apartment.address}</h2>
-            <h2>Description: {apartment.description}</h2>
-            <h2>Facilities: {apartment.facilities}</h2>
-            <h2>Floor: {apartment.floor}</h2>
-            <h2>Year Built In: {apartment.year_built}</h2>
-            <h2>
-                Remodeled: {apartment.year_remodeled}
-            </h2>
+            <h3>Title: </h3>
+            <p>{apartment.title}</p>
+            <Divider/>
+            <h3>Address: </h3><p>{apartment.address}</p>
+            <Divider/>
+            <h3>Description: </h3><p>{apartment.description}</p>
+            <Divider/>
+            <h3>Facilities: </h3><p>{apartment.facilities}</p>
+            <Divider/>
+            <h3>Floor: </h3><p>{apartment.floor}</p>
+            <Divider/>
+            <h3>Year Built In: </h3><p>{apartment.year_built}</p>
+            <Divider/>
+            <h3>
+                Remodeled: </h3><p>{apartment.year_remodeled}
+            </p>
             </Card>
         </div>
     );
