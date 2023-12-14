@@ -6,6 +6,7 @@ import { Context } from "../components/context";
 import Loader from "../components/loader";
 import sendRequest from "../components/sendRequest";
 import "./feed.css";
+import boys2 from "../../src/assets/images/boystalking.png"
 
 const Feed = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("isAuthenticated"));
@@ -51,12 +52,14 @@ const Feed = () => {
             ? <>
                 {loading ? <Loader /> :
                     <div className='padding_background_feed'>
-                        {
-                            currentPosts.map((post) => (
-                                <Row gutter={[24, 24]} key={post.id}>
-                                    <Col  xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
-                                    <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={14}>
-                                        <Card className="card">
+                            <h1>Feed</h1>
+                        <Row gutter={[24, 24]} >
+                            <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
+
+                            <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={14}>
+                                {
+                                    currentPosts.map((post) => (
+                                        <Card key={post.id} className="card">
                                             <Row>
                                                 <Col>
                                                     <UserOutlined />
@@ -82,12 +85,17 @@ const Feed = () => {
                                                 {post.description}
                                             </Row>
                                         </Card>
-                                    </Col>
-                                    <Col xs={0} sm={0} md={2} lg={6} xl={6} xxl={6}></Col>
-                                </Row>
-                            ))
-                        }
-\                        <div className='pagination'>
+                                    ))
+                                }
+                            </Col>
+
+                            <Col xs={0} sm={0} md={2} lg={6} xl={6} xxl={6}>
+
+                                <img className="boys2" src={boys2} />
+                            </Col>
+                        </Row>
+
+                        <div className='pagination'>
                             <Pagination
                                 current={currentPage}
                                 total={listOfPosts.length}
@@ -101,7 +109,7 @@ const Feed = () => {
             </>
             : <>
                 <div className='padding_background_feed'>
-                    <Row gutter={[24,40]} justify="center">
+                    <Row gutter={[24, 40]} justify="center">
                         <Col span={24} align="middle">Kindly login!</Col>
                         <Col spna={24}>
                             <Link>

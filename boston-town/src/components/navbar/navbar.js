@@ -21,33 +21,12 @@ function getItem(label, key, icon, children, type) {
         type,
     };
 }
-const items = [
-    getItem(
-        <> <h2>
-            <Link to="/" className='navtabs'> <span className='underline'>Home</span></Link>
-        </h2></>
-    ),
-    getItem(
-        <h2>
-        <Link to="/feed" className='navtabs'><span className='underline'>Feed</span></Link>
-    </h2>
-    ),
-    getItem(
-        <h2>
-        <Link to="/listing" className='navtabs'><span className='underline'>Listing</span></Link>
-    </h2>
-    ),
-    getItem(
-        <h2>
-        <Link to="/incidents" className='navtabs'><span className='underline'>Incidents</span></Link>
-    </h2>
-    ),
-    getItem(
-        <h2> <Link to="/login" className='navtabs'>login</Link> </h2>   
-    )
-];
+
+
 
 const Navbar = () => {
+
+   
 
     const [isAuthenticated, setIsAuthenticated] = useState("false");
     const { user, setUser } = useContext(Context);
@@ -63,7 +42,7 @@ const Navbar = () => {
         const status = sessionStorage.getItem("isAuthenticated");
         console.log("status => ", status);
         setIsAuthenticated(status)
-    }, [sessionStorage.getItem("isAuthenticated"), user])
+    }, [sessionStorage.getItem("isAuthenticated")])
 
     console.log("isAuthenticated => ", isAuthenticated);
 
@@ -71,6 +50,34 @@ const Navbar = () => {
     const toggleCollapsed = () => {
         setCollapsed(!collapsed);
     };
+
+    const items = [
+        getItem(
+            <> <h2>
+                <Link to="/" className='navtabs'> <span className='underline'>Home</span></Link>
+            </h2></>
+        ),
+        getItem(
+            <h2>
+            <Link to="/feed" className='navtabs'><span className='underline'>Feed</span></Link>
+        </h2>
+        ),
+        getItem(
+            <h2>
+            <Link to="/listing" className='navtabs'><span className='underline'>Listing</span></Link>
+        </h2>
+        ),
+        getItem(
+            <h2>
+            <Link to="/incidents" className='navtabs'><span className='underline'>Incidents</span></Link>
+        </h2>
+        ),
+        getItem(
+            <h2>
+            <Link to="/login" onClick={logout} className='navtabs'><span className='underline'>Logout</span></Link>
+        </h2>
+        )
+    ];
 
     return (
         <div className='navposition'>
@@ -111,15 +118,15 @@ const Navbar = () => {
                             </Col>
                         </Row>
                         : <Row className="background margin_auto">
-                            <Col align='middle' xs={2} sm={4} md={6} lg={3} xl={3} xxl={3}>
+                            <Col align='middle' xs={2} sm={4} md={6} lg={6} xl={6} xxl={6}>
                                 <h2>
                                     <Link to="/" className='navtabs'> <span className='underline'>Home</span></Link>
                                 </h2>
                             </Col>
-                            <Col align='middle' xs={2} sm={4} md={6} lg={5} xl={5} xxl={5}>
+                            <Col align='middle' xs={2} sm={4} md={6} lg={12} xl={12} xxl={12}>
                                 <Link to="/"> <img className="nav_logo" src={logo} alt="" /></Link>
                             </Col>
-                            <Col align='middle' xs={2} sm={4} md={6} lg={3} xl={3} xxl={3}>
+                            <Col align='middle' xs={2} sm={4} md={6} lg={6} xl={6} xxl={6}>
                                 <h2> <Link to="/login" className='navtabs'>login</Link> </h2>
                             </Col>
                         </Row>

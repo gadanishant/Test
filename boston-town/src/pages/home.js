@@ -131,10 +131,17 @@ const Home = () => {
                     <div><b>
                         Find the <span className="accent_blue">safest</span><br /> area for <br />accomnodation </b>
                     </div>
+                    <br/>
+                    <br/>
+                    <div>
+                        <Link to="/incidents">
+                        <Button className="find_apt"> Find here</Button>
+                        </Link>
+                    </div>
                 </Col>
                 <Col  xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
                     <div>
-                        <img className="home" src={home}></img>
+                        <img className="home" src={maps}></img>
                     </div>
                 </Col>
             </Row>
