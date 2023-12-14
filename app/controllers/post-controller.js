@@ -1,5 +1,6 @@
 import * as postService from "../services/post-service.js";
 import { setResponse, setErrorResponse } from "./response-handler.js";
+import PostModel from "../models/post.js";
 
 export const find = async (req, res) => {
     console.log("post-controller: find");
@@ -57,3 +58,17 @@ export const remove = async (req, res) => {
         setErrorResponse(err, res);
     }
 }
+
+export const findById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const post = await PostModel.findById(id).exec();
+        if (!post) {
+            res.status(404).send('Post not found');
+        } else {
+            setResponse(post, res);
+        }
+    } catch (error) {
+        setErrorResponse(error, res);
+    }
+};

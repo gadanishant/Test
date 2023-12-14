@@ -70,6 +70,18 @@ const ApartmentListings = () => {
 				<Loader />
 			) : (
 				<div className="paddingListings">
+					<Row>
+						<Col span={5}>
+							<h2 className='accent_red'>
+								Find the best<br/> apartment 
+							</h2>
+						</Col>
+						<Col span={19}>
+						<h1>{filteredProperties.length} Apartments Found</h1>
+						</Col>
+					</Row>
+					<br/>
+					<br/>
 					<Row gutter={24}>
 						<Col span={5}>
 							<Card>
@@ -100,7 +112,6 @@ const ApartmentListings = () => {
 							</Card>
 						</Col>
 						<Col span={19}>
-							<h1>{filteredProperties.length} Apartments Found</h1>
 							<Row gutter={16}>
 								{currentProperties.map((apartment, index) => (
 									<Col key={index} xs={24} sm={12} md={8} lg={6}>
@@ -109,15 +120,16 @@ const ApartmentListings = () => {
 											cover={<img alt="apartment" src={apartment.image} />}
 											className="property-card"
 										>
+											<div style={{ marginTop: '16px' }}>
+												<b><h2>${apartment.price} / mo</h2></b>
+											</div>
 											<Card.Meta
 												title={apartment.title}
 												description={apartment.description}
 											/>
-											<div style={{ marginTop: '16px' }}>
-												<p>{apartment.price}</p>
-											</div>
+											
 											<div>Zip Code - {apartment.zip_code}</div>
-											<div>Neighborhood - {apartment.neighborhood}</div>
+											<div> {apartment.neighborhood}</div>
 										</Card>
 									</Col>
 								))}

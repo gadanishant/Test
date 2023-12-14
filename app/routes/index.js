@@ -19,6 +19,7 @@ export default (app) => {
     app.use('/getAllPosts', postRouter);
     app.use('/updatePost', postRouter);
     app.use('/deletePost', postRouter);
+    app.use('/getPost', postRouter);
     
     app.use('/authenticateUser', authenticationRouter);
     
@@ -31,6 +32,7 @@ export default (app) => {
     app.use('/addNewIncident', incidentRouter);
     app.use('/updateIncidentDetails', incidentRouter);
     app.use('/deleteIncident', incidentRouter);
+    app.use('/getIncident', incidentRouter);
 
     app.use('/chat', chatRouter);
 };

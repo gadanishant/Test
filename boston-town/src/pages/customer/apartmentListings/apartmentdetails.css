@@ -1,3 +1,45 @@
-.details_padding{
+.details_padding {
     padding: 9rem 5rem 5rem 5rem;
+}
+
+
+.ant-carousel .slick-slider .slick-list {
+    border-radius: 20px;
+    box-shadow: rgb(230, 230, 230) 0px 2px 8px 2px;
+}
+
+.images {
+    width: -webkit-fill-available;
+    height: 30rem;
+}
+
+.rent_card{
+    height: 8rem;
+    justify-content: center;
+    overflow: visible;
+    border-radius: 20px;
+    box-shadow: rgb(230, 230, 230) 0px 2px 8px 2px;
+    padding: 10px;
+    opacity: 1;
+}
+
+.apartmentContent {
+    text-align: center;
+    font-size: 20px;
+
+}
+.apartmentRent {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ApartmentCardIcon {
+    margin-left:90px;
+}
+
+
+.apartmentCardHeading {
+    font-size: 20px;
+    text-align:center;
+    margin-bottom: 10px;
 }

@@ -1,3 +1,4 @@
+import IncidentModel from "../models/incident.js";
 import * as incidentService from "../services/incident-service.js";
 import { setResponse, setErrorResponse } from "./response-handler.js";
 
@@ -72,3 +73,17 @@ export const remove = async (req, res) => {
         setErrorResponse(err, res);
     }
 }
+
+export const findById = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const incident = await IncidentModel.findById(id).exec();
+        if (!incident) {
+            res.status(404).send('Incident not found');
+        } else {
+            setResponse(incident, res);
+        }
+    } catch (error) {
+        setErrorResponse(error, res);
+    }
+};
