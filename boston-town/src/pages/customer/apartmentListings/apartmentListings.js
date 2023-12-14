@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Row, Col, Card, Input, Divider, Pagination } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import Loader from '../../../components/loader';
 import sendRequest from '../../../components/sendRequest';
 import './apartmentListings.css';
@@ -12,7 +13,14 @@ const ApartmentListings = () => {
 	const [selectedNeighborhoods, setSelectedNeighborhoods] = useState([]);
 	const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("isAuthenticated"));
 	const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
+    // Click event handler
+    const handleCardClick = (apartment) => {
+        // Navigate to details page with apartment info
+		console.log("apartment => ", apartment);
+        navigate(`/apartmentdetails`, { state: { apartment } });
+    };
 	const getAllpropertyAPI = async () => {
 		try {
 			const response = await sendRequest("http://localhost:3000/property/getAllproperty", {}, "GET", {});
@@ -119,6 +127,7 @@ const ApartmentListings = () => {
 											hoverable
 											cover={<img alt="apartment" src={apartment.image} />}
 											className="property-card"
+											onClick={() => handleCardClick(apartment)} // Add click event
 										>
 											<div style={{ marginTop: '16px' }}>
 												<b><h2>${apartment.price} / mo</h2></b>
