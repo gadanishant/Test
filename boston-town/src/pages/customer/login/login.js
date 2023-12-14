@@ -1,9 +1,10 @@
-import { Button, Card, Form, Input, Row } from 'antd';
+import { Button, Card, Form, Input, Modal, Row } from 'antd';
 import { useContext, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
 import "./login.css"
 import { Context } from '../../../components/context';
 import { Navigate } from 'react-router-dom';
+import Success from '../../../components/modals/success';
 
 // Inside your component's logic, after successful authentication
 
@@ -13,8 +14,21 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const { user, setUser } = useContext(Context);
+    const [showModal, setShowModal] = useState(false);
 
-    const logout = 1000 * 60 * 2;
+    const logout = 1000 * 60 * 15;
+
+    const getUserDetailsAPI = async () => {
+        try {
+            const response = await sendRequest(`http://localhost:3000/getUserDetails?username=${username}`, {}, "GET", {})
+            const data = response.data.description
+            console.log("getUserDetailsAPI: response => ", data);
+
+            return data;
+        } catch (error) {
+            console.log("error => ", error);
+        }
+    }
 
     const authenticateUserAPI = async () => {
         try {
@@ -29,14 +43,36 @@ const Login = () => {
             // console.log("Successfully logged in!");
             // alert("Successfully logged in!")
 
-            setUser({
-                ...user,
-                username: username,
-                password: password,
-                userId: userId
-            })
+            const data = getUserDetailsAPI();
+            console.log("authenticateUserAPI: data => ", data);
 
-            sessionStorage.setItem("isAuthenticated", "true");
+            setShowModal(true);
+            setTimeout(() => {
+                setShowModal(false)
+
+                setUser({
+                    ...user,
+                    username: username,
+                    password: password,
+                    userId: userId,        
+                    social_media: data.social_media,
+                    firstname: data.firstname,
+                    lastname: data.lastname,
+                    age: data.age,
+                    country: data.country,
+                    mobile: data.mobile,
+                    email: data.email,
+                    profession: data.profession,
+                    description: data.description,
+                    food_preferences: data.food_preferences,
+                    pet_preferences: data.pet_preferences,
+                    posts: data.posts,
+                    incidents: data.incidents,
+                })
+
+                sessionStorage.setItem("isAuthenticated", "true");
+            }, [1000 * 2])
+
 
             setTimeout(() => {
                 console.log("setTimeout");
@@ -67,7 +103,6 @@ const Login = () => {
         }
     };
 
-
     const onChangeUsername = (e) => {
         setUsername(e.target.value);
     }
@@ -77,12 +112,24 @@ const Login = () => {
     }
 
     if (sessionStorage.getItem("isAuthenticated") === "true") {
-        return <Navigate to="/feed" />;
+        return <Navigate to="/" />;
     }
 
     return (
         <>
+            <Modal
+                className="successModal"
+                title="Successful Login"
+                open={showModal}
+                // onOk={handleAddIncidentSubmit}
+                onCancel={() => setShowModal(false)}
+                closable={false}
+                footer={null}
+            >
+                <p>Welcome</p>
+            </Modal>
             <div className="centered-card-login-container">
+                <Success />
                 <Card className="loginCard">
                     <Form>
                         <Form.Item
@@ -126,9 +173,6 @@ const Login = () => {
                     </Form>
                 </Card>
             </div>
-
-
-
         </>
 
     );

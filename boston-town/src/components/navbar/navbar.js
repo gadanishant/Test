@@ -63,7 +63,7 @@ const Navbar = () => {
         const status = sessionStorage.getItem("isAuthenticated");
         console.log("status => ", status);
         setIsAuthenticated(status)
-    }, [sessionStorage.getItem("isAuthenticated")])
+    }, [sessionStorage.getItem("isAuthenticated"), user])
 
     console.log("isAuthenticated => ", isAuthenticated);
 

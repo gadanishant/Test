@@ -15,6 +15,9 @@ const ApartmentListings = () => {
 	const [loading, setLoading] = useState(true);
 	const [disabled, setDisabled] = useState(false);
 	const [bedSelected, setBedSelected] = useState([]);
+	const [bathSelected, setBathSelected] = useState([]);
+    const [rentRange, setRentRange] = useState([0, 5000]);
+
 
 	const handleSelect = (number) => {
 		const isSelected = bedSelected.includes(number);
@@ -29,22 +32,43 @@ const ApartmentListings = () => {
 		setBedSelected(updatedSelection);
 	};
 
-	const getCircleStyle = (number) => {
-		return bedSelected.includes(number)
-			? {
-				backgroundColor: 'blue',
-				color: 'white',
-			}
-			: {}; // Return default styles if not selected
-	};
-    const navigate = useNavigate();
+	const handleBathSelect = (number) => {
+        const isSelected = bathSelected.includes(number);
+        let updatedSelection = isSelected ? bathSelected.filter(n => n !== number) : [...bathSelected, number];
+        setBathSelected(updatedSelection);
+    };
+
+
+	const getCircleStyle = (number, type) => {
+        const isSelected = type === 'bed' ? bedSelected.includes(number) : bathSelected.includes(number);
+        return isSelected
+            ? {
+                backgroundColor: 'rgb(28, 138, 221)',
+                color: '#FFFFFF',
+                border: '1px solid #FFFFFF',
+            }
+            : {};
+    };
+
+	const navigate = useNavigate();
+
+	const filteredProperties = useMemo(() => {
+        return listOfProperties.filter(property => {
+            const zipCodeMatch = zipCodeFilter.trim() === '' || property.zip_code.startsWith(zipCodeFilter.trim());
+            const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(property.neighborhood);
+            const bedroomMatch = bedSelected.length === 0 || bedSelected.includes(property.bedrooms);
+            const bathroomMatch = bathSelected.length === 0 || bathSelected.includes(property.bathrooms);
+            const rentMatch = property.price >= rentRange[0] && property.price <= rentRange[1];
+            return zipCodeMatch && neighborhoodMatch && bedroomMatch && bathroomMatch && rentMatch;
+        });
+    }, [listOfProperties, zipCodeFilter, selectedNeighborhoods, bedSelected, bathSelected, rentRange]);
 
     // Click event handler
     const handleCardClick = (apartment) => {
         // Navigate to details page with apartment info
-		console.log("apartment => ", apartment);
         navigate(`/apartmentdetails`, { state: { apartment } });
     };
+
 	const getAllpropertyAPI = async () => {
 		try {
 			const response = await sendRequest("http://localhost:3000/property/getAllproperty", {}, "GET", {});
@@ -56,17 +80,13 @@ const ApartmentListings = () => {
 		}
 	};
 
+	const onRentRangeChange = (range) => {
+        setRentRange(range);
+    };
+
 	useEffect(() => {
 		getAllpropertyAPI();
 	}, []);
-
-	const filteredProperties = useMemo(() => {
-		return listOfProperties.filter(property => {
-			const zipCodeMatch = zipCodeFilter.trim() === '' || property.zip_code.startsWith(zipCodeFilter.trim());
-			const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(property.neighborhood);
-			return zipCodeMatch && neighborhoodMatch;
-		});
-	}, [listOfProperties, zipCodeFilter, selectedNeighborhoods]);
 
 	const indexOfLastProperty = currentPage * pageSize;
 	const indexOfFirstProperty = indexOfLastProperty - pageSize;
@@ -123,7 +143,7 @@ const ApartmentListings = () => {
 					<Row gutter={24}>
 						<Col className="filter_show"  xs={24} sm={24} md={24} lg={5} xl={5} xxl={5}>
 							<Card>
-								<div>Filter By -</div>
+								<div>Filter By :</div>
 								<Divider />
 								<div>
 									No of Bedrooms
@@ -137,7 +157,7 @@ const ApartmentListings = () => {
 													align="middle"
 													span={7}
 													className="bedroom_circle"
-													style={getCircleStyle(number)}
+													style={getCircleStyle(number, 'bed')}
 													onClick={() => handleSelect(number)}
 												>
 													{number}
@@ -146,7 +166,6 @@ const ApartmentListings = () => {
 											</React.Fragment>
 										))}
 									</Row>
-
 								</div>
 								<br />
 								<br />
@@ -156,31 +175,21 @@ const ApartmentListings = () => {
 								<br />
 								<div>
 									<Row gutter={[12, 12]}>
-										<Col align="middle" span={7} className="bedroom_circle">
-											1
-										</Col>
-										<Col span={1}>
-										</Col>
-										<Col align="middle" span={7} className="bedroom_circle">
-											2
-										</Col>
-										<Col span={1}>
-										</Col>
-										<Col align="middle" span={7} className="bedroom_circle">
-											3
-										</Col>
-										<Col align="middle" span={7} className="bedroom_circle">
-											4
-										</Col>
-										<Col span={1}>
-										</Col>
-										<Col align="middle" span={7} className="bedroom_circle">
-											5
-										</Col>
-
-
+										{[1, 2, 3, 4, 5].map((number) => (
+											<React.Fragment key={number}>
+												<Col
+													align="middle"
+													span={7}
+													className="bedroom_circle"
+													style={getCircleStyle(number, 'bath')}
+													onClick={() => handleBathSelect(number)}
+												>
+													{number}
+												</Col>
+												{number !== 5 && <Col span={1} />}
+											</React.Fragment>
+										))}
 									</Row>
-
 								</div>
 								<br />
 								<br />
@@ -210,16 +219,17 @@ const ApartmentListings = () => {
 									</Row>
 								</div>
 								<br />
-
 								<div>
-									Maximum Rent
+									Rent Range:
 								</div>
-
 								<div>
-									<Slider min={0}
+									<Slider
+										min={0}
 										range
-										defaultValue={[0, 2000]}
-										max={5000} disabled={disabled}
+										value={rentRange}
+										max={5000}
+										disabled={disabled}
+										onChange={onRentRangeChange}
 										step={100}
 									/>
 								</div>
@@ -231,16 +241,10 @@ const ApartmentListings = () => {
 									<Col key={index} xs={24} sm={12} md={8} lg={8}>
 										<Card
 											hoverable
-											// cover={<img alt="apartment" src={apartment.image} />}
 											className="property-card"
-											onClick={() => handleCardClick(apartment)} // Add click event
+											onClick={() => handleCardClick(apartment)}
 										>
-
-											{/* <Card.Meta
-												title={apartment.title}
-												description={apartment.description}
-											/> */}
-											<img className='listing_home_img' src={apartment.images[1]}></img>
+											<img className='listing_home_img' src={apartment.images[1]} alt='apartment'></img>
 											<div style={{ marginTop: '16px' }}>
 												<b><h2>${apartment.price} / mo</h2></b>
 											</div>
@@ -249,7 +253,7 @@ const ApartmentListings = () => {
 											</div>
 											<br />
 											<Row gutter={[24, 24]}>
-												<Col align="center" span={6}>
+											<Col align="center" span={6}>
 													<Space>
 														<img className='icon' src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167139089x172125820032762440/Vectorbed.svg"></img> {apartment.bedrooms}
 													</Space>
@@ -265,7 +269,6 @@ const ApartmentListings = () => {
 													<Space>
 														<img className='icon' src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167207372x370943336758121400/Group%2081area.svg"></img> {apartment.area}
 													</Space>
-
 												</Col>
 											</Row>
 											<div className='apt_desc'>
@@ -294,6 +297,7 @@ const ApartmentListings = () => {
 			</div>
 		)
 	);
+	
 };
 
 export default ApartmentListings;
