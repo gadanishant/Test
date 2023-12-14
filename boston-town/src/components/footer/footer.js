@@ -14,6 +14,7 @@ const AppFooter = () => {
                 <Link href="/aboutUs" className="footer-link">About</Link>
                 <Link href = "./termsOfService"className="footer-link">Terms Of Service</Link>
                 <Link href="./privacypolicy" className="footer-link">Privacy Policy</Link>
+                <Link href="./" className="footer-link">Add a Review</Link>
                 <Link><FacebookOutlined className="footer-icons" /></Link>
                 <Link><InstagramOutlined className="footer-icons" /></Link>
                 <Link><TwitterOutlined className="footer-icons" /></Link>
