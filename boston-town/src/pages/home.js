@@ -130,7 +130,7 @@ const Home = () => {
                 <Col className="finding_apt" xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
 
                     <div><b>
-                        Find the <span className="accent_blue">safest</span><br /> area for <br />accomnodation </b>
+                        Find the <span className="accent_blue">safest</span><br /> area for <br />accommodation </b>
                     </div>
                     <br/>
                     <br/>
