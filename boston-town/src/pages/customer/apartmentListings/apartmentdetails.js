@@ -49,8 +49,8 @@ const ApartmentDetails = () => {
       ))}
     </Carousel>
                     <div style={{ textAlign: 'center', marginTop: '10px' }}>
-                        <Button onClick={prev} style={{ marginRight: '10px' }}>Previous</Button>
-                        <Button onClick={next}>Next</Button>
+                        {/* <Button onClick={prev} style={{ marginRight: '10px' }}>Previous</Button>
+                        <Button onClick={next}>Next</Button> */}
                         <Button className = "likeButton">Like</Button>
                     </div>
                 </Col>
