@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Row, Col, Card, Input, Divider, Pagination } from 'antd';
+import { Row, Col, Card, Input, Divider, Pagination, Slider, Space } from 'antd';
 import Loader from '../../../components/loader';
 import sendRequest from '../../../components/sendRequest';
 import './apartmentListings.css';
@@ -12,6 +12,22 @@ const ApartmentListings = () => {
 	const [selectedNeighborhoods, setSelectedNeighborhoods] = useState([]);
 	const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("isAuthenticated"));
 	const [loading, setLoading] = useState(true);
+	const [disabled, setDisabled] = useState(false);
+	const [bathSelected, setBathSelected] = useState(null);
+
+	const handleSelect = (number) => {
+		setBathSelected(number);
+	};
+
+	const getCircleStyle = (number) => {
+		if (bathSelected === number) {
+			return {
+				backgroundColor: 'blue',
+				color: 'white',
+			};
+		}
+		return {}; // Return default styles if not selected
+	};
 
 	const getAllpropertyAPI = async () => {
 		try {
@@ -30,11 +46,11 @@ const ApartmentListings = () => {
 
 	const filteredProperties = useMemo(() => {
 		return listOfProperties.filter(property => {
-		  const zipCodeMatch = zipCodeFilter.trim() === '' || property.zip_code.startsWith(zipCodeFilter.trim());
-		  const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(property.neighborhood);
-		  return zipCodeMatch && neighborhoodMatch;
+			const zipCodeMatch = zipCodeFilter.trim() === '' || property.zip_code.startsWith(zipCodeFilter.trim());
+			const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(property.neighborhood);
+			return zipCodeMatch && neighborhoodMatch;
 		});
-	  }, [listOfProperties, zipCodeFilter, selectedNeighborhoods]);	  
+	}, [listOfProperties, zipCodeFilter, selectedNeighborhoods]);
 
 	const indexOfLastProperty = currentPage * pageSize;
 	const indexOfFirstProperty = indexOfLastProperty - pageSize;
@@ -64,6 +80,12 @@ const ApartmentListings = () => {
 		setIsAuthenticated(sessionStorage.getItem("isAuthenticated"));
 	}, [sessionStorage.getItem("isAuthenticated")]);
 
+	const onChange = (checked) => {
+		setDisabled(checked);
+	};
+
+	console.log("testing", { listOfProperties })
+
 	return (
 		isAuthenticated === "true" ? (
 			loading ? (
@@ -73,28 +95,99 @@ const ApartmentListings = () => {
 					<Row>
 						<Col span={5}>
 							<h2 className='accent_red'>
-								Find the best<br/> apartment 
+								Find the best<br /> apartment
 							</h2>
 						</Col>
 						<Col span={19}>
-						<h1>{filteredProperties.length} Apartments Found</h1>
+							<h1>{filteredProperties.length} Apartments Found</h1>
 						</Col>
 					</Row>
-					<br/>
-					<br/>
+					<br />
+					<br />
 					<Row gutter={24}>
 						<Col span={5}>
 							<Card>
 								<div>Filter By -</div>
 								<Divider />
 								<div>
+									No of Bedrooms
+								</div>
+								<br />
+								<div>
+									<Row gutter={[12, 12]}>
+										<Col align="middle" span={7} className="bedroom_circle">
+											1
+										</Col>
+										<Col span={1}>
+										</Col>
+										<Col align="middle" span={7} className="bedroom_circle">
+											2
+										</Col>
+										<Col span={1}>
+										</Col>
+										<Col align="middle" span={7} className="bedroom_circle">
+											3
+										</Col>
+										<Col align="middle" span={7} className="bedroom_circle">
+											4
+										</Col>
+										<Col span={1}>
+										</Col>
+										<Col align="middle" span={7} className="bedroom_circle">
+											5
+										</Col>
+
+
+									</Row>
+
+								</div>
+								<br />
+								<br />
+								<div>
+									No of Bathrooms
+								</div>
+								<br />
+								<div>
+									<Row gutter={[12, 12]}>
+										<Col align="middle" span={7} className="bedroom_circle">
+											1
+										</Col>
+										<Col span={1}>
+										</Col>
+										<Col align="middle" span={7} className="bedroom_circle">
+											2
+										</Col>
+										<Col span={1}>
+										</Col>
+										<Col align="middle" span={7} className="bedroom_circle">
+											3
+										</Col>
+										<Col align="middle" span={7} className="bedroom_circle">
+											4
+										</Col>
+										<Col span={1}>
+										</Col>
+										<Col align="middle" span={7} className="bedroom_circle">
+											5
+										</Col>
+
+
+									</Row>
+
+								</div>
+								<br />
+								<br />
+								<div>
 									<div>Zipcode</div>
+									<br />
 									<Input
 										value={zipCodeFilter}
 										onChange={(e) => setZipCodeFilter(e.target.value)}
 									/>
 								</div>
-								<div style={{ marginTop: '20px' }}>
+								<br />
+								<br />
+								<div>
 									<div>Neighborhood</div>
 									<Row gutter={16}>
 										{Array.from(uniqueNeighborhoods).map((neighborhood, index) => (
@@ -109,27 +202,69 @@ const ApartmentListings = () => {
 										))}
 									</Row>
 								</div>
+								<br />
+
+								<div>
+									Maximum Rent
+								</div>
+
+								<div>
+									<Slider min={0}
+										range
+										defaultValue={[0, 2000]}
+										max={5000} disabled={disabled}
+										step={100}
+									/>
+								</div>
 							</Card>
 						</Col>
 						<Col span={19}>
 							<Row gutter={16}>
 								{currentProperties.map((apartment, index) => (
-									<Col key={index} xs={24} sm={12} md={8} lg={6}>
+									<Col key={index} xs={24} sm={12} md={8} lg={8}>
 										<Card
 											hoverable
-											cover={<img alt="apartment" src={apartment.image} />}
+											// cover={<img alt="apartment" src={apartment.image} />}
 											className="property-card"
 										>
+
+											{/* <Card.Meta
+												title={apartment.title}
+												description={apartment.description}
+											/> */}
+											<img className='listing_home_img' src={apartment.images[1]}></img>
 											<div style={{ marginTop: '16px' }}>
 												<b><h2>${apartment.price} / mo</h2></b>
 											</div>
-											<Card.Meta
-												title={apartment.title}
-												description={apartment.description}
-											/>
-											
+											<div>
+												<h3><b>{apartment.title}</b></h3>
+											</div>
+											<br />
+											<Row gutter={[24, 24]}>
+												<Col align="center" span={6}>
+													<Space>
+														<img className='icon' src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167139089x172125820032762440/Vectorbed.svg"></img> {apartment.bedrooms}
+													</Space>
+
+												</Col>
+												<Col align="center" span={6}>
+													<Space>
+														<img className='icon' src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167200873x190593201659127420/Group%2070bath.svg"></img> {apartment.bathrooms}
+													</Space>
+
+												</Col>
+												<Col align="center" span={12}>
+													<Space>
+														<img className='icon' src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167207372x370943336758121400/Group%2081area.svg"></img> {apartment.area}
+													</Space>
+
+												</Col>
+											</Row>
+											<div className='apt_desc'>
+												{apartment.description.split('-')[1]}
+											</div>
 											<div>Zip Code - {apartment.zip_code}</div>
-											<div> {apartment.neighborhood}</div>
+											<div> Neighborhood -  {apartment.neighborhood}</div>
 										</Card>
 									</Col>
 								))}
