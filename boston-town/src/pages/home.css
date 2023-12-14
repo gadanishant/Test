@@ -2,6 +2,10 @@
     padding: 9rem 5rem 5rem 5rem;
 }
 
+.home{
+    width: -webkit-fill-available;
+}
+
 
 .accent_blue{
     color: #68a2d5;

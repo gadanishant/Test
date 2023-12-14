@@ -18,17 +18,18 @@ const { Meta } = Card;
 
 const Home = () => {
     const [cards, setCards] = useState([
-        { id: 1, title: 'Card 1', description: 'Description for card 1' },
-        { id: 2, title: 'Card 2', description: 'Description for card 2' },
-        { id: 3, title: 'Card 3', description: 'Description for card 2' },
-        { id: 4, title: 'Card 4', description: 'Description for card 2' },
-        { id: 5, title: 'Card 5', description: 'Description for card 2' },
-        { id: 6, title: 'Card 6', description: 'Description for card 2' },
-        { id: 72, title: 'Card 7', description: 'Description for card 2' },
-        { id: 8, title: 'Card 8', description: 'Description for card 2' },
-        { id: 9, title: 'Card 9', description: 'Description for card 2' },
-        { id: 10, title: 'Card 10', description: 'Description for card 10' },
+        { id: 1, title: 'Review 1', description: "A comprehensive platform! From budget-friendly studios to luxurious penthouses, this site offers a wide array of options. The filters make it easy to narrow down choices, and the interface is user-friendly." },
+        { id: 2, title: 'Review 2', description: "Great resource for apartment hunting! I found my dream apartment within days of using this site. The listings are detailed, photos are accurate, and the contact process with landlords was smooth." },
+        { id: 3, title: 'Review 3', description: "Mixed feelings. While the variety of listings is impressive, some details were outdated or inaccurate. It would be helpful if there was more consistency in the quality of information provided." },
+        { id: 4, title: 'Review 4', description: "User-friendly interface, but lacking in diversity. The site's layout is excellent, but I wish there were more options in certain neighborhoods. It's a good starting point, but limited in terms of coverage." },
+        { id: 5, title: 'Review 5', description: "Responsive customer service! I encountered an issue while trying to schedule a viewing, and the support team was quick to assist. They were polite and efficient in resolving my problem." },
+        { id: 6, title: 'Review 6', description: "Impressive variety! Whether you're looking for a cozy place for one or a spacious family home, this site has it all. I appreciated the range of filters available to customize my search." },
+        { id: 72, title: 'Review 7', description: "A little overwhelming. The sheer number of listings can be daunting, and it took me a while to navigate through everything. It would be helpful to have more refined search options." },
+        { id: 8, title: 'Review 8', description: "Reliable and up-to-date! I've used this platform multiple times during my moves, and it's consistently provided accurate information. The real-time availability updates are a game-changer." },
+        { id: 9, title: 'Review 9', description: "Could use better sorting options. While the search filters are useful, the ability to sort by specific criteria like 'newest listings' or 'highest rated' would greatly improve the browsing experience." },
+        { id: 10, title: 'Review 10', description: "Fantastic for newcomers! As someone new to the city, this site was a lifesaver. The neighborhood guides and insights provided alongside listings were incredibly helpful in making an informed decision." },
     ]);
+    
 
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 3;
