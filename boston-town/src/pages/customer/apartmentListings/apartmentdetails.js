@@ -1,10 +1,11 @@
 import './apartmentdetails.css';
 import React from 'react';
-import { Carousel, Row, Col, Button } from 'antd'; // Import Button from antd
+import { Carousel, Row, Col, Button, Card } from 'antd'; // Import Button from antd
 import logo from '../../../../src/assets/images/logo4.png';
 import pic1 from '../../../../src/assets/images/pic1.png';
 import pic2 from '../../../../src/assets/images/pic2.png';
 import pic3 from '../../../../src/assets/images/pic3.png';
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -27,28 +28,28 @@ const ApartmentDetails = () => {
         carouselRef.current.prev(); // Function to go to the previous slide
     };
 
+    const location = useLocation();
+
+    // Access the state object from the location
+    const { state } = location;
+  
+    // Access the apartment object from the state
+    const { apartment } = state;
+    console.log(apartment)
+
     return (
         <div className="details_padding">
             <Row gutter={[42, 42]}>
                 <Col span={16}>
                     <Carousel className="carousel_apt" ref={carouselRef}>
                         <div >
-                            <h3> <img className='images' src={logo} alt="logo" /></h3>
-                        </div>
-                        <div>
-                            <h3 > <img className='images' src={pic1} alt="logo" /></h3>
-                        </div>
-                        <div>
-                            <h3 > <img className='images' src={pic3} alt="logo" /></h3>
-                        </div>
-                        <div>
-                            <h3 > <img className='images' src={pic2} alt="logo" /></h3>
+
                         </div>
                     </Carousel>
                     <div style={{ textAlign: 'center', marginTop: '10px' }}>
                         <Button onClick={prev} style={{ marginRight: '10px' }}>Previous</Button>
                         <Button onClick={next}>Next</Button>
-                        <Button>Like</Button>
+                        <Button className = "likeButton">Like</Button>
                     </div>
                 </Col>
                 <Col span={8}>
@@ -58,7 +59,7 @@ const ApartmentDetails = () => {
                         Rent
                     </div>
                     <div class ="apartmentContent">
-                        <p class = "apartmentRent">$2650</p>/month
+                        <p class = "apartmentRent">${apartment.price}</p>/month
                     </div>
                     </Col>
                         <Col span={1}></Col>
@@ -67,7 +68,7 @@ const ApartmentDetails = () => {
                                 Bedrooms
                             </div>
                             <img class = "ApartmentCardIcon" src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167139089x172125820032762440/Vectorbed.svg"></img>
-                            <p class = "apartmentContent">3 Bedrooms</p>
+                            <p class = "apartmentContent">3{apartment.bedrooms}Bedrooms</p>
                         </Col>
                         
                         <Col className='rent_card' span={11}>
@@ -76,7 +77,7 @@ const ApartmentDetails = () => {
                             </div>
 
                             <img class = "ApartmentCardIcon" src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167200873x190593201659127420/Group%2070bath.svg"></img>
-                            <p class = "apartmentContent">1 Bathroom</p>
+                            <p class = "apartmentContent">{apartment.bathrooms} Bathroom</p>
                         </Col>
                         <Col span={1}></Col>
                         <Col className='rent_card' span={11}>
@@ -84,14 +85,14 @@ const ApartmentDetails = () => {
                                 Area
                             </div>
                             <img class = "ApartmentCardIcon" src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167207372x370943336758121400/Group%2081area.svg"></img>
-                            <p class = "apartmentContent">1000 Sq Ft</p>
+                            <p class = "apartmentContent">{apartment.area}</p>
                         </Col>
                         <Col className='rent_card' span={11}>
                             <div class = "apartmentCardHeading">
                                 Move - In
                             </div>
                             <img class = "ApartmentCardIcon"src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167222340x313042430337722160/Group%20125movein.svg"></img>
-                            <p class = "apartmentContent">12th May 2024</p>
+                            <p class = "apartmentContent">{apartment.move_in}</p>
                         </Col>
                         <Col span={1}></Col>
                         <Col className='rent_card' span={11}>
@@ -99,11 +100,24 @@ const ApartmentDetails = () => {
                                Laundary
                             </div>
                             <img class = "ApartmentCardIcon" src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167259642x229271827691618800/washing-machine%201laundry.svg"></img>
-                            <p class = "apartmentContent">Available</p>
+                            <p class = "apartmentContent">{apartment.in_unit_laundry}</p>
                         </Col>
                     </Row>
                 </Col>
             </Row>
+
+
+            <Card className = "apartmentDetailDescription">
+            <h2>Title: {apartment.title}</h2>
+            <h2>Address: {apartment.address}</h2>
+            <h2>Description: {apartment.description}</h2>
+            <h2>Facilities: {apartment.facilities}</h2>
+            <h2>Floor: {apartment.floor}</h2>
+            <h2>Year Built In: {apartment.year_built}</h2>
+            <h2>
+                Remodeled: {apartment.year_remodeled}
+            </h2>
+            </Card>
         </div>
     );
 };

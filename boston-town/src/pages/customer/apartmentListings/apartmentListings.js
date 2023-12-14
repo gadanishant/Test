@@ -66,7 +66,6 @@ const ApartmentListings = () => {
     // Click event handler
     const handleCardClick = (apartment) => {
         // Navigate to details page with apartment info
-		console.log("apartment => ", apartment);
         navigate(`/apartmentdetails`, { state: { apartment } });
     };
 
