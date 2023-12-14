@@ -3,6 +3,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
 import "./signup.css"
+import { Navigate } from 'react-router-dom';
 
 const Signup = () => {
     const [countries, setCountries] = useState([]);
@@ -21,6 +22,8 @@ const Signup = () => {
     const [description, setDescription] = useState("");
     const [petPreference, setPetPreference] = useState("");
     const [foodPreference, setFoodPreference] = useState("");
+
+    const [successfulSignup, setSuccessfulSignup] = useState();
 
 
     useEffect(() => {
@@ -97,6 +100,8 @@ const Signup = () => {
                 }, "POST", {})
 
                 console.log("response => ", response);
+
+                setSuccessfulSignup(true);
             } catch (error) {
                 console.log("callCreateNewUserAPI: catch");
             }
@@ -156,6 +161,10 @@ const Signup = () => {
         setPetPreference(value);
     }
 
+    if (successfulSignup) {
+        console.log("successfulSignup => ", successfulSignup);
+        return <Navigate to="/login" />;
+    }
 
     return (
         <>
@@ -371,8 +380,8 @@ const Signup = () => {
 
                                 <Form.Item label="Food Preference" required>
                                     <Select onChange={onChangeFoodPreference} value={foodPreference} className="InputFieldClass">
-                                        <Select.Option value="veg">Veg</Select.Option>
-                                        <Select.Option value="nonVeg">Non-Veg</Select.Option>
+                                        <Select.Option value="Vegetarian">Vegetarian</Select.Option>
+                                        <Select.Option value="Non-vegetarian">Non-vegetarian</Select.Option>
                                         <Select.Option value="none">None</Select.Option>
                                     </Select>
                                 </Form.Item>
@@ -383,8 +392,8 @@ const Signup = () => {
 
                                 <Form.Item label="Pet Preference">
                                     <Select onChange={onChangePetPreference} value={petPreference} className="InputFieldClass">
-                                        <Select.Option value="dog">Dog</Select.Option>
-                                        <Select.Option value="cat">Cat</Select.Option>
+                                        <Select.Option value="Dogs">Dogs</Select.Option>
+                                        <Select.Option value="Cats">Cats</Select.Option>
                                         <Select.Option value="none">None</Select.Option>
                                     </Select>
                                 </Form.Item>
@@ -393,7 +402,7 @@ const Signup = () => {
 
 
                         <Button className="submitButton" onClick={callCreateNewUserAPI} type="primary">
-                            Sign Up!
+                            Sign Up
                         </Button>
                     </Form>
                 </Card>
