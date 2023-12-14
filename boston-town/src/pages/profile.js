@@ -1,19 +1,23 @@
-import { Avatar, Card, Divider, Typography, Col, Row } from 'antd';
-import React, { useEffect, useState } from 'react';
+import { InstagramOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faBowlFood, faDog, faGlobe, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedinIn  } from '@fortawesome/free-brands-svg-icons';
-import { faBowlFood ,faDog, faFilePen, faUserTie, faGlobe} from '@fortawesome/free-solid-svg-icons';
+import { Avatar, Card, Col, Divider, Row, Typography } from 'antd';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import sendRequest from '../components/sendRequest';
-import {MailOutlined, PhoneOutlined, HomeOutlined, InstagramOutlined, LinkedinOutlined} from '@ant-design/icons';
-import "./profile.css"
-import contactInfo from '../../../boston-town/src/assets/images/contactInfo.png';
 import ageIcon from '../../../boston-town/src/assets/images/ageIcon.png';
+import contactInfo from '../../../boston-town/src/assets/images/contactInfo.png';
+import person from '../assets/images/person.jpeg';
+import { Context } from '../components/context';
+import sendRequest from '../components/sendRequest';
+import "./profile.css";
 
 
 const Profile = () => {
 	const { Title, Paragraph } = Typography;
 	const { username } = useParams();
+	const { user, setUser } = useContext(Context);
+	const [sameUser, setSameUser] = useState();
 
 	const [firstName, setFirstName] = useState();
 	const [lastName, setLastName] = useState();
@@ -26,11 +30,24 @@ const Profile = () => {
 	const [description, setDescription] = useState();
 	const [foodPreferences, setFoodPreferences] = useState();
 	const [petPreferences, setPetPreferences] = useState();
+	const [profilePicture, setProfilePicture] = useState();
+	const [instagramLink, setInstagramLink] = useState();
+	const [linkedinLink, setLinkedinLink] = useState();
+	const [posts, setPosts] = useState([]);
+
+	const getPostDetailsAPI = async () => {
+		console.log("getPostDetailsAPI");
+		try {
+
+		} catch (error) {
+
+		}
+	}
 
 	const getUserDetailsAPI = async () => {
 		try {
 			const response = await sendRequest(`http://localhost:3000/getUserDetails?username=${username}`, {}, "GET", {});
-			const data = response.data.description.slice(1)[0];
+			const data = response.data.description
 			console.log("data => ", data);
 
 			setFirstName(data.firstname);
@@ -44,6 +61,10 @@ const Profile = () => {
 			setDescription(data.description);
 			setFoodPreferences(data.food_preferences);
 			setPetPreferences(data.pet_preferences);
+			setInstagramLink(data.social_media.instagram)
+			setLinkedinLink(data.social_media.linkedin)
+			setPosts(data.posts)
+
 		} catch (error) {
 			console.log("error => ", error);
 		}
@@ -52,8 +73,10 @@ const Profile = () => {
 	useEffect(() => {
 		getUserDetailsAPI();
 		console.log("username => ", username);
+		if (username === user.username) setSameUser(true);
 	}, [])
 
+	/*
 	console.log("firstName => ", firstName)
 	console.log("lastName => ", lastName)
 	console.log("password => ", password)
@@ -65,78 +88,82 @@ const Profile = () => {
 	console.log("description => ", description)
 	console.log("foodPreferences => ", foodPreferences)
 	console.log("petPreferences => ", petPreferences)
+	*/
 
 	return (
 		<div className='profile_page'>
-			<Card>
+			<Card className='details-container'>
 				<div style={{ textAlign: 'center' }}>
-					<Avatar size={128} src="URL_TO_YOUR_IMAGE" />
-					<Title level={3} style={{ margin: '10px 0' }}>
-						John Doe
+					<Avatar size={128} src={profilePicture ? "" : person} />
+					<Title level={3} style={{ margin: '10px 0 0 0' }}>
+						{firstName} {lastName}
 					</Title>
+				</div>
+				<div style={{ textAlign: 'center' }}>
+					<Paragraph>{username}</Paragraph>
 				</div>
 				<Divider />
 
 				<Typography style={{ padding: '0 20px' }}>
 					<Title level={4}>About Me</Title>
 					<Paragraph>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-						placerat tristique elit, sed maximus nunc posuere nec.
+						{description}
 					</Paragraph>
 
 					<Row gutter={16}>
-                	<Col span={12}>
+						<Col span={12}>
 
-					<Paragraph className = "profileRow">  <FontAwesomeIcon icon={faGlobe} className = "profileIcons" ></FontAwesomeIcon> Country: India</Paragraph>
+							<Paragraph className="profileRow">  <FontAwesomeIcon icon={faGlobe} className="profileIcons" ></FontAwesomeIcon> Country: {country}</Paragraph>
 
-					</Col>
-					<Col span={12}>
-					<Paragraph className = "profileRow"> <img id = "ageIcon" src = {ageIcon} className = "profileIcons"></img>Age: 22</Paragraph>
+						</Col>
+						<Col span={12}>
+							<Paragraph className="profileRow"> <img id="ageIcon" src={ageIcon} className="profileIcons"></img>Age: {age}</Paragraph>
 
-					</Col>
+						</Col>
 					</Row>
 					<Row gutter={16}>
-                	<Col span={12}>
+						<Col span={12}>
 
-					<Paragraph className = "profileRow"> <FontAwesomeIcon icon={faUserTie} className = "profileIcons" ></FontAwesomeIcon>Profession: India</Paragraph>
+							<Paragraph className="profileRow"> <FontAwesomeIcon icon={faUserTie} className="profileIcons" ></FontAwesomeIcon>Profession: {profession}</Paragraph>
 
-					</Col>
+						</Col>
 
-					<Col span={12}>
+						<Col span={12}>
 
-					<Paragraph className = "profileRow"><FontAwesomeIcon icon={faBowlFood} className = "profileIcons" ></FontAwesomeIcon> Food Preference: India</Paragraph>
+							<Paragraph className="profileRow"><FontAwesomeIcon icon={faBowlFood} className="profileIcons" ></FontAwesomeIcon> Food Preference: {foodPreferences}</Paragraph>
 
-					</Col>
+						</Col>
 					</Row>
 					<Row gutter={16}>
-					<Col span={12}>
-					<Paragraph className = "profileRow"> <FontAwesomeIcon icon={faDog} className = "profileIcons" ></FontAwesomeIcon>Pet Preference: 22</Paragraph>
+						<Col span={12}>
+							<Paragraph className="profileRow"> <FontAwesomeIcon icon={faDog} className="profileIcons" ></FontAwesomeIcon>Pet Preference: {petPreferences}</Paragraph>
 
-					</Col>
+						</Col>
 					</Row>
 
-					<Title level={4} className = "profileRow"><img id = "contactInfo" src = {contactInfo}></img>Contact Information</Title>
+					<Title level={4} className="profileRow"><img id="contactInfo" src={contactInfo}></img>Contact Information</Title>
 					<Row gutter={16}>
-					<Col span={12}>
-					<Paragraph className = "profileRow"> <MailOutlined className = "profileIcons"/> john@example.com</Paragraph>
-					</Col>
-					<Col span={12}>
-					<Paragraph className = "profileRow"> <PhoneOutlined className = "profileIcons"/> +1234567890</Paragraph>
-					</Col>
+						<Col span={12}>
+							<Paragraph className="profileRow"> <MailOutlined className="profileIcons" />{email}</Paragraph>
+						</Col>
+						<Col span={12}>
+							<Paragraph className="profileRow"> <PhoneOutlined className="profileIcons" />{mobile}</Paragraph>
+						</Col>
 					</Row>
 
 
 					<Row gutter={16}>
-					<Col span={12}>
-					<Paragraph className = "profileRow"><InstagramOutlined className = "profileIcons"/>Instagram Link</Paragraph>
-					</Col>
-					<Col span={12}>
-					<Paragraph className = "profileRow"><FontAwesomeIcon icon={faLinkedinIn} className = "profileIcons" ></FontAwesomeIcon>LinkedIn Link</Paragraph>				
-					</Col>
+						<Col span={12}>
+							<Paragraph className="profileRow"><InstagramOutlined className="profileIcons" />{instagramLink}</Paragraph>
+						</Col>
+						<Col span={12}>
+							<Paragraph className="profileRow"><FontAwesomeIcon icon={faLinkedinIn} className="profileIcons" ></FontAwesomeIcon>{linkedinLink}</Paragraph>
+						</Col>
 					</Row>
-					<Title level={4} className = "profileRow"> <FontAwesomeIcon icon={faFilePen} className = "profileIcons" ></FontAwesomeIcon> Description</Title>
+
+					<Title level={4} className="profileRow"> <FontAwesomeIcon className="profileIcons" ></FontAwesomeIcon> My Posts</Title>
 					<Paragraph>
-						123 Street Name, City, Country, Postal Code
+						{posts}
 					</Paragraph>
 				</Typography>
 			</Card>

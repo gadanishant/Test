@@ -1,18 +1,22 @@
 .profileIcons {
-    font-size:15px;
-    margin-right:10px;
+    font-size: 15px;
+    margin-right: 10px;
 }
 
 #contactInfo {
-    height:20px;
-    width:20px;
-    margin-right:10px;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.details-container {
+    width: 70%;
 }
 
 #ageIcon {
-    height:20px;
-    width:20px;
-    margin-right:10px;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
 }
 
 .profile_page {
@@ -23,6 +27,6 @@
 }
 
 .profileRow {
-    display:flex;
+    display: flex;
     align-items: center;
 }
