@@ -13,20 +13,28 @@ const ApartmentListings = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("isAuthenticated"));
 	const [loading, setLoading] = useState(true);
 	const [disabled, setDisabled] = useState(false);
-	const [bathSelected, setBathSelected] = useState(null);
+	const [bedSelected, setBedSelected] = useState([]);
 
 	const handleSelect = (number) => {
-		setBathSelected(number);
+		const isSelected = bedSelected.includes(number);
+		let updatedSelection = [];
+
+		if (isSelected) {
+			updatedSelection = bedSelected.filter((selected) => selected !== number);
+		} else {
+			updatedSelection = [...bedSelected, number];
+		}
+
+		setBedSelected(updatedSelection);
 	};
 
 	const getCircleStyle = (number) => {
-		if (bathSelected === number) {
-			return {
+		return bedSelected.includes(number)
+			? {
 				backgroundColor: 'blue',
 				color: 'white',
-			};
-		}
-		return {}; // Return default styles if not selected
+			}
+			: {}; // Return default styles if not selected
 	};
 
 	const getAllpropertyAPI = async () => {
@@ -115,29 +123,20 @@ const ApartmentListings = () => {
 								<br />
 								<div>
 									<Row gutter={[12, 12]}>
-										<Col align="middle" span={7} className="bedroom_circle">
-											1
-										</Col>
-										<Col span={1}>
-										</Col>
-										<Col align="middle" span={7} className="bedroom_circle">
-											2
-										</Col>
-										<Col span={1}>
-										</Col>
-										<Col align="middle" span={7} className="bedroom_circle">
-											3
-										</Col>
-										<Col align="middle" span={7} className="bedroom_circle">
-											4
-										</Col>
-										<Col span={1}>
-										</Col>
-										<Col align="middle" span={7} className="bedroom_circle">
-											5
-										</Col>
-
-
+										{[1, 2, 3, 4, 5].map((number) => (
+											<React.Fragment key={number}>
+												<Col
+													align="middle"
+													span={7}
+													className="bedroom_circle"
+													style={getCircleStyle(number)}
+													onClick={() => handleSelect(number)}
+												>
+													{number}
+												</Col>
+												{number !== 5 && <Col span={1} />}
+											</React.Fragment>
+										))}
 									</Row>
 
 								</div>
