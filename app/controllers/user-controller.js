@@ -8,7 +8,16 @@ export const find = (req, res) => {
     } else if (req.query.username) {
         findByName(req.query.username, res);
     } else {
-        res.status(400).send('No search criteria provided');
+        getAllUsers(req, res);
+    }
+};
+
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await userService.search();
+        setResponse(users, res);
+    } catch (error) {
+        setErrorResponse(error, res);
     }
 };
 
