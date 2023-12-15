@@ -1,6 +1,7 @@
 import * as propertyService from "../services/property-service.js";
 import { setResponse, setErrorResponse } from "./response-handler.js";
 
+// code to fetch the details of a property
 export const find = async (req, res) => {
     try {
         const params = {...req.query};
@@ -12,6 +13,7 @@ export const find = async (req, res) => {
     }
 }
 
+// code to post/create a new property
 export const post = async (req, res) => {
     try {
         const newApartment = {...req.body};
@@ -53,6 +55,7 @@ export const remove = async (req, res) => {
     }
 }
 
+// code to get the list of all the users who like a property
 export const getLikedUsers = async (req, res) => {
     try {
         const id = req.params.id;

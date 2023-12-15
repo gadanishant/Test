@@ -1,17 +1,22 @@
+
+// Import necessary components and styles
 import React from 'react';
 import { Layout, Typography } from 'antd';
 import './privacyPolicy.css'
 
+
+// Destructure components from Ant Design
+
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
-
+// PrivacyPolicy component
 
 const PrivacyPolicy = () => {
   return (
     <div class = "padding_privacy_policy">
-    <Layout style={{ padding: '24px' }}>
-      <Content style={{ background: '#fff', padding: '24px', margin: 0, minHeight: 280 }}>
+    <Layout>
+      <Content  className="pp_content">
         <Typography>
           <Title level={2}>Privacy Policy</Title>
 

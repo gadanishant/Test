@@ -9,6 +9,7 @@ import { Context } from '../../../components/context';
 import { useLocation } from 'react-router-dom';
 import { LeftOutlined, RightOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import Button_component from '../../../components/Button_component';
 
 
 
@@ -112,14 +113,17 @@ const ApartmentDetails = () => {
                     <Carousel className="carousel_apt" ref={carouselRef}>
                         {apartment.images.map((imageUrl, index) => (
                             <div key={index}>
-                                <img src={imageUrl} alt={`Image ${index + 1}`} style={{ width: '100%', marginBottom: '10px' }} />
+                                <img src={imageUrl} alt={`Image ${index + 1}`} />
                             </div>
                         ))}
                     </Carousel>
-                    <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                    <div >
                         <Space>
-                            <Button onClick={prev} style={{ marginRight: '10px' }}><LeftOutlined /></Button>
-                            <Button onClick={next}><RightOutlined /></Button>
+                            {/* <Button onClick={prev} ><LeftOutlined /></Button>
+                            <Button onClick={next}><RightOutlined /></Button> */}
+
+                            <Button_component onClick={prev}><LeftOutlined /></Button_component>
+                            <Button_component onClick={next} ><RightOutlined /></Button_component>
                             <div
                                 className={isLiked ? "likedButton" : "likeButton"}
                                 onClick={handleLikeClick}>
@@ -141,7 +145,7 @@ const ApartmentDetails = () => {
                             </div>
                         </Col>
                         <Col span={1}></Col>
-                        <Col className='rent_card' span={11}>
+                        <Col className='rent_card' align="center" span={11}>
                             <div class="apartmentCardHeading">
                                 Bedrooms
                             </div>
@@ -149,7 +153,7 @@ const ApartmentDetails = () => {
                             <p class="apartmentContent">{apartment.bedrooms} Bedrooms</p>
                         </Col>
 
-                        <Col className='rent_card' span={11}>
+                        <Col  align="center" className='rent_card' span={11}>
                             <div class="apartmentCardHeading">
                                 Bathrooms
                             </div>
@@ -157,15 +161,15 @@ const ApartmentDetails = () => {
                             <img class="ApartmentCardIcon" src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167200873x190593201659127420/Group%2070bath.svg"></img>
                             <p class="apartmentContent">{apartment.bathrooms} Bathroom</p>
                         </Col>
-                        <Col span={1}></Col>
-                        <Col className='rent_card' span={11}>
+                        <Col  align="center" span={1}></Col>
+                        <Col  align="center" className='rent_card' span={11}>
                             <div class="apartmentCardHeading">
                                 Area
                             </div>
                             <img class="ApartmentCardIcon" src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167207372x370943336758121400/Group%2081area.svg"></img>
                             <p class="apartmentContent">{apartment.area}</p>
                         </Col>
-                        <Col className='rent_card' span={11}>
+                        <Col  align="center" className='rent_card' span={11}>
                             <div class="apartmentCardHeading">
                                 Move - In
                             </div>
@@ -173,7 +177,7 @@ const ApartmentDetails = () => {
                             <p class="apartmentContent">{(apartment.move_in).split('T')[0]}</p>
                         </Col>
                         <Col span={1}></Col>
-                        <Col className='rent_card' span={11}>
+                        <Col  align="center" className='rent_card' span={11}>
                             <div class="apartmentCardHeading">
                                 Laundary
                             </div>
@@ -187,7 +191,7 @@ const ApartmentDetails = () => {
                                <h2> <p>{apartment.liked_by.filter(name => name !== "").length} likes</p></h2>
                                     <Row>
                                         {apartment.liked_by.map((likedBy, index) => (
-                                            <Col span={12}>
+                                            <Col  align="center" span={12}>
                                             <span key={index}>
                                                 {/* {likedBy} */}
                                                 <Link className="username" to={`/profile/${likedBy}`}><Button className="view_button"><b className="view_color"> {likedBy}</b></Button></Link>
@@ -195,17 +199,18 @@ const ApartmentDetails = () => {
                                             </span></Col>
                                         ))}
                                     </Row>
+                                    
                                 {/* </h4> */}
                             {/* </Card> */}
                             </Col>
-
+                           
                             {/* <p>({apartment.liked_by.filter(name => name !== "").length} likes)</p>
                             <p>{apartment.liked_by.join(", ")}</p> */}
                         {/* </Row> */}
                     </Row>
                 </Col>
             </Row>
-
+            <br/> <br/>
 
             <Card className="apartmentDetailDescription">
                 <h3>Title: </h3>

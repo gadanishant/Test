@@ -36,6 +36,7 @@ export const get = async (req, res) => {
     }
 }
 
+// code to update a post
 export const updatePost = async (req, res) => {
     console.log("post-controller: updatePost");
     try {
@@ -59,6 +60,7 @@ export const remove = async (req, res) => {
     }
 }
 
+// code to find the post with the help of ID as a unique identifier
 export const findById = async (req, res) => {
     try {
         const id = req.params.id;

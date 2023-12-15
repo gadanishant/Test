@@ -1,10 +1,14 @@
+// Import necessary components and styles
 import React from 'react';
 import { Layout, Typography } from 'antd';
 import "./termsofService.css"
 
+
+// Destructure components from Ant Design
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
+// TermsOfService component
 const TermsOfService = () => {
   return (
     <div class = "terms_of_service">

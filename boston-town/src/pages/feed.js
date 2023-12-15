@@ -1,3 +1,4 @@
+// Importing necessary components and styles
 import { UserOutlined } from "@ant-design/icons";
 import { Card, Col, Pagination, Row, Button, Input } from "antd";
 import { useContext, useEffect, useState, useMemo } from "react";
@@ -7,8 +8,9 @@ import Loader from "../components/loader";
 import sendRequest from "../components/sendRequest";
 import "./feed.css";
 import userpic from "../../src/assets/images/userimages/user1.png"
+import Button_component from "../components/Button_component";
 
-
+// Feed component
 const Feed = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("isAuthenticated"));
     const [listOfPosts, setListOfPosts] = useState([]);
@@ -18,10 +20,13 @@ const Feed = () => {
     const { user, setUser } = useContext(Context);
     const [searchInput, setSearchInput] = useState("");
 
+
+    // Function to handle search input change
     const handleSearchChange = (e) => {
         setSearchInput(e.target.value);
     };
 
+    // Memoized filtered posts based on search input
     const filteredPosts = useMemo(() => {
         return searchInput.trim()
             ? listOfPosts.filter(post => post.username.toLowerCase().startsWith(searchInput.toLowerCase().trim()))
@@ -35,6 +40,7 @@ const Feed = () => {
         // Add more image names here...
     ];
 
+    // Function to fetch all posts from API
     const getAllPostsAPI = async () => {
         try {
             const response = await sendRequest("http://localhost:3000/getAllPosts", {}, "GET", {});
@@ -47,10 +53,11 @@ const Feed = () => {
         }
     }
 
+        // Function to handle page change
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
-
+    // useEffect to set isAuthenticated and fetch posts on component mount
     useEffect(() => {
         setIsAuthenticated(sessionStorage.getItem("isAuthenticated"));
         console.log("isAuthenticated => ", isAuthenticated);
@@ -62,10 +69,13 @@ const Feed = () => {
         console.log("user => ", user);
     }, []);
 
+    // Calculate indexes for pagination
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
+
+        // Render the component based on authentication status
     return (
         (isAuthenticated === "true"
             ? <>
@@ -94,7 +104,8 @@ const Feed = () => {
                                             <Row>
                                                 <Col span={4}>
                                                     {/* <UserOutlined /> */}
-                                                    <img className="userpic" src={`../../src/assets/images/userimages/${userImages[index % userImages.length]}`} alt={`User ${index + 1}`} />
+                                                    {/* <img className="userpic" src={`../../src/assets/images/userimages/${userImages[index % userImages.length]}`} alt={`User ${index + 1}`} /> */}
+                                                    <img className="userpic" src={userpic}></img>
                                                 </Col>
                                                 <Col className="time_color" span={14}>
                                                     <h2><b> {post.username}</b></h2>
@@ -140,9 +151,9 @@ const Feed = () => {
                         <Col span={24} align="middle">Kindly login!</Col>
                         <Col spna={24}>
                             <Link>
-                                <Button>
+                                <Button_component>
                                     Click here to Login
-                                </Button>
+                                </Button_component>
                             </Link>
                         </Col>
                     </Row>

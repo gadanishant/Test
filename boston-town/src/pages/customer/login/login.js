@@ -1,3 +1,4 @@
+// Import necessary components and libraries from antd, React, and other custom components
 import { Button, Card, Form, Input, Modal, Row } from 'antd';
 import { useContext, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
@@ -5,19 +6,23 @@ import "./login.css"
 import { Context } from '../../../components/context';
 import { Navigate } from 'react-router-dom';
 import Success from '../../../components/modals/success';
+import Button_component from '../../../components/Button_component';
 
 // Inside your component's logic, after successful authentication
 
 
-
+// Login component
 const Login = () => {
+    // State variables to manage input fields, user context, and modal visibility
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const { user, setUser } = useContext(Context);
     const [showModal, setShowModal] = useState(false);
 
+    // Timeout duration for automatic logout (15 minutes)
     const logout = 1000 * 60 * 15;
 
+    // Function to fetch user details from the server
     const getUserDetailsAPI = async () => {
         try {
             const response = await sendRequest(`http://localhost:3000/getUserDetails?username=${username}`, {}, "GET", {})
@@ -30,6 +35,7 @@ const Login = () => {
         }
     }
 
+    // Function to authenticate user with provided username and password
     const authenticateUserAPI = async () => {
         try {
             console.log("authenticateUserAPI: try");
@@ -43,13 +49,18 @@ const Login = () => {
             // console.log("Successfully logged in!");
             // alert("Successfully logged in!")
 
+          
+            // Fetch user details
             const data = await getUserDetailsAPI();
             console.log("authenticateUserAPI: data => ", data);
+
+            // Display success modal and update user context after a delay
 
             setShowModal(true);
             setTimeout(() => {
                 setShowModal(false)
 
+                // Set user context with retrieved data
                 setUser({
                     ...user,
                     username: username,
@@ -85,6 +96,7 @@ const Login = () => {
         }
     }
 
+    // Function to handle login button click
     const onClickLogin = () => {
         // Your form submission logic here
         if (password === "" && username === "") {
@@ -99,14 +111,17 @@ const Login = () => {
             alert("Please enter password");
         }
         else {
+
+            // Call authentication function if inputs are valid
             authenticateUserAPI();
         }
     };
 
+    // Function to handle username input change
     const onChangeUsername = (e) => {
         setUsername(e.target.value);
     }
-
+    // Function to handle password input change
     const onChangePassword = (e) => {
         setPassword(e.target.value);
     }
@@ -114,7 +129,7 @@ const Login = () => {
     if (sessionStorage.getItem("isAuthenticated") === "true") {
         return <Navigate to="/" />;
     }
-
+    // JSX structure of the Login component
     return (
         <>
             <Modal
@@ -162,11 +177,13 @@ const Login = () => {
                                 placeholder="Enter your password"
                                 onBlur={onChangePassword}
                                 className="InputFieldClass"
-                                style={{ width: '100%' }}
                             />
                         </Form.Item>
                         <Form.Item>
-                            <Button className="LoginButtonClass" onClick={onClickLogin} type="primary">Login!</Button>
+                            {/* <Button className="LoginButtonClass" onClick={onClickLogin} type="primary">Login!</Button> */}
+                            <Button_component className="LoginButtonClass" onClick={onClickLogin} type="primary">
+                            Login!
+                            </Button_component>
                         </Form.Item>
 
 
@@ -178,4 +195,5 @@ const Login = () => {
     );
 }
 
+// Export the Login component
 export default Login;

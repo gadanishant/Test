@@ -1,11 +1,15 @@
+// Importing necessary components and styles
 import { Form, Input, Select, Button, Upload, message, Card, Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
 import "./signup.css"
 import { Navigate } from 'react-router-dom';
+import Button_component from '../../../components/Button_component';
 
+// Signup component
 const Signup = () => {
+        // State variables for form inputs and other data
     const [countries, setCountries] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [firstName, setFirstName] = useState("");
@@ -27,7 +31,7 @@ const Signup = () => {
 
     const [successfulSignup, setSuccessfulSignup] = useState();
 
-
+    // Fetching countries data from the API on component mount
     useEffect(() => {
         const fetchCountries = async () => {
             try {
@@ -45,6 +49,7 @@ const Signup = () => {
         fetchCountries();
     }, []);
 
+    // Handling search for countries
     const handleSearch = (value) => {
         setSearchValue(value);
     };
@@ -55,6 +60,8 @@ const Signup = () => {
         return nameA.localeCompare(nameB);
     });
 
+
+        // Props for image upload component
     const UploadImageprops = {
         name: 'file',
         //replace this url with api endpoint that handles file uploads
@@ -74,6 +81,8 @@ const Signup = () => {
         },
     };
 
+
+        // Function to call the API for creating a new user
     const callCreateNewUserAPI = async () => {
 
         if (firstName === "" || lastName === "" || userName === "" || password === "" ||
@@ -113,6 +122,9 @@ const Signup = () => {
             }
         }
     }
+
+
+        // Event handlers for form input changes
 
     const onChangeFirstName = (e) => {
         setFirstName(e.target.value);
@@ -173,11 +185,14 @@ const Signup = () => {
     const onBlurInstagram = (e) => {
         setInstagramURL(e.target.value);
     }
-
+    
+    // Redirecting to login page after successful signup
     if (successfulSignup) {
         console.log("successfulSignup => ", successfulSignup);
         return <Navigate to="/login" />;
     }
+
+        // Rendering the signup form
 
     return (
         <>
@@ -358,7 +373,10 @@ const Signup = () => {
                                     <Upload {...UploadImageprops} className="InputFieldClass"
                                         maxCount={1}
                                     >
-                                        <Button icon={<UploadOutlined />}>Click to upload</Button>
+                                        {/* <Button icon={<UploadOutlined />}>Click to upload</Button> */}
+                                        <Button_component icon={<UploadOutlined />}>
+                                        Click to upload
+                                        </Button_component>
                                     </Upload>
                                 </Form.Item>
                             </Col>
@@ -437,9 +455,11 @@ const Signup = () => {
                         </Row>
 
 
-                        <Button className="submitButton" onClick={callCreateNewUserAPI} type="primary">
+                        {/* <Button className="submitButton" onClick={callCreateNewUserAPI} type="primary">
                             Sign Up
-                        </Button>
+                        </Button> */}
+                        <Button_component className="submitButton" onClick={callCreateNewUserAPI} type="primary"> Sign Up</Button_component>
+
                     </Form>
                 </Card>
             </div >

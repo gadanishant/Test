@@ -7,9 +7,11 @@ import { Context } from '../context';
 import { Drawer } from 'antd';
 import { HomeOutlined, IdcardOutlined, UnorderedListOutlined, HeatMapOutlined, LogoutOutlined } from '@ant-design/icons';
 
+import  Button_component  from '../../../src/components/Button_component.js'
 
 
 
+// ant design icons
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
@@ -30,7 +32,7 @@ function getItem(label, key, icon, children, type) {
 const Navbar = () => {
 
 
-
+// usestates
     const [isAuthenticated, setIsAuthenticated] = useState("false");
     const { user, setUser } = useContext(Context);
 
@@ -93,7 +95,7 @@ const Navbar = () => {
         <div className='navposition'>
 
 
-
+{/* code for navbar when used in full screen and in mobile withj  */}
             <Row>
                 <Col xs={24} sm={24} md={24} lg={0} xl={0} xxl={0}>
                     <Row className='small_navbar'>
@@ -104,12 +106,13 @@ const Navbar = () => {
                             <Link to="/"> <img className="nav_logo" src={logo} alt="" /></Link>
                         </Col>
                         <Col span={4} >
-                            <Button className='navbutton' type="primary" onClick={showDrawer}>
-                                {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                            </Button></Col>
+                           
+
+                            <Button_component className="navbutton" type="primary" onClick={showDrawer} > {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}</Button_component>
+                            </Col>
 
                     </Row>
-
+{/* drawe for mobile view navbar */}
                     <Drawer placement="left" onClose={onClose} open={open}>
 
                         {
@@ -219,9 +222,7 @@ const Navbar = () => {
                 <Button
                     type="primary"
                     onClick={toggleCollapsed}
-                    style={{
-                        marginBottom: 16,
-                    }}
+                   
                 >
                     {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 </Button>

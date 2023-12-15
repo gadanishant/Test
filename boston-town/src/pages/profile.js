@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import ageIcon from '../../../boston-town/src/assets/images/ageIcon.png';
 import contactInfo from '../../../boston-town/src/assets/images/contactInfo.png';
 import person from '../assets/images/person.jpeg';
+import Button_component from '../components/Button_component';
 import { Context } from '../components/context';
 import sendRequest from '../components/sendRequest';
 import "./profile.css";
@@ -228,18 +229,18 @@ const Profile = () => {
 	return (
 		<div className='profile_page'>
 			<Card className='details-container'>
-				<div style={{ textAlign: 'center' }}>
+				<div className='profile_pic'>
 					<Avatar size={128} src={profilePicture ? "" : person} />
-					<Title level={3} style={{ margin: '10px 0 0 0' }}>
+					<Title level={3}>
 						{firstName} {lastName}
 					</Title>
 				</div>
-				<div style={{ textAlign: 'center' }}>
+				<div  className='profile_pic'>
 					<Paragraph>{username}</Paragraph>
 				</div>
 				<Divider />
 
-				<Typography style={{ padding: '0 20px' }}>
+				<Typography >
 					<Title level={4}>About Me</Title>
 					<Paragraph>
 						{description}
@@ -297,7 +298,8 @@ const Profile = () => {
 					</Row>
 				</Typography>
 
-				<Button onClick={showUpdateProfileModal}>Update</Button>
+				{/* <Button onClick={showUpdateProfileModal}>Update</Button> */}
+				<Button_component onClick={showUpdateProfileModal}>Update</Button_component>
 			</Card>
 
 			<Modal
