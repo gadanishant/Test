@@ -1,6 +1,6 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Card, Col, Pagination, Row, Button, Input } from "antd";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useMemo } from "react";
 import { Link } from 'react-router-dom';
 import { Context } from "../components/context";
 import Loader from "../components/loader";
@@ -17,6 +17,17 @@ const Feed = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(5); // Number of posts per page
     const { user, setUser } = useContext(Context);
+    const [searchInput, setSearchInput] = useState("");
+
+    const handleSearchChange = (e) => {
+        setSearchInput(e.target.value);
+    };
+
+    const filteredPosts = useMemo(() => {
+        return searchInput.trim()
+            ? listOfPosts.filter(post => post.username.toLowerCase().startsWith(searchInput.toLowerCase().trim()))
+            : listOfPosts;
+    }, [listOfPosts, searchInput]);
 
     const userImages = [
         "user1.png",
@@ -54,7 +65,7 @@ const Feed = () => {
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = listOfPosts.slice(indexOfFirstPost, indexOfLastPost);
+    const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
     return (
         (isAuthenticated === "true"
@@ -66,7 +77,7 @@ const Feed = () => {
                                 <h1>Feed</h1>
                             </Col>
                             <Col >
-                            <Input placeholder="Search User"></Input>
+                            <Input placeholder="Search User" value={searchInput} onChange={handleSearchChange}></Input>
                             </Col>
                             <Col>
                             </Col>
