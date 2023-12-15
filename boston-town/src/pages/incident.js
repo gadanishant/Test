@@ -164,20 +164,23 @@ const Incident = () => {
 	return (
 		(isAuthenticated ?
 			<div className="incident-container-padding">
+				<div className="map-container">
+					<h1>Incident Map</h1>
+					<Map />
+				</div>
 					<Card>
-                        <Row gutter={[24,24]} >
-                        <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
-                            <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={11}>
-                                <h1>Incidents</h1>
-                            </Col>
-                            <Col >
-                            <Input value={searchInput} onChange={handleSearchChange} placeholder="Search Incident"></Input>
-                            </Col>
-                            <Col>
-                            </Col>
-                        </Row>
-                        </Card>
-
+            <Row gutter={[24,24]} >
+            <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
+                <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={11}>
+                    <h1>Incidents</h1>
+                </Col>
+                <Col >
+                <Input value={searchInput} onChange={handleSearchChange} placeholder="Search Incident"></Input>
+                </Col>
+                <Col>
+                </Col>
+            </Row>
+            </Card>
 					<br>
 					</br>
 				<h4>Upto {incidentCount} incidents reported so far.. </h4>
