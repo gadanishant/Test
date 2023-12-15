@@ -1,5 +1,5 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Card, Col, Pagination, Row, Button } from "antd";
+import { Card, Col, Pagination, Row, Button, Input } from "antd";
 import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Context } from "../components/context";
@@ -7,6 +7,7 @@ import Loader from "../components/loader";
 import sendRequest from "../components/sendRequest";
 import "./feed.css";
 import boys2 from "../../src/assets/images/boystalking.png"
+import userpic from "../../src/assets/images/userimages/user1.png"
 
 const Feed = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("isAuthenticated"));
@@ -52,7 +53,18 @@ const Feed = () => {
             ? <>
                 {loading ? <Loader /> :
                     <div className='padding_background_feed'>
-                            <h1>Feed</h1>
+                       
+                        <Row>
+                            <Col  xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}>
+                                <h1>Feed</h1>
+                            </Col>
+                            <Col >
+                            <Input placeholder="Search User"></Input>
+                            </Col>
+                            <Col>
+                            </Col>
+
+                        </Row>
                         <Row gutter={[24, 24]} >
                             <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
 
@@ -61,28 +73,28 @@ const Feed = () => {
                                     currentPosts.map((post) => (
                                         <Card key={post.id} className="card">
                                             <Row>
-                                                <Col>
-                                                    <UserOutlined />
+                                                <Col span={4}>
+                                                    {/* <UserOutlined /> */}
+                                                    <img className="userpic" src={userpic}/>
+                                                </Col>
+                                                <Col className="time_color" span={14}>
+                                                    <h2><b> {post.username}</b></h2>
+                                                    <b>  <div className="time_color">{post.timestamp && post.timestamp.substring(0, 10)}</div></b>
+                                                </Col>
+                                                <Col span={6}>
+                                                    <b><Link className="username" to={`/profile/${post.username}`}><Button className="view_button"><b className="view_color">View Profile</b></Button></Link></b>
                                                 </Col>
                                                 <Col>
-                                                    <Row>
-                                                        <b><Link className="username" to={`/profile/${post.username}`}>{post.username}</Link></b>
+                                                    <Row className="title_color">
+                                                        <b> {post.title}</b>
                                                     </Row>
                                                     <Row>
-                                                        {post.title}
-                                                    </Row>
-                                                    <Row>
-                                                        {post.timestamp}
+
                                                     </Row>
                                                 </Col>
                                             </Row>
-                                            <Row>
-                                                <h3>
-                                                    This is a new feed post
-                                                </h3>
-                                            </Row>
-                                            <Row>
-                                                {post.description}
+                                            <Row className="time_color">
+                                                <h3><b>{post.description}</b></h3>
                                             </Row>
                                         </Card>
                                     ))
