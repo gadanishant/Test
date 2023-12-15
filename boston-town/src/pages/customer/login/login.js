@@ -48,10 +48,9 @@ const Login = () => {
             // console.log("Successfully logged in!");
             // alert("Successfully logged in!")
 
-
-
+          
             // Fetch user details
-            const data = getUserDetailsAPI();
+            const data = await getUserDetailsAPI();
             console.log("authenticateUserAPI: data => ", data);
 
             // Display success modal and update user context after a delay
@@ -177,7 +176,6 @@ const Login = () => {
                                 placeholder="Enter your password"
                                 onBlur={onChangePassword}
                                 className="InputFieldClass"
-                                style={{ width: '100%' }}
                             />
                         </Form.Item>
                         <Form.Item>

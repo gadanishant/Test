@@ -228,18 +228,18 @@ const Profile = () => {
 	return (
 		<div className='profile_page'>
 			<Card className='details-container'>
-				<div style={{ textAlign: 'center' }}>
+				<div className='profile_pic'>
 					<Avatar size={128} src={profilePicture ? "" : person} />
-					<Title level={3} style={{ margin: '10px 0 0 0' }}>
+					<Title level={3}>
 						{firstName} {lastName}
 					</Title>
 				</div>
-				<div style={{ textAlign: 'center' }}>
+				<div  className='profile_pic'>
 					<Paragraph>{username}</Paragraph>
 				</div>
 				<Divider />
 
-				<Typography style={{ padding: '0 20px' }}>
+				<Typography >
 					<Title level={4}>About Me</Title>
 					<Paragraph>
 						{description}

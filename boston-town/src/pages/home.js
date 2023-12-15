@@ -29,7 +29,7 @@ const Home = () => {
         { id: 9, title: 'Review 9', description: "Could use better sorting options. While the search filters are useful, the ability to sort by specific criteria like 'newest listings' or 'highest rated' would greatly improve the browsing experience." },
         { id: 10, title: 'Review 10', description: "Fantastic for newcomers! As someone new to the city, this site was a lifesaver. The neighborhood guides and insights provided alongside listings were incredibly helpful in making an informed decision." },
     ]);
-    
+
 
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 3;
@@ -74,7 +74,7 @@ const Home = () => {
                 </Col>
             </Row>
             <Row>
-                <Col  xs={24} sm={24} md={12} lg={8} xl={8} xxl={8} justify="center" align="middle">
+                <Col xs={24} sm={24} md={12} lg={8} xl={8} xxl={8} justify="center" align="middle">
                     <div>
                         <img className="apartment" src={apartment}></img>
                     </div>
@@ -100,29 +100,29 @@ const Home = () => {
             <br />
             <br />
 
-            <Row className="row3_color">
+            <Row >
                 <Col span={24}>
-                    <Row className="row_11">
+                    <Row gutter={30} className="row_11">
                         {currentCards.map((card) => (
                             <Col xs={24} sm={24} md={12} lg={8} xl={8} xxl={8}>
-                                        <Card
-											hoverable
-											className="property-card"
-										>
-											<img className='listing_home_img' src={maps} alt='apartment'></img>
-											<div style={{ marginTop: '16px' }}>
-												<b><h2>$100 / mo</h2></b>
-											</div>
-											<div>
-												<h3><b>Nice</b></h3>
-											</div>
-											<br />
-											
-											<div className='apt_desc'>
-                                                Nice
-											</div>
+                                <Card
+                                    hoverable
+                                    className="property-card"
+                                >
+                                    <img className='listing_home_img' src={maps} alt='apartment'></img>
+                                    <div style={{ marginTop: '16px' }}>
+                                        <b><h2>$100 / mo</h2></b>
+                                    </div>
+                                    <div>
+                                        <h3><b>Nice</b></h3>
+                                    </div>
+                                    <br />
 
-										</Card>
+                                    <div className='apt_desc'>
+                                        Nice
+                                    </div>
+
+                                </Card>
                             </Col>
                         ))}
                     </Row>
@@ -139,7 +139,7 @@ const Home = () => {
             <br />
             <br />
 
-            
+
             <Row className="row3_color">
                 <Col span={24}>
                     <Row className="row_11">
@@ -172,15 +172,15 @@ const Home = () => {
                     <div><b>
                         Find the <span className="accent_blue">safest</span><br /> area for <br />accommodation </b>
                     </div>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                     <div>
                         <Link to="/incidents">
-                        <Button className="find_apt"> Find here</Button>
+                            <Button className="find_apt"> Find here</Button>
                         </Link>
                     </div>
                 </Col>
-                <Col  xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+                <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
                     <div>
                         <img className="home" src={maps}></img>
                     </div>
