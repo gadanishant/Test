@@ -20,6 +20,8 @@ const Signup = () => {
     const [emailId, setEmail] = useState("");
     const [profession, setProfession] = useState("");
     const [description, setDescription] = useState("");
+    const [linkedinURL, setLinkedinURL] = useState("");
+    const [instagramURL, setInstagramURL] = useState("");
     const [petPreference, setPetPreference] = useState("");
     const [foodPreference, setFoodPreference] = useState("");
 
@@ -95,6 +97,10 @@ const Signup = () => {
                     "email": emailId,
                     "profession": profession,
                     "description": description,
+                    "social_media": {
+                        "linkedin": linkedinURL,
+                        "instagram": instagramURL
+                    },
                     "food_preferences": foodPreference,
                     "pet_preferences": petPreference
                 }, "POST", {})
@@ -161,6 +167,13 @@ const Signup = () => {
         setPetPreference(value);
     }
 
+    const onBlurLinkedin = (e) => {
+        setLinkedinURL(e.target.value);
+    }
+    const onBlurInstagram = (e) => {
+        setInstagramURL(e.target.value);
+    }
+
     if (successfulSignup) {
         console.log("successfulSignup => ", successfulSignup);
         return <Navigate to="/login" />;
@@ -174,7 +187,7 @@ const Signup = () => {
                         <Row gutter={16}>
                             <Col span={12}>
                                 <Form.Item
-                                    label="FirstName"
+                                    label="First Name"
                                     name="firstname"
                                     rules={[
                                         {
@@ -189,7 +202,7 @@ const Signup = () => {
 
                             <Col span={12}>
                                 <Form.Item
-                                    label="LastName"
+                                    label="Last Name"
                                     name="lastname"
                                     rules={[
                                         {
@@ -374,6 +387,29 @@ const Signup = () => {
                             </Col>
 
                         </Row>
+                        <Row gutter={16}>
+                            <Col span={12}>
+                                <Form.Item
+                                    name="linkedin"
+                                    label="Linkedin"
+                                    rules={[{ required: true, message: 'Please share your Linkedin profile' }]}
+                                >
+                                    <Input onBlur={onBlurLinkedin} className="InputFieldClass" />
+                                </Form.Item>
+                            </Col>
+
+                            <Col span={12}>
+
+                                <Form.Item
+                                    name="instagram"
+                                    label="Instagram"
+                                    rules={[{ required: false, message: 'Please share your Instagram Profile' }]}
+                                >
+                                    <Input onBlur={onBlurInstagram} className="InputFieldClass" />
+                                </Form.Item>
+                            </Col>
+
+                        </Row>
 
                         <Row gutter={16}>
                             <Col span={12}>
@@ -382,7 +418,7 @@ const Signup = () => {
                                     <Select onChange={onChangeFoodPreference} value={foodPreference} className="InputFieldClass">
                                         <Select.Option value="Vegetarian">Vegetarian</Select.Option>
                                         <Select.Option value="Non-vegetarian">Non-vegetarian</Select.Option>
-                                        <Select.Option value="none">None</Select.Option>
+                                        <Select.Option value="None">None</Select.Option>
                                     </Select>
                                 </Form.Item>
                             </Col>
@@ -394,7 +430,7 @@ const Signup = () => {
                                     <Select onChange={onChangePetPreference} value={petPreference} className="InputFieldClass">
                                         <Select.Option value="Dogs">Dogs</Select.Option>
                                         <Select.Option value="Cats">Cats</Select.Option>
-                                        <Select.Option value="none">None</Select.Option>
+                                        <Select.Option value="None">None</Select.Option>
                                     </Select>
                                 </Form.Item>
                             </Col>

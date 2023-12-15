@@ -1,5 +1,5 @@
 import './apartmentdetails.css';
-import React from 'react';
+import React , { useState, useEffect } from 'react';
 import { Carousel, Row, Col, Button, Card, Divider} from 'antd'; // Import Button from antd
 import logo from '../../../../src/assets/images/logo4.png';
 import pic1 from '../../../../src/assets/images/pic1.png';
@@ -37,21 +37,47 @@ const ApartmentDetails = () => {
     const { apartment } = state;
     console.log(apartment)
 
+    const [agent, setAgent] = useState(null);
+
+    useEffect(() => {
+        const fetchAgentData = async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/getAgent/${apartment.agent}`);
+                const data = await response.json();
+                if (data.success) {
+                    setAgent(data.description);
+                } else {
+                    console.error('Failed to fetch agent data');
+                }
+            } catch (error) {
+                console.error('Error fetching agent data:', error);
+            }
+        };
+
+        if (apartment && apartment.agent) {
+            fetchAgentData();
+        }
+    }, [apartment.agent]);
+
     return (
         <div className="details_padding">
             <Row gutter={[42, 42]}>
                 <Col span={16}>
                 <Carousel className="carousel_apt">
-      {apartment.images.map((imageUrl, index) => (
-        <div key={index}>
-          <img src={imageUrl} alt={`Image ${index + 1}`} style={{ width: '100%', marginBottom: '10px' }} />
-        </div>
-      ))}
-    </Carousel>
+                {apartment.images.map((imageUrl, index) => (
+                    <div key={index}>
+                    <img src={imageUrl} alt={`Image ${index + 1}`} style={{ width: '100%', marginBottom: '10px' }} />
+                    </div>
+                ))}
+                </Carousel>
                     <div style={{ textAlign: 'center', marginTop: '10px' }}>
                         {/* <Button onClick={prev} style={{ marginRight: '10px' }}>Previous</Button>
                         <Button onClick={next}>Next</Button> */}
                         <Button className = "likeButton">Like</Button>
+                        <div className="likes_count">
+                            <p>({apartment.liked_by.filter(name => name !== "").length} likes)</p>
+                            <p>{apartment.liked_by.join(", ")}</p>
+                        </div>
                     </div>
                 </Col>
                 <Col span={8}>
@@ -70,7 +96,7 @@ const ApartmentDetails = () => {
                                 Bedrooms
                             </div>
                             <img class = "ApartmentCardIcon" src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167139089x172125820032762440/Vectorbed.svg"></img>
-                            <p class = "apartmentContent">3{apartment.bedrooms}Bedrooms</p>
+                            <p class = "apartmentContent">{apartment.bedrooms} Bedrooms</p>
                         </Col>
                         
                         <Col className='rent_card' span={11}>
@@ -94,7 +120,7 @@ const ApartmentDetails = () => {
                                 Move - In
                             </div>
                             <img class = "ApartmentCardIcon"src = "https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167222340x313042430337722160/Group%20125movein.svg"></img>
-                            <p class = "apartmentContent">{apartment.move_in}</p>
+                            <p class = "apartmentContent">{(apartment.move_in).split('T')[0]}</p>
                         </Col>
                         <Col span={1}></Col>
                         <Col className='rent_card' span={11}>
@@ -126,6 +152,14 @@ const ApartmentDetails = () => {
             <h3>
                 Remodeled: </h3><p>{apartment.year_remodeled}
             </p>
+            {agent && (
+                    <>
+                        <Divider/>
+                        <h3>Agent Contact:</h3>
+                        <p>Mobile: {agent.mobile}</p>
+                        <p>Email: {agent.email}</p>
+                    </>
+                )}
             </Card>
         </div>
     );
