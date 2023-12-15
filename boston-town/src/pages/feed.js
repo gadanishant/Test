@@ -9,6 +9,7 @@ import "./feed.css";
 import boys2 from "../../src/assets/images/boystalking.png"
 import userpic from "../../src/assets/images/userimages/user1.png"
 
+
 const Feed = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("isAuthenticated"));
     const [listOfPosts, setListOfPosts] = useState([]);
@@ -16,6 +17,13 @@ const Feed = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(5); // Number of posts per page
     const { user, setUser } = useContext(Context);
+
+    const userImages = [
+        "user1.png",
+        "user2.png",
+        "user3.png",
+        // Add more image names here...
+      ];
 
     const getAllPostsAPI = async () => {
         try {
@@ -53,7 +61,6 @@ const Feed = () => {
             ? <>
                 {loading ? <Loader /> :
                     <div className='padding_background_feed'>
-                       
                         <Row>
                             <Col  xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}>
                                 <h1>Feed</h1>
@@ -63,19 +70,18 @@ const Feed = () => {
                             </Col>
                             <Col>
                             </Col>
-
                         </Row>
                         <Row gutter={[24, 24]} >
                             <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
 
                             <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={14}>
                                 {
-                                    currentPosts.map((post) => (
+                                    currentPosts.map((post, index) => (
                                         <Card key={post.id} className="card">
                                             <Row>
                                                 <Col span={4}>
                                                     {/* <UserOutlined /> */}
-                                                    <img className="userpic" src={userpic}/>
+                                                    <img className="userpic" src={`../../src/assets/images/userimages/${userImages[index % userImages.length]}`} alt={`User ${index + 1}`} />
                                                 </Col>
                                                 <Col className="time_color" span={14}>
                                                     <h2><b> {post.username}</b></h2>
