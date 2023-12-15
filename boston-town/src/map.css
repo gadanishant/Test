@@ -1,0 +1,8 @@
+.marker-dot {
+   background-color: rgb(222, 74, 74);
+   border-radius: 50%;
+   width: 15px;
+   height: 15px;
+   border: 2px solid rgb(66, 6, 6);
+   opacity: 0.75;
+ }

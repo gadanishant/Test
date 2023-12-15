@@ -1,7 +1,9 @@
 .incident-container-padding {
     padding: 9rem 5rem 5rem 5rem;
+    height: 70vh;
+    overflow: auto;
+    display: block;
 }
-
 .showAllIncidents , .addIncident{
     margin-top:40px;
     float: left;
@@ -10,3 +12,4 @@
 .incidentList{
     cursor: pointer;
 }
+
