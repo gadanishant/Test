@@ -13,7 +13,7 @@
     height: 30rem;
 }
 
-.rent_card{
+.rent_card {
     height: 8rem;
     justify-content: center;
     overflow: visible;
@@ -28,19 +28,20 @@
     font-size: 20px;
 
 }
+
 .apartmentRent {
     font-weight: bold;
     font-size: 20px;
 }
 
 .ApartmentCardIcon {
-    margin-left:90px;
+    margin-left: 90px;
 }
 
 
 .apartmentCardHeading {
     font-size: 20px;
-    text-align:center;
+    text-align: center;
     margin-bottom: 10px;
 }
 
@@ -48,10 +49,10 @@
     width: 300;
     margin: '16px';
     min-height: 280;
-    font-size:20px;
+    font-size: 20px;
 }
 
-.likeButtton {
+/* .likeButtton {
     float: right;
 }
 
@@ -60,4 +61,28 @@
     border: 0px;
     color: white;
     font-weight: bold;
+} */
+
+.filled {
+    color: red;
+    font-size: 2rem;
+    transition: 0.3s;
+    float: right;
+}
+
+.notfilled {
+    font-size: 2rem;
+    transition: 0.3s;
+    float: right;
+}
+
+.likes_soace{
+    /* height: 8rem; */
+    justify-content: center;
+    overflow: visible;
+    border-radius: 20px;
+    box-shadow: rgb(230, 230, 230) 0px 2px 8px 2px;
+    padding: 10px;
+    opacity: 1;
+    font-size: 1rem;
 }
