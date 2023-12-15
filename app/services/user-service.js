@@ -15,11 +15,13 @@ export const find = async (id) => {
     return user;
 }
 
+// code to find the user by username
 export const findUserByUsername = async (param) => {
     const user = await UserModel.findOne({ username: param }).exec();
     return user;
 }
 
+// code to find the user by any identifier
 export const findUserByIdentifier = async (identifier) => {
     const user = await UserModel.findOne({
         $or: [
@@ -36,6 +38,7 @@ export const update = async (id, newUser) => {
     return user;
 }
 
+// code to update the user details
 export const updateUserDetails = async (username, newUser) => {
     console.log("user-service: updateUserDetails");
     console.log("user-service: username => ", username);

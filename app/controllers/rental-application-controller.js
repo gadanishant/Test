@@ -24,6 +24,7 @@ export const post = async (req, res) => {
     }
 }
 
+// code to update the details of a rental application
 export const updateRentalApplicationDetails = async (req, res) => {
     console.log("rental-application-controller: updateRentalApplicationDetails");
     try {

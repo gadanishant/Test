@@ -52,6 +52,7 @@ export const put = async (req, res) => {
     }
 }
 
+// code to update the details of an incident
 export const updateIncidentDetails = async (req, res) => {
     console.log("incident-controller: updateIncidentDetails");
     try {
@@ -74,6 +75,7 @@ export const remove = async (req, res) => {
     }
 }
 
+// code to find the incident by an ID
 export const findById = async (req, res) => {
     try {
         const id = req.params.id;
