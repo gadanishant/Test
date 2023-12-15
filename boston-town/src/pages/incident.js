@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { List, Button, Modal, Input, Form, DatePicker } from 'antd';
+import React, { useContext, useEffect, useState, useMemo} from 'react';
+import { List, Button, Modal, Input, Form, DatePicker, Card, Col, Row } from 'antd';
 import './incident.css';
 import Map from "../../src/map"
 import sendRequest from '../components/sendRequest';
@@ -30,6 +30,18 @@ const Incident = () => {
 	const [newIncidentLocation, setNewIncidentLocation] = useState("");
 	const [newIncidentDate, setNewIncidentDate] = useState();
 	const [newIncidentDescription, setNewIncidentDescription] = useState();
+	const [searchInput, setSearchInput] = useState("");
+
+    const handleSearchChange = (e) => {
+        setSearchInput(e.target.value);
+    };
+
+    const filteredPosts = useMemo(() => {
+        return searchInput.trim()
+            ? listOfIncidents.filter(incident => incident.incidentTitle.toLowerCase().startsWith(searchInput.toLowerCase().trim()))
+            : listOfIncidents;
+    }, [listOfIncidents, searchInput]);
+
 
 	// Form to handle new incident input
 	const [form] = Form.useForm();
@@ -152,11 +164,27 @@ const Incident = () => {
 	return (
 		(isAuthenticated ?
 			<div className="incident-container-padding">
+					<Card>
+                        <Row gutter={[24,24]} >
+                        <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
+                            <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={11}>
+                                <h1>Incidents</h1>
+                            </Col>
+                            <Col >
+                            <Input value={searchInput} onChange={handleSearchChange} placeholder="Search Incident"></Input>
+                            </Col>
+                            <Col>
+                            </Col>
+                        </Row>
+                        </Card>
+
+					<br>
+					</br>
 				<h4>Upto {incidentCount} incidents reported so far.. </h4>
 				<br />
 				<div style={{ maxHeight: '300px', overflowY: 'auto' }}>
 					<List
-						dataSource={listOfIncidents.slice(0, showAllIncidents ? undefined : 10)}
+						dataSource={filteredPosts.slice(0, showAllIncidents ? undefined : 10)}
 						renderItem={(incident) => (
 							<List.Item className="incidentList" key={incident.id} onClick={() => handleIncidentClick(incident)}>
 								<div>
