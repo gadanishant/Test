@@ -152,6 +152,10 @@ const Incident = () => {
 	return (
 		(isAuthenticated ?
 			<div className="incident-container-padding">
+				<div className="map-container">
+					<h1>Incident Map</h1>
+					<Map />
+				</div>
 				<h4>Upto {incidentCount} incidents reported so far.. </h4>
 				<br />
 				<div style={{ maxHeight: '300px', overflowY: 'auto' }}>
