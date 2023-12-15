@@ -235,7 +235,7 @@ const Incident = () => {
 							name="date"
 							rules={[{ required: true, message: 'Please enter the date' }]}
 						>
-							<DatePicker onBlur={setIncidentDate} placeholder="Enter the date" format="MM/DD/YYYY" style={{ width: '100%' }} />
+							<DatePicker onBlur={setIncidentDate} placeholder="Enter the date" format="MM/DD/YYYY" />
 						</Form.Item>
 						<Form.Item
 							label="Description"
