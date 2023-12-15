@@ -3,12 +3,12 @@
     padding: 0;
 }
 
-.nav_logo{
+.nav_logo {
     height: 3.9rem;
     margin-top: -1rem;
 }
 
-.background{
+.background {
     /* background-color: #dedede; */
     /* padding: 0rem 2rem 0rem 2rem; */
     padding: 1rem !important;
@@ -20,11 +20,11 @@
     border-bottom-right-radius: 30px;
 }
 
-.margin_auto #Col{
+.margin_auto #Col {
     margin: auto;
 }
 
-.navposition{
+.navposition {
     position: fixed;
     width: -webkit-fill-available;
     z-index: 100;
@@ -35,11 +35,11 @@
     padding-bottom: 22px;
 } */
 
-.navtabs{
+.navtabs {
     color: #68a2d5 !important;
 }
 
-.navtabs:hover{
+.navtabs:hover {
     color: #8E8D8A !important;
     border-bottom: 1px solid #E85A4F;
     padding-bottom: 22px;
@@ -48,16 +48,33 @@
 
 @media screen and (max-width: 991px) {
     .navbar_display {
-        display: none; 
+        display: none;
     }
 }
 
 @media screen and (min-width: 992px) {
     .hamburger_display {
-        display: none; 
+        display: none;
     }
 }
 
-.custom_menu{
+.custom_menu {
     background-color: #8E8D8A;
+}
+
+.ant-btn-primary.navbutton {
+    background-color: #D8C3A5;
+    /* top: 2rem; */
+}
+
+.ant-btn-primary.navbutton:active {
+    background-color: #D8C3A5 !important;
+}
+
+.small_navbar{
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 3px 3px 27px lightgray;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 30px;
 }
