@@ -126,10 +126,10 @@ const Navbar = () => {
                             <Col align='middle' xs={2} sm={4} md={6} lg={12} xl={12} xxl={12}>
                                 <Link to="/"> <img className="nav_logo" src={logo} alt="" /></Link>
                             </Col>
-                            <Col align='middle' xs={2} sm={4} md={6} lg={6} xl={6} xxl={6}>
+                            <Col align='middle' xs={2} sm={4} md={6} lg={3} xl={3} xxl={3}>
                                 <h2> <Link to="/signup" className='navtabs'>Sign up</Link> </h2>
                             </Col>
-                            <Col align='middle' xs={2} sm={4} md={6} lg={6} xl={6} xxl={6}>
+                            <Col align='middle' xs={2} sm={4} md={6} lg={3} xl={3} xxl={3}>
                                 <h2> <Link to="/login" className='navtabs'>Login</Link> </h2>
                             </Col>
                         </Row>
