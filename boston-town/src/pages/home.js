@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 
 import React, { useState } from 'react';
 import { Pagination } from 'antd';
+import Button_component from "../components/Button_component";
 // import 'antd/dist/antd.css';
 
 const { Meta } = Card;
@@ -50,16 +51,20 @@ const Home = () => {
                         <Row gutter={[24, 24]} className="find_button">
                             <Col>
                                 <Link to="/listing">
-                                    <Button className="find_apt">
-                                        <h3 > Find a Apartment</h3>
-                                    </Button>
+                                    {/* <Button className="find_apt">
+                                        
+                                    </Button> */}
+                                    <Button_component className="find_apt"><h3 > Find a Apartment</h3></Button_component>
                                 </Link>
                             </Col>
                             <Col>
                                 <Link to="/feed">
-                                    <Button className="find_rm">
-                                        <h3 > Find Roomates</h3>
-                                    </Button>
+                                    {/* <Button >
+                                       
+                                    </Button> */}
+                                    <Button_component className="find_rm">
+                                    <h3 > Find Roomates</h3>
+                                    </Button_component>
                                 </Link>
                             </Col>
                         </Row>
@@ -176,7 +181,8 @@ const Home = () => {
                     <br />
                     <div>
                         <Link to="/incidents">
-                            <Button className="find_apt"> Find here</Button>
+                            {/* <Button className="find_apt"> Find here</Button> */}
+                            <Button_component className="find_apt"> Find here</Button_component>
                         </Link>
                     </div>
                 </Col>

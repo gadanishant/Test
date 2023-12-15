@@ -5,6 +5,7 @@ import "./login.css"
 import { Context } from '../../../components/context';
 import { Navigate } from 'react-router-dom';
 import Success from '../../../components/modals/success';
+import Button_component from '../../../components/Button_component';
 
 // Inside your component's logic, after successful authentication
 
@@ -165,7 +166,10 @@ const Login = () => {
                             />
                         </Form.Item>
                         <Form.Item>
-                            <Button className="LoginButtonClass" onClick={onClickLogin} type="primary">Login!</Button>
+                            {/* <Button className="LoginButtonClass" onClick={onClickLogin} type="primary">Login!</Button> */}
+                            <Button_component className="LoginButtonClass" onClick={onClickLogin} type="primary">
+                            Login!
+                            </Button_component>
                         </Form.Item>
 
 

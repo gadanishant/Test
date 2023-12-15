@@ -4,6 +4,7 @@ import './incident.css';
 import Map from "../../src/map"
 import sendRequest from '../components/sendRequest';
 import { Context } from '../components/context';
+import Button_component from '../components/Button_component';
 
 const Incident = () => {
 	// Replace this data with your actual incident data
@@ -198,13 +199,17 @@ const Incident = () => {
 					/>
 				</div>
 
-				<Button className="showAllIncidents" onClick={() => setShowAllIncidents(true)}>
+				{/* <Button className="showAllIncidents" onClick={() => setShowAllIncidents(true)}>
 					Show All Incidents
-				</Button>
+				</Button> */}
+				<Button_component className="showAllIncidents" onClick={() => setShowAllIncidents(true)}>Show All Incidents</Button_component>
 
-				<Button className="addIncident" onClick={handleAddIncident}>
-					Add Incident
-				</Button>
+				{/* <Button className="addIncident" onClick={handleAddIncident}>
+					
+				</Button> */}
+				<Button_component className="addIncident" onClick={handleAddIncident}>
+				Add Incident
+				</Button_component>
 
 				<Modal
 					title="Add New Incident"
