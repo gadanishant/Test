@@ -75,7 +75,7 @@ const ApartmentDetails = () => {
                         <Button onClick={next}>Next</Button> */}
                         <Button className = "likeButton">Like</Button>
                         <div className="likes_count">
-                            <p>({apartment.liked_by.length} likes)</p>
+                            <p>({apartment.liked_by.filter(name => name !== "").length} likes)</p>
                             <p>{apartment.liked_by.join(", ")}</p>
                         </div>
                     </div>
