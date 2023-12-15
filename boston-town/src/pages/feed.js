@@ -104,7 +104,8 @@ const Feed = () => {
                                             <Row>
                                                 <Col span={4}>
                                                     {/* <UserOutlined /> */}
-                                                    <img className="userpic" src={`../../src/assets/images/userimages/${userImages[index % userImages.length]}`} alt={`User ${index + 1}`} />
+                                                    {/* <img className="userpic" src={`../../src/assets/images/userimages/${userImages[index % userImages.length]}`} alt={`User ${index + 1}`} /> */}
+                                                    <img className="userpic" src={userpic}></img>
                                                 </Col>
                                                 <Col className="time_color" span={14}>
                                                     <h2><b> {post.username}</b></h2>
