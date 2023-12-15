@@ -219,9 +219,7 @@ const Navbar = () => {
                 <Button
                     type="primary"
                     onClick={toggleCollapsed}
-                    style={{
-                        marginBottom: 16,
-                    }}
+                   
                 >
                     {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 </Button>

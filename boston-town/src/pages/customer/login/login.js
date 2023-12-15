@@ -162,7 +162,6 @@ const Login = () => {
                                 placeholder="Enter your password"
                                 onBlur={onChangePassword}
                                 className="InputFieldClass"
-                                style={{ width: '100%' }}
                             />
                         </Form.Item>
                         <Form.Item>
