@@ -8,6 +8,7 @@ import Loader from "../components/loader";
 import sendRequest from "../components/sendRequest";
 import "./feed.css";
 import userpic from "../../src/assets/images/userimages/user1.png"
+import Button_component from "../components/Button_component";
 
 // Feed component
 const Feed = () => {
@@ -149,9 +150,9 @@ const Feed = () => {
                         <Col span={24} align="middle">Kindly login!</Col>
                         <Col spna={24}>
                             <Link>
-                                <Button>
+                                <Button_component>
                                     Click here to Login
-                                </Button>
+                                </Button_component>
                             </Link>
                         </Col>
                     </Row>

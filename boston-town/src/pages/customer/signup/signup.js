@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import sendRequest from '../../../../src/components/sendRequest';
 import "./signup.css"
 import { Navigate } from 'react-router-dom';
+import Button_component from '../../../components/Button_component';
 
 // Signup component
 const Signup = () => {
@@ -372,7 +373,10 @@ const Signup = () => {
                                     <Upload {...UploadImageprops} className="InputFieldClass"
                                         maxCount={1}
                                     >
-                                        <Button icon={<UploadOutlined />}>Click to upload</Button>
+                                        {/* <Button icon={<UploadOutlined />}>Click to upload</Button> */}
+                                        <Button_component icon={<UploadOutlined />}>
+                                        Click to upload
+                                        </Button_component>
                                     </Upload>
                                 </Form.Item>
                             </Col>
@@ -451,9 +455,11 @@ const Signup = () => {
                         </Row>
 
 
-                        <Button className="submitButton" onClick={callCreateNewUserAPI} type="primary">
+                        {/* <Button className="submitButton" onClick={callCreateNewUserAPI} type="primary">
                             Sign Up
-                        </Button>
+                        </Button> */}
+                        <Button_component className="submitButton" onClick={callCreateNewUserAPI} type="primary"> Sign Up</Button_component>
+
                     </Form>
                 </Card>
             </div >

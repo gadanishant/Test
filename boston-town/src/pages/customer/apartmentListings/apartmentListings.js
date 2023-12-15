@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../../../components/loader';
 import sendRequest from '../../../components/sendRequest';
 import './apartmentListings.css';
+import Button_component from '../../../components/Button_component';
 
 const ApartmentListings = () => {
 	const [listOfProperties, setListOfProperties] = useState([]);
@@ -138,9 +139,10 @@ const ApartmentListings = () => {
 				<div className="paddingListings">
 					<Row>
 						<Col  xs={24} sm={24} md={24} lg={0} xl={0} xxl={0}>
-						<Button type="primary" onClick={showDrawer}>
+						{/* <Button type="primary" onClick={showDrawer}>
 						Filter
-					</Button>
+					</Button> */}
+					<Button_component type="primary" onClick={showDrawer}>Filter</Button_component>
 					<Drawer  placement="left" onClose={onClose} open={open}>
 						<Card>
 							<div>Filter By :</div>

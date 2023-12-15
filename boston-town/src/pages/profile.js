@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import ageIcon from '../../../boston-town/src/assets/images/ageIcon.png';
 import contactInfo from '../../../boston-town/src/assets/images/contactInfo.png';
 import person from '../assets/images/person.jpeg';
+import Button_component from '../components/Button_component';
 import { Context } from '../components/context';
 import sendRequest from '../components/sendRequest';
 import "./profile.css";
@@ -297,7 +298,8 @@ const Profile = () => {
 					</Row>
 				</Typography>
 
-				<Button onClick={showUpdateProfileModal}>Update</Button>
+				{/* <Button onClick={showUpdateProfileModal}>Update</Button> */}
+				<Button_component onClick={showUpdateProfileModal}>Update</Button_component>
 			</Card>
 
 			<Modal

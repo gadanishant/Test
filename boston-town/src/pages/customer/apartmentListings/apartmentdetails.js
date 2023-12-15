@@ -9,6 +9,7 @@ import { Context } from '../../../components/context';
 import { useLocation } from 'react-router-dom';
 import { LeftOutlined, RightOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import Button_component from '../../../components/Button_component';
 
 
 
@@ -118,8 +119,11 @@ const ApartmentDetails = () => {
                     </Carousel>
                     <div >
                         <Space>
-                            <Button onClick={prev} ><LeftOutlined /></Button>
-                            <Button onClick={next}><RightOutlined /></Button>
+                            {/* <Button onClick={prev} ><LeftOutlined /></Button>
+                            <Button onClick={next}><RightOutlined /></Button> */}
+
+                            <Button_component onClick={prev}><LeftOutlined /></Button_component>
+                            <Button_component onClick={next} ><RightOutlined /></Button_component>
                             <div
                                 className={isLiked ? "likedButton" : "likeButton"}
                                 onClick={handleLikeClick}>
