@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Row, Col, Card, Input, Divider, Pagination, Slider, Space } from 'antd';
+import { Row, Col, Card, Input, Divider, Pagination, Slider, Space, Button, Drawer } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../../components/loader';
 import sendRequest from '../../../components/sendRequest';
@@ -16,7 +16,7 @@ const ApartmentListings = () => {
 	const [disabled, setDisabled] = useState(false);
 	const [bedSelected, setBedSelected] = useState([]);
 	const [bathSelected, setBathSelected] = useState([]);
-    const [rentRange, setRentRange] = useState([0, 5000]);
+	const [rentRange, setRentRange] = useState([0, 5000]);
 
 
 	const handleSelect = (number) => {
@@ -33,41 +33,41 @@ const ApartmentListings = () => {
 	};
 
 	const handleBathSelect = (number) => {
-        const isSelected = bathSelected.includes(number);
-        let updatedSelection = isSelected ? bathSelected.filter(n => n !== number) : [...bathSelected, number];
-        setBathSelected(updatedSelection);
-    };
+		const isSelected = bathSelected.includes(number);
+		let updatedSelection = isSelected ? bathSelected.filter(n => n !== number) : [...bathSelected, number];
+		setBathSelected(updatedSelection);
+	};
 
 
 	const getCircleStyle = (number, type) => {
-        const isSelected = type === 'bed' ? bedSelected.includes(number) : bathSelected.includes(number);
-        return isSelected
-            ? {
-                backgroundColor: 'rgb(28, 138, 221)',
-                color: '#FFFFFF',
-                border: '1px solid #FFFFFF',
-            }
-            : {};
-    };
+		const isSelected = type === 'bed' ? bedSelected.includes(number) : bathSelected.includes(number);
+		return isSelected
+			? {
+				backgroundColor: 'rgb(28, 138, 221)',
+				color: '#FFFFFF',
+				border: '1px solid #FFFFFF',
+			}
+			: {};
+	};
 
 	const navigate = useNavigate();
 
 	const filteredProperties = useMemo(() => {
-        return listOfProperties.filter(property => {
-            const zipCodeMatch = zipCodeFilter.trim() === '' || property.zip_code.startsWith(zipCodeFilter.trim());
-            const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(property.neighborhood);
-            const bedroomMatch = bedSelected.length === 0 || bedSelected.includes(property.bedrooms);
-            const bathroomMatch = bathSelected.length === 0 || bathSelected.includes(property.bathrooms);
-            const rentMatch = property.price >= rentRange[0] && property.price <= rentRange[1];
-            return zipCodeMatch && neighborhoodMatch && bedroomMatch && bathroomMatch && rentMatch;
-        });
-    }, [listOfProperties, zipCodeFilter, selectedNeighborhoods, bedSelected, bathSelected, rentRange]);
+		return listOfProperties.filter(property => {
+			const zipCodeMatch = zipCodeFilter.trim() === '' || property.zip_code.startsWith(zipCodeFilter.trim());
+			const neighborhoodMatch = selectedNeighborhoods.length === 0 || selectedNeighborhoods.includes(property.neighborhood);
+			const bedroomMatch = bedSelected.length === 0 || bedSelected.includes(property.bedrooms);
+			const bathroomMatch = bathSelected.length === 0 || bathSelected.includes(property.bathrooms);
+			const rentMatch = property.price >= rentRange[0] && property.price <= rentRange[1];
+			return zipCodeMatch && neighborhoodMatch && bedroomMatch && bathroomMatch && rentMatch;
+		});
+	}, [listOfProperties, zipCodeFilter, selectedNeighborhoods, bedSelected, bathSelected, rentRange]);
 
-    // Click event handler
-    const handleCardClick = (apartment) => {
-        // Navigate to details page with apartment info
-        navigate(`/apartmentdetails`, { state: { apartment } });
-    };
+	// Click event handler
+	const handleCardClick = (apartment) => {
+		// Navigate to details page with apartment info
+		navigate(`/apartmentdetails`, { state: { apartment } });
+	};
 
 	const getAllpropertyAPI = async () => {
 		try {
@@ -81,8 +81,8 @@ const ApartmentListings = () => {
 	};
 
 	const onRentRangeChange = (range) => {
-        setRentRange(range);
-    };
+		setRentRange(range);
+	};
 
 	useEffect(() => {
 		getAllpropertyAPI();
@@ -122,12 +122,122 @@ const ApartmentListings = () => {
 
 	console.log("testing", { listOfProperties })
 
+	const [open, setOpen] = useState(false);
+	const showDrawer = () => {
+		setOpen(true);
+	};
+	const onClose = () => {
+		setOpen(false);
+	};
+
 	return (
 		isAuthenticated === "true" ? (
 			loading ? (
 				<Loader />
 			) : (
 				<div className="paddingListings">
+					<Row>
+						<Col  xs={24} sm={24} md={24} lg={0} xl={0} xxl={0}>
+						<Button type="primary" onClick={showDrawer}>
+						Filter
+					</Button>
+					<Drawer  placement="left" onClose={onClose} open={open}>
+						<Card>
+							<div>Filter By :</div>
+							<Divider />
+							<div>
+								No of Bedrooms
+							</div>
+							<br />
+							<div>
+								<Row gutter={[12, 12]}>
+									{[1, 2, 3, 4, 5].map((number) => (
+										<React.Fragment key={number}>
+											<Col
+												align="middle"
+												span={7}
+												className="bedroom_circle"
+												style={getCircleStyle(number, 'bed')}
+												onClick={() => handleSelect(number)}
+											>
+												{number}
+											</Col>
+											{number !== 5 && <Col span={1} />}
+										</React.Fragment>
+									))}
+								</Row>
+							</div>
+							<br />
+							<br />
+							<div>
+								No of Bathrooms
+							</div>
+							<br />
+							<div>
+								<Row gutter={[12, 12]}>
+									{[1, 2, 3, 4, 5].map((number) => (
+										<React.Fragment key={number}>
+											<Col
+												align="middle"
+												span={7}
+												className="bedroom_circle"
+												style={getCircleStyle(number, 'bath')}
+												onClick={() => handleBathSelect(number)}
+											>
+												{number}
+											</Col>
+											{number !== 5 && <Col span={1} />}
+										</React.Fragment>
+									))}
+								</Row>
+							</div>
+							<br />
+							<br />
+							<div>
+								<div>Zipcode</div>
+								<br />
+								<Input
+									value={zipCodeFilter}
+									onChange={(e) => setZipCodeFilter(e.target.value)}
+								/>
+							</div>
+							<br />
+							<br />
+							<div>
+								<div>Neighborhood</div>
+								<Row gutter={16}>
+									{Array.from(uniqueNeighborhoods).map((neighborhood, index) => (
+										<Col span={24} key={index}>
+											<div
+												className={`neighborhood_card ${selectedNeighborhoods.includes(neighborhood) ? 'selected' : ''}`}
+												onClick={() => handleNeighborhoodSelect(neighborhood)}
+											>
+												{neighborhood}
+											</div>
+										</Col>
+									))}
+								</Row>
+							</div>
+							<br />
+							<div>
+								Rent Range:
+							</div>
+							<div>
+								<Slider
+									min={0}
+									range
+									value={rentRange}
+									max={5000}
+									disabled={disabled}
+									onChange={onRentRangeChange}
+									step={100}
+								/>
+							</div>
+						</Card>
+					</Drawer>
+						</Col>
+					</Row>
+					
 					<Row>
 						<Col span={5}>
 							{/* <h2 className='accent_red'>
@@ -141,7 +251,7 @@ const ApartmentListings = () => {
 					<br />
 					<br />
 					<Row gutter={24}>
-						<Col className="filter_show"  xs={24} sm={24} md={24} lg={5} xl={5} xxl={5}>
+						<Col className="filter_show" xs={0} sm={0} md={0} lg={5} xl={5} xxl={5}>
 							<Card>
 								<div>Filter By :</div>
 								<Divider />
@@ -253,7 +363,7 @@ const ApartmentListings = () => {
 											</div>
 											<br />
 											<Row gutter={[24, 24]}>
-											<Col align="center" span={6}>
+												<Col align="center" span={6}>
 													<Space>
 														<img className='icon' src="https://09bf81bfe27e51071744f3d8af8cdc0c.cdn.bubble.io/f1666167139089x172125820032762440/Vectorbed.svg"></img> {apartment.bedrooms}
 													</Space>
@@ -297,7 +407,7 @@ const ApartmentListings = () => {
 			</div>
 		)
 	);
-	
+
 };
 
 export default ApartmentListings;

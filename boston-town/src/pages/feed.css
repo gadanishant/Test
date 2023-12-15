@@ -23,6 +23,8 @@
 
 .boys2{
     height: 20rem;
+    position: sticky;
+    top: 8rem;
 }
 
 .time_color{
