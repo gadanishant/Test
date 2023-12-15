@@ -4,6 +4,8 @@ import logo from '../../../src/assets/images/logo4.png';
 import "./navbar.css";
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context';
+import { Drawer } from 'antd';
+
 
 
 
@@ -26,7 +28,7 @@ function getItem(label, key, icon, children, type) {
 
 const Navbar = () => {
 
-   
+
 
     const [isAuthenticated, setIsAuthenticated] = useState("false");
     const { user, setUser } = useContext(Context);
@@ -59,28 +61,105 @@ const Navbar = () => {
         ),
         getItem(
             <h2>
-            <Link to="/feed" className='navtabs'><span className='underline'>Feed</span></Link>
-        </h2>
+                <Link to="/feed" className='navtabs'><span className='underline'>Feed</span></Link>
+            </h2>
         ),
         getItem(
             <h2>
-            <Link to="/listing" className='navtabs'><span className='underline'>Listing</span></Link>
-        </h2>
+                <Link to="/listing" className='navtabs'><span className='underline'>Listing</span></Link>
+            </h2>
         ),
         getItem(
             <h2>
-            <Link to="/incidents" className='navtabs'><span className='underline'>Incidents</span></Link>
-        </h2>
+                <Link to="/incidents" className='navtabs'><span className='underline'>Incidents</span></Link>
+            </h2>
         ),
         getItem(
             <h2>
-            <Link to="/login" onClick={logout} className='navtabs'><span className='underline'>Logout</span></Link>
-        </h2>
+                <Link to="/login" onClick={logout} className='navtabs'><span className='underline'>Logout</span></Link>
+            </h2>
         )
     ];
+    const [open, setOpen] = useState(false);
+    const showDrawer = () => {
+        setOpen(true);
+    };
+    const onClose = () => {
+        setOpen(false);
+    };
 
     return (
         <div className='navposition'>
+
+
+
+            <Row>
+                <Col xs={24} sm={24} md={24} lg={0} xl={0} xxl={0}>
+                    <Row className='small_navbar'>
+                        <Col span={4}>
+                        </Col>
+                       
+                        <Col span={16}>
+                            <Link to="/"> <img className="nav_logo" src={logo} alt="" /></Link>
+                        </Col>
+                        <Col span={4} >
+                            <Button className='navbutton' type="primary" onClick={showDrawer}>
+                                {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                            </Button></Col>
+
+                    </Row>
+
+                    <Drawer placement="left" onClose={onClose} open={open}>
+
+                        {
+                            isAuthenticated === "true" ?
+                                <div >
+                                    <h2>
+                                        <Link to="/" className='navtabs'> <span className='underline'>Home</span></Link>
+                                    </h2>
+
+                                    <h2>
+                                        <Link to="/feed" className='navtabs'><span className='underline'>Feed</span></Link>
+                                    </h2>
+
+                                    <h2>
+                                        <Link to="/listing" className='navtabs'><span className='underline'>Listing</span></Link>
+                                    </h2>
+
+                                    {/* <Link to="/"> <img className="nav_logo" src={logo} alt="" /></Link> */}
+
+                                    <h2>
+                                        <Link to="/incidents" className='navtabs'><span className='underline'>Incidents</span></Link>
+                                    </h2>
+
+                                    <h2> <Link to={`/profile/${user.username}`} className='navtabs'>{user.username}</Link> </h2>
+
+                                    <h2>
+                                        <Link to="/login" onClick={logout} className='navtabs'><span className='underline'>Logout</span></Link>
+                                    </h2>
+
+                                </div>
+                                : <Row className="background margin_auto">
+
+                                    <h2>
+                                        <Link to="/" className='navtabs'> <span className='underline'>Home</span></Link>
+                                    </h2>
+
+                                    <Link to="/"> <img className="nav_logo" src={logo} alt="" /></Link>
+
+                                    <h2> <Link to="/signup" className='navtabs'>Sign up</Link> </h2>
+
+                                    <h2> <Link to="/login" className='navtabs'>Login</Link> </h2>
+                                </Row>
+                        }
+
+                    </Drawer>
+                </Col>
+            </Row>
+
+
+
+
             <div className='navbar_display'>
                 {
                     isAuthenticated === "true" ?
@@ -135,7 +214,7 @@ const Navbar = () => {
                         </Row>
                 }
             </div>
-            <div className="hamburger_display">
+            {/* <div className="hamburger_display">
                 <Button
                     type="primary"
                     onClick={toggleCollapsed}
@@ -155,7 +234,7 @@ const Navbar = () => {
                         items={items}
                         className="custom_menu"
                     />}
-            </div>
+            </div> */}
         </div>
     );
 }
