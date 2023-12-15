@@ -33,7 +33,7 @@ const Feed = () => {
         "user2.png",
         "user3.png",
         // Add more image names here...
-      ];
+    ];
 
     const getAllPostsAPI = async () => {
         try {
@@ -71,19 +71,19 @@ const Feed = () => {
             ? <>
                 {loading ? <Loader /> :
                     <div className='padding_background_feed'>
-                        <Card>
-                        <Row gutter={[24,24]} >
-                        <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
-                            <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={11}>
-                                <h1>Feed</h1>
-                            </Col>
-                            <Col >
-                            <Input placeholder="Search User" value={searchInput} onChange={handleSearchChange}></Input>
-                            </Col>
-                            <Col>
-                            </Col>
-                        </Row>
-                        </Card>
+                       
+                            <Row gutter={[24, 24]} >
+                                <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
+                                <Col xs={24} sm={24} md={20} lg={3} xl={3} xxl={3}>
+                                    <h1>Feed</h1>
+                                </Col>
+                                <Col xs={24} sm={24} md={20} lg={6} xl={6} xxl={6} >
+                                    <Input placeholder="Search User" value={searchInput} onChange={handleSearchChange}></Input>
+                                </Col>
+                                <Col>
+                                </Col>
+                            </Row>
+                       
                         <Row gutter={[24, 24]} >
                             <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
 

@@ -5,6 +5,7 @@ import "./navbar.css";
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../context';
 import { Drawer } from 'antd';
+import { HomeOutlined, IdcardOutlined, UnorderedListOutlined, HeatMapOutlined, LogoutOutlined } from '@ant-design/icons';
 
 
 
@@ -115,27 +116,27 @@ const Navbar = () => {
                             isAuthenticated === "true" ?
                                 <div >
                                     <h2>
-                                        <Link to="/" className='navtabs'> <span className='underline'>Home</span></Link>
+                                        <Link to="/" className='navtabs'> <span className='underline'><HomeOutlined /> Home</span></Link>
                                     </h2>
 
                                     <h2>
-                                        <Link to="/feed" className='navtabs'><span className='underline'>Feed</span></Link>
+                                        <Link to="/feed" className='navtabs'><span className='underline'><IdcardOutlined /> Feed</span></Link>
                                     </h2>
 
                                     <h2>
-                                        <Link to="/listing" className='navtabs'><span className='underline'>Listing</span></Link>
+                                        <Link to="/listing" className='navtabs'><span className='underline'><UnorderedListOutlined /> Listing</span></Link>
                                     </h2>
 
                                     {/* <Link to="/"> <img className="nav_logo" src={logo} alt="" /></Link> */}
 
                                     <h2>
-                                        <Link to="/incidents" className='navtabs'><span className='underline'>Incidents</span></Link>
+                                        <Link to="/incidents" className='navtabs'><span className='underline'><HeatMapOutlined /> Incidents</span></Link>
                                     </h2>
 
                                     <h2> <Link to={`/profile/${user.username}`} className='navtabs'>{user.username}</Link> </h2>
 
                                     <h2>
-                                        <Link to="/login" onClick={logout} className='navtabs'><span className='underline'>Logout</span></Link>
+                                        <Link to="/login" onClick={logout} className='navtabs'><span className='underline'><LogoutOutlined /> Logout</span></Link>
                                     </h2>
 
                                 </div>
