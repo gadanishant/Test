@@ -8,6 +8,8 @@ import pic3 from '../../../../src/assets/images/pic3.png';
 import { Context } from '../../../components/context';
 import { useLocation } from 'react-router-dom';
 import { LeftOutlined, RightOutlined, HeartFilled, HeartOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -187,7 +189,8 @@ const ApartmentDetails = () => {
                                         {apartment.liked_by.map((likedBy, index) => (
                                             <Col span={12}>
                                             <span key={index}>
-                                                {likedBy}
+                                                {/* {likedBy} */}
+                                                <Link className="username" to={`/profile/${likedBy}`}><Button className="view_button"><b className="view_color"> {likedBy}</b></Button></Link>
                                                 <br />
                                             </span></Col>
                                         ))}
