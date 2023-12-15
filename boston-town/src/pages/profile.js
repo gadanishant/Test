@@ -146,7 +146,9 @@ const Profile = () => {
 				description: data.description,
 				country: selectedCountry,
 				foodPreference: selectedFoodPreference,
-				petPreference: selectedPetPreference
+				petPreference: selectedPetPreference,
+				linkedin:data.social_media.linkedin,
+				instagram:data.social_media.instagram
 
 
 				// ... (other fields)
