@@ -9,7 +9,7 @@ import { HomeOutlined, IdcardOutlined, UnorderedListOutlined, HeatMapOutlined, L
 
 
 
-
+// ant design icons
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
@@ -30,7 +30,7 @@ function getItem(label, key, icon, children, type) {
 const Navbar = () => {
 
 
-
+// usestates
     const [isAuthenticated, setIsAuthenticated] = useState("false");
     const { user, setUser } = useContext(Context);
 
@@ -93,7 +93,7 @@ const Navbar = () => {
         <div className='navposition'>
 
 
-
+{/* code for navbar when used in full screen and in mobile withj  */}
             <Row>
                 <Col xs={24} sm={24} md={24} lg={0} xl={0} xxl={0}>
                     <Row className='small_navbar'>
@@ -109,7 +109,7 @@ const Navbar = () => {
                             </Button></Col>
 
                     </Row>
-
+{/* drawe for mobile view navbar */}
                     <Drawer placement="left" onClose={onClose} open={open}>
 
                         {
