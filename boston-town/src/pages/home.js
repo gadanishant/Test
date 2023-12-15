@@ -1,3 +1,4 @@
+// Importing necessary components and styles
 import { Card, Col, Row, Divider, Button, Space } from "antd";
 import './home.css';
 import home from '../../../boston-town/src/assets/images/logo5.png';
@@ -15,8 +16,9 @@ import { Pagination } from 'antd';
 const { Meta } = Card;
 
 
-
+// Home component
 const Home = () => {
+        // State variables for cards, current page, and page size
     const [cards, setCards] = useState([
         { id: 1, title: 'Review 1', description: "A comprehensive platform! From budget-friendly studios to luxurious penthouses, this site offers a wide array of options. The filters make it easy to narrow down choices, and the interface is user-friendly." },
         { id: 2, title: 'Review 2', description: "Great resource for apartment hunting! I found my dream apartment within days of using this site. The listings are detailed, photos are accurate, and the contact process with landlords was smooth." },
@@ -33,14 +35,17 @@ const Home = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 3;
-
+    // Event handler for page change
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
+    // Calculate the index of the last and first card for the current page
 
     const indexOfLastCard = currentPage * pageSize;
     const indexOfFirstCard = indexOfLastCard - pageSize;
     const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+
+        // Rendering the Home component
     return (
         <div className="padding_home">
             <Row>
@@ -100,45 +105,6 @@ const Home = () => {
             <br />
             <br />
 
-            <Row >
-                <Col span={24}>
-                    <Row gutter={30} className="row_11">
-                        {currentCards.map((card) => (
-                            <Col xs={24} sm={24} md={12} lg={8} xl={8} xxl={8}>
-                                <Card
-                                    hoverable
-                                    className="property-card"
-                                >
-                                    <img className='listing_home_img' src={maps} alt='apartment'></img>
-                                    <div style={{ marginTop: '16px' }}>
-                                        <b><h2>$100 / mo</h2></b>
-                                    </div>
-                                    <div>
-                                        <h3><b>Nice</b></h3>
-                                    </div>
-                                    <br />
-
-                                    <div className='apt_desc'>
-                                        Nice
-                                    </div>
-
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row>
-                    <Pagination
-                        className="row_21"
-                        current={currentPage}
-                        pageSize={pageSize}
-                        total={cards.length}
-                        onChange={handlePageChange}
-                    />
-                </Col>
-            </Row>
-            <br />
-            <br />
-            <br />
-
 
             <Row className="row3_color">
                 <Col span={24}>
@@ -192,4 +158,5 @@ const Home = () => {
     );
 }
 
+// Exporting the Home component
 export default Home;
