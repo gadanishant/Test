@@ -1,4 +1,4 @@
-import { Card, Col, Row, Divider, Button } from "antd";
+import { Card, Col, Row, Divider, Button, Space } from "antd";
 import './home.css';
 import home from '../../../boston-town/src/assets/images/logo5.png';
 import apartment from '../../../boston-town/src/assets/images/apartment.png';
@@ -100,6 +100,46 @@ const Home = () => {
             <br />
             <br />
 
+            <Row className="row3_color">
+                <Col span={24}>
+                    <Row className="row_11">
+                        {currentCards.map((card) => (
+                            <Col xs={24} sm={24} md={12} lg={8} xl={8} xxl={8}>
+                                        <Card
+											hoverable
+											className="property-card"
+										>
+											<img className='listing_home_img' src={maps} alt='apartment'></img>
+											<div style={{ marginTop: '16px' }}>
+												<b><h2>$100 / mo</h2></b>
+											</div>
+											<div>
+												<h3><b>Nice</b></h3>
+											</div>
+											<br />
+											
+											<div className='apt_desc'>
+                                                Nice
+											</div>
+
+										</Card>
+                            </Col>
+                        ))}
+                    </Row>
+                    <Pagination
+                        className="row_21"
+                        current={currentPage}
+                        pageSize={pageSize}
+                        total={cards.length}
+                        onChange={handlePageChange}
+                    />
+                </Col>
+            </Row>
+            <br />
+            <br />
+            <br />
+
+            
             <Row className="row3_color">
                 <Col span={24}>
                     <Row className="row_11">
