@@ -1,3 +1,4 @@
+// Importing necessary components and styles
 import { UserOutlined } from "@ant-design/icons";
 import { Card, Col, Pagination, Row, Button, Input } from "antd";
 import { useContext, useEffect, useState, useMemo } from "react";
@@ -8,7 +9,7 @@ import sendRequest from "../components/sendRequest";
 import "./feed.css";
 import userpic from "../../src/assets/images/userimages/user1.png"
 
-
+// Feed component
 const Feed = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(sessionStorage.getItem("isAuthenticated"));
     const [listOfPosts, setListOfPosts] = useState([]);
@@ -18,10 +19,13 @@ const Feed = () => {
     const { user, setUser } = useContext(Context);
     const [searchInput, setSearchInput] = useState("");
 
+
+    // Function to handle search input change
     const handleSearchChange = (e) => {
         setSearchInput(e.target.value);
     };
 
+    // Memoized filtered posts based on search input
     const filteredPosts = useMemo(() => {
         return searchInput.trim()
             ? listOfPosts.filter(post => post.username.toLowerCase().startsWith(searchInput.toLowerCase().trim()))
@@ -35,6 +39,7 @@ const Feed = () => {
         // Add more image names here...
       ];
 
+    // Function to fetch all posts from API
     const getAllPostsAPI = async () => {
         try {
             const response = await sendRequest("http://localhost:3000/getAllPosts", {}, "GET", {});
@@ -47,10 +52,11 @@ const Feed = () => {
         }
     }
 
+        // Function to handle page change
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
-
+    // useEffect to set isAuthenticated and fetch posts on component mount
     useEffect(() => {
         setIsAuthenticated(sessionStorage.getItem("isAuthenticated"));
         console.log("isAuthenticated => ", isAuthenticated);
@@ -62,10 +68,13 @@ const Feed = () => {
         console.log("user => ", user);
     }, []);
 
+    // Calculate indexes for pagination
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
+
+        // Render the component based on authentication status
     return (
         (isAuthenticated === "true"
             ? <>
