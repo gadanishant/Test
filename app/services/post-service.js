@@ -18,6 +18,7 @@ export const find = async (id) => {
     return post;
 }
 
+// code to update the details of a post
 export const updatePost = async (id, newPost) => {
     const post = await PostModel.findByIdAndUpdate(id, newPost, { new: true }).exec();
     return post;

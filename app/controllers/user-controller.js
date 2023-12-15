@@ -2,6 +2,7 @@ import UserModel from "../models/user.js";
 import * as userService from "../services/user-service.js";
 import { setResponse, setErrorResponse, badRequest } from "./response-handler.js";
 
+// code to search a user by various params
 export const find = (req, res) => {
     if (req.query.id) {
         findById(req.query.id, res);
@@ -12,6 +13,7 @@ export const find = (req, res) => {
     }
 };
 
+// code to fetch all the users from the DB
 const getAllUsers = async (req, res) => {
     try {
         const users = await userService.search();
@@ -80,6 +82,7 @@ export const get = async (req, res) => {
     }
 }
 
+// code to authenticate the user on login
 export const authenticateUser = async (req, res) => {
     console.log("user-controller: authenticateUser");
     const username = req.body.username;
@@ -87,6 +90,7 @@ export const authenticateUser = async (req, res) => {
 
     try {
         const user = await userService.findUserByIdentifier(username);
+        // disallowing duplicate usernames
         if (user && user.password === requestPassword) {
             setResponse(user, res);
             console.log("Authentication Successful!");
@@ -116,9 +120,9 @@ export const put = async (req, res) => {
     }
 }
 
+// code to update user details
 export const updateUserDetails = async (req, res) => {
     console.log("user-controller: updateUserDetails");
-    // TODO: Don't allow user to modify username
     try {
         const requestUsername = req.body.username
         const updatedData = { ...req.body };
@@ -130,6 +134,7 @@ export const updateUserDetails = async (req, res) => {
     }
 }
 
+// code to delete/remove a user
 export const remove = async (req, res) => {
     console.log("user-controller: remove");
     try {
