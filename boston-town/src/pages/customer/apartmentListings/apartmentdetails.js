@@ -20,13 +20,7 @@ const contentStyle = {
 const ApartmentDetails = () => {
     const carouselRef = React.useRef(); // Create a reference to the carousel component
 
-    const next = () => {
-        carouselRef.current.next(); // Function to go to the next slide
-    };
-
-    const prev = () => {
-        carouselRef.current.prev(); // Function to go to the previous slide
-    };
+    
 
     const location = useLocation();
 
@@ -59,11 +53,19 @@ const ApartmentDetails = () => {
         }
     }, [apartment.agent]);
 
+    const next = () => {
+        carouselRef.current.next(); // Function to go to the next slide
+    };
+
+    const prev = () => {
+        carouselRef.current.prev(); // Function to go to the previous slide
+    };
+
     return (
         <div className="details_padding">
             <Row gutter={[42, 42]}>
                 <Col span={16}>
-                <Carousel className="carousel_apt">
+                <Carousel className="carousel_apt" ref={carouselRef}>
                 {apartment.images.map((imageUrl, index) => (
                     <div key={index}>
                     <img src={imageUrl} alt={`Image ${index + 1}`} style={{ width: '100%', marginBottom: '10px' }} />
@@ -73,6 +75,8 @@ const ApartmentDetails = () => {
                     <div style={{ textAlign: 'center', marginTop: '10px' }}>
                         {/* <Button onClick={prev} style={{ marginRight: '10px' }}>Previous</Button>
                         <Button onClick={next}>Next</Button> */}
+                        <Button onClick={prev} style={{ marginRight: '10px' }}>Previous</Button>
+                        <Button onClick={next}>Next</Button>
                         <Button className = "likeButton">Like</Button>
                         <div className="likes_count">
                             <p>({apartment.liked_by.filter(name => name !== "").length} likes)</p>
