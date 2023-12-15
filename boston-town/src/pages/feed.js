@@ -6,7 +6,6 @@ import { Context } from "../components/context";
 import Loader from "../components/loader";
 import sendRequest from "../components/sendRequest";
 import "./feed.css";
-import boys2 from "../../src/assets/images/boystalking.png"
 import userpic from "../../src/assets/images/userimages/user1.png"
 
 
@@ -72,8 +71,9 @@ const Feed = () => {
             ? <>
                 {loading ? <Loader /> :
                     <div className='padding_background_feed'>
-                        <Row>
-                            <Col  xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}>
+                        <Card>
+                        <Row gutter={[8,8]} >
+                            <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={14}>
                                 <h1>Feed</h1>
                             </Col>
                             <Col >
@@ -82,6 +82,7 @@ const Feed = () => {
                             <Col>
                             </Col>
                         </Row>
+                        </Card>
                         <Row gutter={[24, 24]} >
                             <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
 
@@ -118,10 +119,6 @@ const Feed = () => {
                                 }
                             </Col>
 
-                            <Col xs={0} sm={0} md={2} lg={6} xl={6} xxl={6}>
-
-                                <img className="boys2" src={boys2} />
-                            </Col>
                         </Row>
 
                         <div className='pagination'>
