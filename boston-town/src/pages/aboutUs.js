@@ -1,7 +1,9 @@
+// Import necessary components and styles
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import "./aboutUs.css"
 import logo from  "../../src/assets/images/logo.png"
 
+// About component
 const About = () => {
     return (
         <>
@@ -21,5 +23,5 @@ const About = () => {
         </>
     );
 }
-
+// Export the About component
 export default About
