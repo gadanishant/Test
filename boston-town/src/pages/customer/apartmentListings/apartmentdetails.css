@@ -54,3 +54,10 @@
 .likeButtton {
     float: right;
 }
+
+.likedButton {
+    background-color: rgb(18, 177, 18);
+    border: 0px;
+    color: white;
+    font-weight: bold;
+}

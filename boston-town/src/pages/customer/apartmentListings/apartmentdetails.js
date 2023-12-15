@@ -1,10 +1,11 @@
 import './apartmentdetails.css';
-import React , { useState, useEffect } from 'react';
+import React , { useState, useEffect, useContext } from 'react';
 import { Carousel, Row, Col, Button, Card, Divider} from 'antd'; // Import Button from antd
 import logo from '../../../../src/assets/images/logo4.png';
 import pic1 from '../../../../src/assets/images/pic1.png';
 import pic2 from '../../../../src/assets/images/pic2.png';
 import pic3 from '../../../../src/assets/images/pic3.png';
+import { Context } from '../../../components/context';
 import { useLocation } from 'react-router-dom';
 
 
@@ -18,6 +19,11 @@ const contentStyle = {
 };
 
 const ApartmentDetails = () => {
+    const location = useLocation();
+    const { user, setUser } = useContext(Context);
+    const [isLiked, setIsLiked] = useState(false);
+    const [apartment, setApartment] = useState(location.state.apartment);
+    const [agent, setAgent] = useState(null);
     const carouselRef = React.useRef(); // Create a reference to the carousel component
 
     const next = () => {
@@ -28,17 +34,56 @@ const ApartmentDetails = () => {
         carouselRef.current.prev(); // Function to go to the previous slide
     };
 
-    const location = useLocation();
+    useEffect(() => {
+        if (apartment.liked_by.includes(user.username)) {
+            setIsLiked(true);
+        }
+    }, [user.username, apartment.liked_by]);
 
-    // Access the state object from the location
-    const { state } = location;
-  
-    // Access the apartment object from the state
-    const { apartment } = state;
-    console.log(apartment)
-
-    const [agent, setAgent] = useState(null);
-
+    const handleLikeClick = async () => {
+        let updatedLikes = [...apartment.liked_by];
+        if (isLiked) {
+            // cancel like
+            updatedLikes = updatedLikes.filter(name => name !== user.username);
+        } else {
+            // add like
+            updatedLikes.push(user.username);
+        }
+    
+        // const updatedData = { liked_by: updatedLikes };
+        const updatedData = { liked_by: updatedLikes };
+        console.log("!!! => ", apartment._id);
+    
+        try {
+            // send PUT request to update the property
+            const response = await fetch(`http://localhost:3000/property/updateProperty/${apartment._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedData),
+            });
+    
+            const responseData = await response.json();
+            if (response.ok && responseData.success) {
+                console.log('Property updated successfully');
+    
+                // update state
+                setIsLiked(!isLiked);
+                // 更新 apartment 状态以及点赞数量和列表
+                setApartment(prevApartment => ({
+                    ...prevApartment, 
+                    liked_by: updatedLikes
+                }));
+    
+            } else {
+                console.error('Failed to update property');
+            }
+        } catch (error) {
+            console.error('Error updating property:', error);
+        }
+    };
+    
     useEffect(() => {
         const fetchAgentData = async () => {
             try {
@@ -73,7 +118,11 @@ const ApartmentDetails = () => {
                     <div style={{ textAlign: 'center', marginTop: '10px' }}>
                         {/* <Button onClick={prev} style={{ marginRight: '10px' }}>Previous</Button>
                         <Button onClick={next}>Next</Button> */}
-                        <Button className = "likeButton">Like</Button>
+                        <Button 
+                            className={isLiked ? "likedButton" : "likeButton"} 
+                            onClick={handleLikeClick}>
+                            {isLiked ? 'Liked' : 'Like'}
+                        </Button>
                         <div className="likes_count">
                             <p>({apartment.liked_by.filter(name => name !== "").length} likes)</p>
                             <p>{apartment.liked_by.join(", ")}</p>

@@ -43,7 +43,7 @@ const Login = () => {
             // console.log("Successfully logged in!");
             // alert("Successfully logged in!")
 
-            const data = getUserDetailsAPI();
+            const data = await getUserDetailsAPI();
             console.log("authenticateUserAPI: data => ", data);
 
             setShowModal(true);
