@@ -1,5 +1,7 @@
+// Import the CSS file for styling
 import "./loader.css"
 
+// Loader functional component
 const Loader = () => {
     return (
         <section>
@@ -25,6 +27,7 @@ const Loader = () => {
                 </path>
             </svg>
              */}
+             {/* SVG loader animation using circles */}
             <svg
                 id="loader-svg"
                 xmlns='http://www.w3.org/2000/svg'
@@ -37,6 +40,8 @@ const Loader = () => {
                     cx='100'
                     cy='100'
                     r='0'>
+                    {/* Animation for circle radius, stroke width, and stroke opacity */}
+
                     <animate
                         attributeName='r'
                         calcMode='spline'
@@ -70,4 +75,5 @@ const Loader = () => {
     )
 }
 
+// Export the Loader component
 export default Loader;
