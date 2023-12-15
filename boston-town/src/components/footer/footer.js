@@ -1,20 +1,26 @@
+// Import necessary dependencies from 'react', 'antd', and icon libraries
 import React from 'react';
 import { Layout, Row, Col, Typography } from 'antd';
 import { FacebookOutlined, InstagramOutlined, TwitterOutlined } from '@ant-design/icons';
+
+// Import custom styles and footer image
 import './footer.css';
 import Boston_Town_Footer_Image from "../../../src/assets/images/Boston_Town_Footer_Image.png"
+
+// Destructure components from antd
 const { Footer } = Layout;
 const { Link, Text } = Typography;
 
+// Functional component for the footer
 const AppFooter = () => {
     return (
         <Footer className="app-footer">
+            {/* Row containing links and social media icons */}
             <Row gutter={16} justify="center">
 
                 <Link href="/aboutUs" className="footer-link">About</Link>
                 <Link href = "./termsOfService"className="footer-link">Terms Of Service</Link>
                 <Link href="./privacypolicy" className="footer-link">Privacy Policy</Link>
-                <Link href="./" className="footer-link">Add a Review</Link>
                 <Link><FacebookOutlined className="footer-icons" /></Link>
                 <Link><InstagramOutlined className="footer-icons" /></Link>
                 <Link><TwitterOutlined className="footer-icons" /></Link>
@@ -24,6 +30,7 @@ const AppFooter = () => {
 
             <hr className="horizontal-line" />
 
+            {/* Section with paragraphs containing footer information */}
             <div className="footer-para">
             <p>
                 Boston Town Group is committed to ensuring digital accessibility for individuals with disabilities. 
@@ -63,6 +70,7 @@ const AppFooter = () => {
 
             </div>
 
+            {/* Image at the bottom of the footer */}
             <img className='footerimg' src={Boston_Town_Footer_Image}></img>
 
 
@@ -70,4 +78,5 @@ const AppFooter = () => {
     )
 };
 
+// Export the footer component
 export default AppFooter;

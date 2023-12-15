@@ -1,11 +1,16 @@
+
+// Import necessary components and styles
 import React from 'react';
 import { Layout, Typography } from 'antd';
 import './privacyPolicy.css'
 
+
+// Destructure components from Ant Design
+
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
-
+// PrivacyPolicy component
 
 const PrivacyPolicy = () => {
   return (
