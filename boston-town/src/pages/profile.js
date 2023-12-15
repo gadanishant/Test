@@ -52,6 +52,34 @@ const Profile = () => {
 		}
 	}
 
+	const updateUserDetailsAPI = async () => {
+		console.log("updateUserDetailsAPI");
+		try {
+			const response = await sendRequest("http://localhost:3000/updateUserDetails", {
+				"firstname": firstName,
+				"lastname": lastName,
+				"username": username,
+				"password": password,
+				"age": age,
+				"country": selectedCountry,
+				"mobile": mobile,
+				"email": email,
+				"profession": profession,
+				"description": description,
+				"food_preferences": selectedFoodPreference,
+				"pet_preferences": selectedPetPreference,
+				"social_media": {
+					linkedin: linkedinLink,
+					instagramLink: instagramLink
+				}
+			}, "PUT", {})
+
+			console.log("updateUserDetailsAPI: response => ", response);
+		} catch (error) {
+			console.log("updateUserDetailsAPI: error => ", error);
+		}
+	}
+
 	useEffect(() => {
 		const fetchCountries = async () => {
 			try {
@@ -270,12 +298,15 @@ const Profile = () => {
 				<Button onClick={showUpdateProfileModal}>Update</Button>
 			</Card>
 
-
 			<Modal
 				title="Update Profile"
 				open={updateProfileModalVisible}
 				onCancel={showUpdateProfileModalCancel}
 				okText="Update"
+				onOk={() => {
+					updateUserDetailsAPI();
+					showUpdateProfileModalCancel();
+				}}
 			>
 				<Form form={form}>
 					<Form.Item
@@ -288,7 +319,7 @@ const Profile = () => {
 							},
 						]}
 					>
-						<Input className="InputFieldClass" />
+						<Input onBlur={onUpdateFirstName} className="InputFieldClass" />
 					</Form.Item>
 
 					<Form.Item
@@ -301,7 +332,7 @@ const Profile = () => {
 							},
 						]}
 					>
-						<Input className="InputFieldClass" />
+						<Input onBlur={onUpdateLastName} className="InputFieldClass" />
 					</Form.Item>
 					<Form.Item
 						label="Age"
@@ -313,7 +344,7 @@ const Profile = () => {
 							},
 						]}
 					>
-						<Input className="InputFieldClass" />
+						<Input onBlur={onUpdateAge} className="InputFieldClass" />
 					</Form.Item>
 
 					<Form.Item label="Country" required>
@@ -346,7 +377,7 @@ const Profile = () => {
 						label="Phone Number"
 						rules={[{ required: true, message: 'Please input your phone number!' }]}
 					>
-						<Input className="InputFieldClass" />
+						<Input onBlur={onUpdateMobile} className="InputFieldClass" />
 					</Form.Item>
 
 					<Form.Item
@@ -369,7 +400,7 @@ const Profile = () => {
 
 						]}
 					>
-						<Input className="InputFieldClass" />
+						<Input onBlur={onUpdateEmail} className="InputFieldClass" />
 					</Form.Item>
 
 					<Form.Item
@@ -377,7 +408,7 @@ const Profile = () => {
 						label="Profession"
 						rules={[{ required: true, message: 'Please input your profession!' }]}
 					>
-						<Input className="InputFieldClass" />
+						<Input onBlur={onUpdateProfession} className="InputFieldClass" />
 					</Form.Item>
 
 					<Form.Item
@@ -385,7 +416,7 @@ const Profile = () => {
 						label="Description"
 						rules={[{ required: false, message: 'Please input your description!' }]}
 					>
-						<Input className="InputFieldClass" />
+						<Input onBlur={onUpdateDescription} className="InputFieldClass" />
 					</Form.Item>
 
 					<Form.Item
