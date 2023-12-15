@@ -24,3 +24,27 @@
 .boys2{
     height: 20rem;
 }
+
+.time_color{
+    color: #424242;
+}
+
+.title_color{
+    color: #E98074;
+}
+
+.view_button{
+    color: #68a2d5 !important;
+    background-color: #fff;
+}
+
+.view_button:hover{
+    color: #fff !important;
+    background-color: #68a2d5;
+}
+
+.userpic{
+    height: 5rem;
+    border-radius: 88px;
+    width: 5rem 
+}
