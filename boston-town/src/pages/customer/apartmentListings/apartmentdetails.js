@@ -102,7 +102,10 @@ const ApartmentDetails = () => {
 
     return (
         <div className="details_padding">
+             <h1>{apartment.title}</h1>
+             <br/>
             <Row gutter={[42, 42]}>
+               
                 <Col span={16}>
                     <Carousel className="carousel_apt" ref={carouselRef}>
                         {apartment.images.map((imageUrl, index) => (
