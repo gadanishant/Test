@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useMemo} from 'react';
+import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { List, Button, Modal, Input, Form, DatePicker, Card, Col, Row } from 'antd';
 import './incident.css';
 import Map from "../../src/map"
@@ -32,15 +32,15 @@ const Incident = () => {
 	const [newIncidentDescription, setNewIncidentDescription] = useState();
 	const [searchInput, setSearchInput] = useState("");
 
-    const handleSearchChange = (e) => {
-        setSearchInput(e.target.value);
-    };
+	const handleSearchChange = (e) => {
+		setSearchInput(e.target.value);
+	};
 
-    const filteredPosts = useMemo(() => {
-        return searchInput.trim()
-            ? listOfIncidents.filter(incident => incident.incidentTitle.toLowerCase().startsWith(searchInput.toLowerCase().trim()))
-            : listOfIncidents;
-    }, [listOfIncidents, searchInput]);
+	const filteredPosts = useMemo(() => {
+		return searchInput.trim()
+			? listOfIncidents.filter(incident => incident.incidentTitle.toLowerCase().startsWith(searchInput.toLowerCase().trim()))
+			: listOfIncidents;
+	}, [listOfIncidents, searchInput]);
 
 
 	// Form to handle new incident input
@@ -168,22 +168,22 @@ const Incident = () => {
 					<h1>Incident Map</h1>
 					<Map />
 				</div>
-					<Card>
-            <Row gutter={[24,24]} >
-            <Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
-                <Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={11}>
-                    <h1>Incidents</h1>
-                </Col>
-                <Col >
-                <Input value={searchInput} onChange={handleSearchChange} placeholder="Search Incident"></Input>
-                </Col>
-                <Col>
-                </Col>
-            </Row>
-            </Card>
-					<br>
-					</br>
-				<h4>Upto {incidentCount} incidents reported so far.. </h4>
+				<Card>
+					<Row gutter={[24, 24]} >
+						<Col xs={0} sm={0} md={2} lg={4} xl={4} xxl={4}></Col>
+						<Col xs={24} sm={24} md={20} lg={14} xl={14} xxl={11}>
+							<h1>Incidents</h1>
+						</Col>
+						<Col >
+							<Input value={searchInput} onChange={handleSearchChange} placeholder="Search Incident"></Input>
+						</Col>
+						<Col>
+						</Col>
+					</Row>
+				</Card>
+				<br>
+				</br>
+
 				<br />
 				<div style={{ maxHeight: '300px', overflowY: 'auto' }}>
 					<List
